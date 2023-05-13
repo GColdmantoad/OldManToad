@@ -1,0 +1,298 @@
+* {
+    font-family: 'Bungee', cursive;
+    box-sizing: border-box;
+}
+body{
+  background-color: #BEE7E8;
+  margin: 0;
+}
+
+.container {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  align-items:center;
+  background-color: #247ba0;
+  display:flex;
+  flex-wrap: wrap;
+  align-self: center;
+  justify-content: space-around;
+  padding: 5px;
+}
+.container:first-child{
+  margin-top: 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.container:last-child{
+  margin-bottom: 1rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.pkmTeam {
+  flex: 1;
+  width: 320px;
+  height: 320px;
+  
+}
+.image {
+ width: 100%;
+ height: 100%;
+ z-index: 2;
+ 
+}
+.pkm, .placeholder{
+  position: relative;
+  width: 300px;
+  line-height: 5px;
+  display:flex;
+  border-radius: 100%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 25px 2px 25px 2px;
+}
+.name{
+  box-shadow: 2px 2px 4px 4px #50514f;
+}
+.row{
+  display: flex;
+}
+.btn{
+  background-color: #f24236;
+  text-align: center;
+}
+#weakType{
+  position: absolute;
+  list-style: none;
+  display: flex;
+  margin: auto;
+  justify-items: center;
+}
+li{
+  flex: 1;
+  border-radius: 50px;
+  padding: 0 8px 0 8px;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  max-width: fit-content;
+  min-width: 100px;
+  margin: 2px;
+}
+.name, .type{
+  display: flex;
+  position: absolute;
+  width: 100%;
+  border-radius: 50px;
+  padding: 1.25rem;
+  align-self: center;
+  line-height: 0;
+  justify-content: center;
+  margin: -20px;
+  white-space: nowrap;
+  
+}
+.name{
+  font-size: 2rem;
+}
+.type{
+  bottom: 0;
+  font-size: 1.5rem;
+}
+
+.pkmBox, .btn {
+  color: #fffcff;
+  border-radius: 50px;
+  box-shadow: 2px 2px 4px 4px #50514f;
+  transition: all 300ms ease-in-out;
+  margin: 12px;
+  flex: 1 25%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  font-size: 1.5rem;
+}
+
+.pkmBox{
+  text-align: left;
+  line-height: 60px;
+
+  padding: 1rem;
+  max-width: 300px;
+}
+.pkmBox:hover {
+  background-color: #f24236;
+}
+#Magneton{
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/082.png);
+}
+#Garchomp{
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/445.png);
+}
+#Baxcalibur {
+  background-image:  url(https://www.serebii.net/scarletviolet/pokemon/new/998.png);
+}
+#Slowbro {
+  background-image: url(https://www.serebii.net/swordshield/pokemon/080.png);
+}
+#Kilowattrel {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/941.png);
+}
+
+#Meowscarada {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/908.png);
+}
+#Tauros {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/128-b.png);
+}
+#Gengar {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/094.png);
+}
+#Hydreigon {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/635.png);
+}
+#Gholdengo {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/1000.png);
+}
+#Espathra {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/956.png);
+}
+#Slowking {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/199.png);
+}
+#Dragonite {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/149.png);
+}
+#Donphan {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/232.png);
+}
+#Dragapult {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/887.png);
+}
+#GreatTusk {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/984.png);
+}
+#Glimmora {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/970.png);
+}
+#Chi-Yu {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/1004.png);
+}
+#Gastrodon {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/423.png);
+}
+#Breloom {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/286.png);
+}
+#Chein-Pao {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/1002.png);
+}
+#Volcarona {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/637.png);
+}
+#Maushold {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/925-f.png);
+}
+#Azumaril {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/184.png);
+}
+#Scizor {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/212.png);
+}
+#Ceruledge {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/937.png);
+}
+#IronHands {
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/992.png);
+}
+#FlutterMane{
+  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/987.png);
+}
+.type1-steel-type2-bug{
+background: linear-gradient(90deg, rgba(183,183,206,1) 45%, rgba(166,185,26,1) 65%);
+}
+.type1-fire-type2-bug{
+background: linear-gradient(90deg, rgba(238,129,48,1) 45%, rgba(166,185,26,1) 65%);
+}
+.type1-ghost-type2-fairy{
+  background: linear-gradient(90deg, rgba(115,87,151,1) 45%, rgba(214,133,173,1) 65%);
+  }
+.type1-water-type2-fairy{
+background: linear-gradient(90deg, rgba(99,144,240,1) 45%, rgba(214,133,173,1) 65%);
+}
+.type1-electric-type2-flying{
+  background: linear-gradient(90deg, rgba(247,208,44,1) 45%, rgba(169,143,243,1) 65%);
+}
+.type1-dragon-type2-ground{
+  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(226,191,101,1) 65%);
+}
+.type1-electric-type2-steel{
+  background: linear-gradient(90deg, rgba(247,208,44,1) 45%, rgba(183,183,206,1) 65%);
+
+}.type1-fighting-type2-ground{
+  background:  linear-gradient(90deg, rgba(194,46,40,1) 45%, rgba(226,191,101,1) 65%);
+}
+
+.type1-dragon-type2-ice{
+  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(150,217,214,1) 65%);
+}
+
+.type1-water-type2-psychic{
+  background: linear-gradient(90deg, rgba(99,144,240,1) 45%, rgba(249,85,135,1) 65%);
+}
+
+.type1-grass-type2-dark{
+  background: linear-gradient(90deg, rgba(122,199,76,1) 45%, rgba(64,54,48,1) 65%);
+}
+.type1-fire-type2-dark{
+  background: linear-gradient(90deg, rgba(238,129,48,1) 45%, rgba(64,54,48,1) 65%);
+  }
+.type1-fire-type2-fighting{
+  background: linear-gradient(90deg, rgba(238,129,48,1) 45%, rgba(194,46,40,1) 65%);
+}
+
+.type1-ghost-type2-poison{
+  background: linear-gradient(90deg, rgba(115,87,151,1) 45%, rgba(163,62,161,1) 65%);
+}
+.type1-dragon-type2-dark{
+  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(64,54,48,1) 65%);
+}
+.type1-ghost-type2-steel{
+  background: linear-gradient(90deg, rgba(115,87,151,1) 45%, rgba(183,183,206,1) 65%);
+}
+.type1-psychic-type2-psychic{
+  background:linear-gradient(90deg, rgba(249,85,135,1) 45%, rgba(203,53,98,1) 65%);
+}
+.type1-dragon-type2-flying{
+  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(169,143,243,1) 65%);
+}
+.type1-ground-type2-ground{
+  background: linear-gradient(90deg,  rgba(226,191,101,1) 45%, rgba(200,160,56,1) 65%);
+
+}
+.type1-dragon-type2-ghost{
+  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(115,87,151,1) 65%);
+}
+.type1-rock-type2-poison{
+  background: linear-gradient(90deg, rgba(182,161,54,1) 45%, rgba(163,62,161,1) 65%);
+}
+.type1-water-type2-ground{
+  background: linear-gradient(90deg, rgba(99,144,240,1) 45%, rgba(226,191,101,1) 65%);
+}
+.type1-grass-type2-fighting{
+  background: linear-gradient(90deg, rgba(122,199,76,1) 45%, rgba(194,46,40,1) 65%);
+}
+.type1-ice-type2-dark{
+  background: linear-gradient(90deg, rgba(150,217,214,1) 45%, rgba(64,54,48,1) 65%);
+}
+.type1-normal-type2-normal{
+  background: linear-gradient(90deg, rgba(168,167,122,1) 45%, rgba(136,136,104,1) 65%);
+}
+.type1-ghost-type2-fire{
+  background:  linear-gradient(90deg, rgba(115,87,151,1) 45%, rgba(238,129,48,1) 65%);
+}
+.type1-electric-type2-fighting{
+  background: linear-gradient(90deg, rgba(247,208,44,1) 45%, rgba(194,46,40,1) 65%);
+}
+.psychic{
+  background: rgba(249,85,135,1)
+}
