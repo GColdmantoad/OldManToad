@@ -138,77 +138,77 @@ let pkm = [{
     type1: "dragon",
     type2: "flying",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/149.png",
-    weakness: [[1,'normal'],[.5,'fire'],[1,'water'],[.5,'grass'],[.5,'electric'],[4,'ice'],[.5,'fighting'],[1,'poison'],[0,'ground'],[.5,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
+    weakness: [[1,'normal'],[.5,'fire'],[.5,'water'],[.25,'grass'],[1,'electric'],[4,'ice'],[.5,'fighting'],[1,'poison'],[0,'ground'],[1,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[2,'dragon'],[1,'steel'],[2,'fairy']]
 },{
     id: 17,
     name:"Donphan",
     type1: "ground",
     type2: "ground",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/232.png",
-    weakness: [[1,'normal'],[1,'fire'],[2,'water'],[2,'grass'],[.5,'electric'],[2,'ice'],[.5,'fighting'],[1,'poison'],[0,'ground'],[.5,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
+    weakness: [[1,'normal'],[1,'fire'],[2,'water'],[2,'grass'],[0,'electric'],[2,'ice'],[1,'fighting'],[.5,'poison'],[1,'ground'],[1,'flying'],[1,'psychic'],[1,'bug'],[.5,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[1,'steel'],[1,'fairy']]
 },{
     id: 18,
     name:"Dragapult",
     type1: "dragon",
     type2: "ghost",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/887.png",
-    weakness: [[1,'normal'],[1,'fire'],[1,'water'],[.5,'grass'],[.5,'electric'],[2,'ice'],[.5,'fighting'],[1,'poison'],[0,'ground'],[.5,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
+    weakness: [[0,'normal'],[.5,'fire'],[.5,'water'],[.5,'grass'],[.5,'electric'],[2,'ice'],[0,'fighting'],[.5,'poison'],[1,'ground'],[1,'flying'],[1,'psychic'],[.5,'bug'],[1,'rock'],[2,'ghost'],[2,'dark'],[2,'dragon'],[1,'steel'],[2,'fairy']]
 },{
     id: 19,
     name:"Glimmora",
     type1: "rock",
     type2: "poison",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/970.png",
-    weakness: [[1,'normal'],[1,'fire'],[1,'water'],[.5,'grass'],[.5,'electric'],[2,'ice'],[.5,'fighting'],[1,'poison'],[4,'ground'],[.5,'flying'],[2,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
+    weakness: [[.5,'normal'],[.5,'fire'],[2,'water'],[1,'grass'],[1,'electric'],[1,'ice'],[1,'fighting'],[.25,'poison'],[4,'ground'],[.5,'flying'],[2,'psychic'],[.5,'bug'],[1,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[2,'steel'],[.5,'fairy']]
 },{
     id: 20,
     name:"Gastrodon",
     type1: "water",
     type2: "ground",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/423.png",
-    weakness: [[1,'normal'],[1,'fire'],[1,'water'],[4,'grass'],[.5,'electric'],[2,'ice'],[.5,'fighting'],[1,'poison'],[0,'ground'],[.5,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
+    weakness: [[1,'normal'],[.5,'fire'],[0,'water'],[4,'grass'],[0,'electric'],[1,'ice'],[1,'fighting'],[.5,'poison'],[1,'ground'],[1,'flying'],[1,'psychic'],[1,'bug'],[.5,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
 },{
     id: 21,
     name:"Breloom",
     type1: "grass",
     type2: "fighting",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/286.png",
-    weakness: [[1,'normal'],[2,'fire'],[1,'water'],[.5,'grass'],[.5,'electric'],[2,'ice'],[.5,'fighting'],[1,'poison'],[0,'ground'],[4,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
+    weakness: [[1,'normal'],[2,'fire'],[.5,'water'],[.5,'grass'],[.5,'electric'],[2,'ice'],[1,'fighting'],[2,'poison'],[.5,'ground'],[4,'flying'],[2,'psychic'],[1,'bug'],[.5,'rock'],[1,'ghost'],[.5,'dark'],[1,'dragon'],[1,'steel'],[2,'fairy']]
 },{
     id: 22,
     name:"Chein-Pao",
     type1: "ice",
     type2: "dark",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/1002.png",
-    weakness: [[1,'normal'],[1,'fire'],[1,'water'],[.5,'grass'],[.5,'electric'],[.5,'ice'],[4,'fighting'],[1,'poison'],[1,'ground'],[.5,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
+    weakness: [[1,'normal'],[2,'fire'],[.5,'water'],[1,'grass'],[1,'electric'],[.5,'ice'],[4,'fighting'],[1,'poison'],[1,'ground'],[1,'flying'],[0,'psychic'],[2,'bug'],[2,'rock'],[.5,'ghost'],[.5,'dark'],[1,'dragon'],[2,'steel'],[2,'fairy']]
 },{
     id: 23,
     name:"Maushold",
     type1: "normal",
     type2: "normal",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/925-f.png",
-    weakness: [[1,'normal'],[1,'fire'],[1,'water'],[.5,'grass'],[.5,'electric'],[1,'ice'],[2,'fighting'],[1,'poison'],[1,'ground'],[.5,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
+    weakness: [[1,'normal'],[1,'fire'],[1,'water'],[1,'grass'],[1,'electric'],[1,'ice'],[2,'fighting'],[1,'poison'],[1,'ground'],[1,'flying'],[1,'psychic'],[1,'bug'],[1,'rock'],[0,'ghost'],[1,'dark'],[1,'dragon'],[1,'steel'],[1,'fairy']]
 },{
     id: 24,
     name:"Ceruledge",
     type1: "ghost",
     type2: "fire",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/937.png",
-    weakness: [[0,'normal'],[.5,'fire'],[2,'water'],[.5,'grass'],[1,'electric'],[.5,'ice'],[0,'fighting'],[1,'poison'],[2,'ground'],[1,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[2,'ghost'],[2,'dark'],[1,'dragon'],[.5,'steel'],[.5,'fairy']]
+    weakness: [[0,'normal'],[0,'fire'],[2,'water'],[.5,'grass'],[1,'electric'],[.5,'ice'],[0,'fighting'],[.5,'poison'],[2,'ground'],[1,'flying'],[1,'psychic'],[.25,'bug'],[2,'rock'],[2,'ghost'],[2,'dark'],[1,'dragon'],[.5,'steel'],[.5,'fairy']]
 },{
     id: 25,
     name:"Iron Hands",
     type1: "electric",
     type2: "fighting",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/992.png",
-    weakness: [[1,'normal'],[1,'fire'],[1,'water'],[.5,'grass'],[.5,'electric'],[2,'ice'],[.5,'fighting'],[1,'poison'],[0,'ground'],[.5,'flying'],[1,'psychic'],[.5,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[.5,'steel'],[1,'fairy']]
+    weakness: [[1,'normal'],[1,'fire'],[1,'water'],[1,'grass'],[.5,'electric'],[1,'ice'],[1,'fighting'],[1,'poison'],[2,'ground'],[1,'flying'],[2,'psychic'],[.5,'bug'],[.5,'rock'],[1,'ghost'],[.5,'dark'],[1,'dragon'],[.5,'steel'],[2,'fairy']]
 },{
     id: 26,
     name:"Flutter Mane",
     type1: "ghost",
     type2: "fairy",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/987.png",
-    weakness: [[0,'normal'],[1,'fire'],[1,'water'],[1,'grass'],[1,'electric'],[1,'ice'],[0,'fighting'],[1,'poison'],[1,'ground'],[1,'flying'],[1,'psychic'],[.25,'bug'],[2,'rock'],[1,'ghost'],[1,'dark'],[1,'dragon'],[2,'steel'],[1,'fairy']]
+    weakness: [[0,'normal'],[1,'fire'],[1,'water'],[1,'grass'],[1,'electric'],[1,'ice'],[0,'fighting'],[1,'poison'],[1,'ground'],[1,'flying'],[1,'psychic'],[.25,'bug'],[1,'rock'],[2,'ghost'],[1,'dark'],[0,'dragon'],[2,'steel'],[1,'fairy']]
 },{
     id: 27,
     name:"Espathra",
