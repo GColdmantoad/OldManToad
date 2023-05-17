@@ -122,6 +122,80 @@ li{
 .pkmBox:hover {
   background-color: #f24236;
 }
+.batttleGround {
+    width: 100%;
+    height: 40vh;
+    position: sticky;
+    top: 0;
+    border: solid 1px red;
+    background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb2821a-1406-4a1d-9b04-6668f278e944/d83htw0-ec490c3b-f7dd-4570-a698-8404a8a12f99.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJmYjI4MjFhLTE0MDYtNGExZC05YjA0LTY2NjhmMjc4ZTk0NFwvZDgzaHR3MC1lYzQ5MGMzYi1mN2RkLTQ1NzAtYTY5OC04NDA0YThhMTJmOTkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.zFeU6uxxutMPR_qMMoP5MOM8N4EqbYuZWc_naTh8Rpw);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.left, .right {
+    margin: 3px;
+}
+
+.left {
+    width: 130px;
+    float: left;
+}
+
+.right {
+    float: right;
+    width: 130px;
+}
+
+.partner {
+    transform: scaleX(-1);
+    position: absolute;
+    bottom: 0;
+    left: 5;
+    z-index: 2;
+}
+
+.enemy {
+    position: absolute;
+    right: 5;
+}
+
+.health {
+    border-top: solid green 10px;
+}
+
+.moveOptions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #247ba0;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.pkmOpt {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    background-color: #157299;
+    margin: 10px 20px;
+    box-shadow: 2px 2px 4px 4px #50514f;
+}
+
+.moves {
+    color: #fffcff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px 4px #50514f;
+    margin: 5px;
+    flex: 1;
+    font-size: 1.25rem;
+    background-color: #f24236;
+    text-align: center;
+    min-width: fit-content;
+    padding: 5px;
+}
 #Magneton{
   background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/082.png);
 }
