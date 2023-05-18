@@ -37,6 +37,7 @@ margin: auto;
     height: 10vh;
     z-index: 4;
     top:0;
+    position: fixed;
 }
 .spacer{
     height: 10vh;
@@ -49,7 +50,7 @@ margin: auto;
 }
 #pkmTeam {
     height: 100%;
-    width: fit-content;
+    width: auto;
     justify-content: space-between;
     flex-direction:column;
     top: 0;
@@ -72,6 +73,7 @@ margin: auto;
 }
 #box{
     margin-left:126px;
+    margin-top: 10vh;
 }
 .pkmTeam {
   flex: 1;
