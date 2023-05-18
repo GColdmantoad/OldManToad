@@ -10,31 +10,35 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 </head>
     <body> 
-        <div class="container">
-            <div class="btn"  onclick="randomResetTeam()">Generate a random team!</div>
-            <div class="btn" id='targetWeakness' onclick="genWeakness()">what is your team weak against?
-
+        <div class="container sticky btn" id="navMenu">
+            <div class="btn" id="menuButton">Menu</div>
+            <div id="navButtons" class="hidden">
+                <div class="btn" onclick="randomResetTeam()">Generate a random team!</div>
+                <div class="btn" id='targetWeakness' onclick="genWeakness()">what is your team weak against?</div>
+                <div class="btn" onclick="clearTeam()">Clear your team and start agian!</div>
+                <a href="battle.html"><div class="btn">Battle?</div></a>
             </div>
-            <div class="btn" onclick="clearTeam()">Clear your team and start agian!</div>
-            <a href="battle.html"><div class="btn">Battle?</div></a>
+        </div>
 
-        <div class="container sticky" id="pkmTeam">
-            <div  class="placeholder" id="TeamMember0" onclick="removeTeamOne()">
+
+        <div class="container" id="pkmTeam">
+            <div class="spacer"></div>
+            <div  class="placeholder vertical" id="TeamMember0" onclick="removeTeamOne()">
                 <img class="image"src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
             </div>
-            <div class="placeholder" id="TeamMember1" onclick="removeTeamTwo()">
+            <div class="placeholder vertical" id="TeamMember1" onclick="removeTeamTwo()">
                 <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
             </div> 
-            <div class="placeholder" id="TeamMember2" onclick="removeTeamThree()">
+            <div class="placeholder vertical" id="TeamMember2" onclick="removeTeamThree()">
                 <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
             </div>
-            <div class="placeholder" id="TeamMember3" onclick="removeTeamFour()">
+            <div class="placeholder vertical" id="TeamMember3" onclick="removeTeamFour()">
                 <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
             </div>
-            <div class="placeholder" id="TeamMember4" onclick="removeTeamFive()">
+            <div class="placeholder vertical" id="TeamMember4" onclick="removeTeamFive()">
                 <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
             </div>
-            <div class="placeholder" id="TeamMember5" onclick="removeTeamSix()">
+            <div class="placeholder vertical" id="TeamMember5" onclick="removeTeamSix()">
                 <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
             </div> 
         </div>
