@@ -9,6 +9,8 @@ let teamSix = document.getElementById('TeamMember5')
 let targetWeakness = document.getElementById('targetWeakness')
 let listWeakness = document.getElementById('weakType');
 let tileSpace = document.getElementById('tileSpace')
+let enemyTeamViewer = document.getElementById('enemyTeamViewer')
+let teamViewer = document.getElementById('teamViewer')
 let TeamMember0 = false
 let TeamMember1 = false
 let TeamMember2 = false
@@ -17,8 +19,9 @@ let TeamMember4 = false
 let TeamMember5 = false
 let teamWeakness = [];
 let teamWeaknessArr = [];
-let team = [0,0,0,0,0,0]
-let rdmTeam = [0,4,6,7,15,24]
+let team = [];
+let rdmTeam = [0, 4, 6, 7, 15, 24];
+let enemyTeam = [];
 let navMenu = document.getElementById("navButtons");
 let pkm = [{
     id: 0,
@@ -219,6 +222,10 @@ let pkm = [{
 }
 ]
 
+function swapStyleSheet(sheet) {
+    document.getElementById("css").setAttribute("href", sheet);
+}
+
 function genArray() {
     for (let i = 0; i < team[0].weakness.length ; i++) {
     let numberType = [0,0];
@@ -362,6 +369,33 @@ function removeTeamSix(){
     teamWeaknessArr = [];
     targetWeakness.innerHTML = `what is your team weak against?`;
 }
+
+function generateRandomEnemyTeam() {
+    let rdm = uniqueRandomNumber(6, pkm.length)
+    function addRandomTeam(arr) {
+        enemyTeam.splice(i, 1, arr);
+    }
+    for (var i = 0; i < 6; i++) {
+        addRandomTeam(pkm[rdm[i]])
+    }
+}
+function battleTeam() {
+    if (team.length > 5) {
+        document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
+        document.getElementById('teamViewer').innerHTML = `<h3>Choose 4 pokemon to fight 4 of the pokemon above</h3>`;
+        for (let i = 0; i < team.length; i++) {
+            document.getElementById('teamViewer').innerHTML += `<img class="pkmOpt" src="${team[i].img}" alt="">`
+        }
+        generateRandomEnemyTeam();
+        for (let i = 0; i < team.length; i++) {
+            document.getElementById('enemyTeamViewer').innerHTML += `<img class="enemyTeam" src="${enemyTeam[i].img}" alt="">`
+        }
+    } else {
+        alert('You need to select 6 pokemon')
+    }
+
+}
+
 function addTeam(arr) {
 
     let typing = ''

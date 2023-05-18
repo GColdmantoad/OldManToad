@@ -7,6 +7,9 @@ body {
     margin: 0;
     position: relative;
 }
+h3{
+    text-align:center;
+}
 .btn {
     color: #fffcff;
     border-radius: 10px;
@@ -96,7 +99,7 @@ margin: auto;
 
 }
 .name{
-  box-shadow: 2px 2px 4px 4px #50514f;
+  box-shadow: 0 0 4px 4px #50514f;
 }
 .row{
   display: flex;
@@ -129,11 +132,20 @@ margin: auto;
   bottom: 0;
   font-size: 1.5rem;
 }
-
+#enemyTeamViewer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.enemyTeam {
+    flex: 1;
+    width: 30vw;
+    height: auto;
+}
 .pkmBox{
   color: #fffcff;
   border-radius: 50px;
-  box-shadow: 2px 2px 4px 4px #50514f;
+  box-shadow: 0 0 4px 4px #50514f;
   transition: all 300ms ease-in-out;
   margin: 12px;
   flex: 1 25%;

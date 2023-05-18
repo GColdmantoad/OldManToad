@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="TeamBuilder.css" />
+    <link rel="stylesheet" id="css" href="TeamBuilder.css" />
     <title>Toadstool's Pokemon Team Builder</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
                 <div class="btn" onclick="randomResetTeam()">Generate a random team!</div>
                 <div class="btn" id='targetWeakness' onclick="genWeakness()">what is your team weak against?</div>
                 <div class="btn" onclick="clearTeam()">Clear your team and start agian!</div>
-                <a href="battle.html"><div class="btn">Battle?</div></a>
+                <div class="btn" onclick='battleTeam()'>Battle?</div>
             </div>
         </div>
 
