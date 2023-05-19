@@ -20,6 +20,7 @@ let TeamMember5 = false
 let teamWeakness = [];
 let teamWeaknessArr = [];
 let team = [];
+let vgcTeam = []
 let rdmTeam = [0, 4, 6, 7, 15, 24];
 let enemyTeam = [];
 let navMenu = document.getElementById("navButtons");
@@ -382,20 +383,44 @@ function generateRandomEnemyTeam() {
 function battleTeam() {
     if (team.length > 5) {
         document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
-        document.getElementById('teamViewer').innerHTML = `<h3>Choose 4 pokemon to fight 4 of the pokemon above</h3>`;
-        for (let i = 0; i < team.length; i++) {
-            document.getElementById('teamViewer').innerHTML += `<img class="pkmOpt" src="${team[i].img}" alt="">`
-        }
+
         generateRandomEnemyTeam();
         for (let i = 0; i < team.length; i++) {
-            document.getElementById('enemyTeamViewer').innerHTML += `<img class="enemyTeam" src="${enemyTeam[i].img}" alt="">`
+            document.getElementById('enemyTeamViewer').innerHTML += `<img class="enemyTeam"src="${enemyTeam[i].img}" alt="">`
         }
+        vgcTeamSelector();
+        document.querySelector('body').innerHTML += `<div class="btn" onclick="vgcTeamSelector()">reset</div>`;
     } else {
-        alert('You need to select 6 pokemon')
+            alert('You need to select 6 pokemon')
+        }
+}
+
+function vgcTeamSelector() {
+    counter = 0;
+    vgcTeam = [];
+    document.getElementById('teamViewer').innerHTML = `<h3>Choose 4 pokemon to fight 4 of the pokemon above.<br> The first two will be your lead.</h3>`;
+    for (let i = 0; i < team.length; i++) {
+        document.getElementById('teamViewer').innerHTML += `<div id='${team[i].id}'><img class="pkmOpt"  value='${team[i].id}' onclick="fourGuys(pkm[${team[i].id}])"src="${team[i].img}" alt=""></div>`
+    }
+    
+}
+let counter = 0
+function fourGuys(arr) {
+    let pokemon = arr.name
+    if (vgcTeam.some(vgcTeam => vgcTeam.name == pokemon)) {
+        vgcTeam.splice(arr)
+        counter--;
+    } else {
+        console.log(pokemon)
+        vgcTeam.push(arr)
+        counter++;
+        document.getElementById(arr.id).innerHTML = `<div class='pkmOpt'>${counter}</div>`;
     }
 
 }
+function gameTime() {
 
+}
 function addTeam(arr) {
 
     let typing = ''
