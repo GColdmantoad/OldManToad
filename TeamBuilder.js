@@ -23,6 +23,7 @@ let team = [];
 let vgcTeam = []
 let rdmTeam = [0, 4, 6, 7, 15, 24];
 let enemyTeam = [];
+let enemyVgcTeam = [];
 let navMenu = document.getElementById("navButtons");
 let pkm = [{
     id: 0,
@@ -405,6 +406,7 @@ function vgcTeamSelector() {
     
 }
 let counter = 0
+
 function fourGuys(arr) {
     let pokemon = arr.name
     if (vgcTeam.some(vgcTeam => vgcTeam.name == pokemon)) {
@@ -416,10 +418,63 @@ function fourGuys(arr) {
         counter++;
         document.getElementById(arr.id).innerHTML = `<div class='pkmOpt'>${counter}</div>`;
     }
-
+    if (counter == 4) {
+        gameTime();
+    }
+}
+function enemyVgc() {
+    let rdm = uniqueRandomNumber(4, enemyVgcTeam.length)
+    function addRandomTeam(arr) {
+        enemyVgcTeam.push(enemyTeam[i])
+    }
+    for (var i = 0; i < 4; i++) {
+        addRandomTeam(enemyTeam[rdm[i]])
+    }
 }
 function gameTime() {
+    document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
+    document.querySelector('body').innerHTML += `<div class="btn" style="position: fixed; bottom: 0;" onclick="turn1()">restart turn</div>`;
+    document.getElementById('enemyTeamViewer').innerHTML = `
+    <div class="enemy" id="activeEnemy"></div>
+    <div class="partner" id="activePartner"></div>`;
+    enemyVgc();
+    for (var i = 0; i < 2; i++) {
+        document.getElementById('activeEnemy').innerHTML += `<img class="right health" id="enemy${enemyVgcTeam[i].name}" src="${enemyVgcTeam[i].img}">`
+        document.getElementById('activePartner').innerHTML += `<img class="left health" id="partner${vgcTeam[i].name}" src="${vgcTeam[i].img}">`
+    }
+    turn1();
+}
+function turn1() {
+    document.getElementById('teamViewer').innerHTML = `
+    <h3>What will ${vgcTeam[1].name} do?</h3>
+    <div class="moveOptions" onclick="protect(${vgcTeam[1].name})">
+        <div class="btn">${vgcTeam[1].type1}</div>
+        <div class="btn">${vgcTeam[1].type2}</div>
+        <div class="btn">boost</div>
+        <div class="btn">protect</div>
+        <div class="btn">switch</div>
+    </div>
 
+    `
+}
+function protect(name) {
+    let p = 'partner'
+    let data = name
+    let id = p+data
+    document.getElementById(id).classList.add('protect');
+}
+function turn2() {
+    document.getElementById('teamViewer').innerHTML = `
+    <h3>What will ${vgcTeam[0].name} do?</h3>
+    <div class="moveOptions">
+
+        <div class="btn">${vgcTeam[0].type1}</div>
+        <div class="btn">${vgcTeam[0].type2}</div>
+        <div class="btn">boost</div>
+        <div class="btn">protect</div>
+        <div class="btn">switch</div>
+    </div>
+    `
 }
 function addTeam(arr) {
 

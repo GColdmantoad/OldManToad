@@ -199,13 +199,18 @@ margin: auto;
     transform: scaleX(-1);
     position: absolute;
     bottom: 0;
-    left: 5;
+    left: 0;
     z-index: 2;
 }
 
+.protect {
+    border-top: solid rgb(187, 255, 255) 10px;
+    border-left: solid rgb(187, 255, 255) 10px;
+    border-radius: 100%;
+}
 .enemy {
     position: absolute;
-    right: 5;
+    right: 0;
 }
 
 .health {
