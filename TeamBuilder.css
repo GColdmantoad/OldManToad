@@ -48,8 +48,8 @@ margin: auto;
     width: 100%;
 }
 .vertical {
-    max-width: 13vh;
-    max-height: 13vh;
+    max-width: 10vh;
+    max-height: 10vh;
     padding: 2px;
 }
 #pkmTeam {
