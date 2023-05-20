@@ -489,7 +489,7 @@ function addTeam(arr) {
          typing = `${arr.type1}<span>&#47;</span>${arr.type2}`;
     }
     if (TeamMember0 === false) {
-        teamOne.innerHTML = `<div class="pkm vertical type1-${arr.type1}-type2-${arr.type2}">
+        teamOne.innerHTML = `<div class="pkm shadow vertical type1-${arr.type1}-type2-${arr.type2}">
    
 
         <img class="image" src="${arr.img}" alt="">
@@ -499,7 +499,7 @@ function addTeam(arr) {
         team.splice(0,1);
         team.unshift(arr);
     } else if (TeamMember1 === false) {
-        teamTwo.innerHTML = `<div class="pkm vertical type1-${arr.type1}-type2-${arr.type2}">
+        teamTwo.innerHTML = `<div class="pkm vertical shadow type1-${arr.type1}-type2-${arr.type2}">
   
         <img class="image" src="${arr.img}" alt="">
 
@@ -507,7 +507,7 @@ function addTeam(arr) {
         TeamMember1 = true;
         team.splice(1,1, arr);
     } else if (TeamMember2=== false) {
-        teamThree.innerHTML = `<div class="pkm vertical type1-${arr.type1}-type2-${arr.type2}">
+        teamThree.innerHTML = `<div class="pkm shadow vertical type1-${arr.type1}-type2-${arr.type2}">
    
 
         <img class="image" src="${arr.img}" alt="">
@@ -516,7 +516,7 @@ function addTeam(arr) {
         TeamMember2 = true;
         team.splice(2,1, arr);
     } else if (TeamMember3 === false) {
-        teamFour.innerHTML = `<div class="pkm vertical type1-${arr.type1}-type2-${arr.type2}">
+        teamFour.innerHTML = `<div class="pkm vertical shadow type1-${arr.type1}-type2-${arr.type2}">
    
 
         <img class="image" src="${arr.img}" alt="">
@@ -525,7 +525,7 @@ function addTeam(arr) {
         TeamMember3 = true;
         team.splice(3,1, arr);
     } else if (TeamMember4 === false) {
-        teamFive.innerHTML = `<div class="pkm vertical type1-${arr.type1}-type2-${arr.type2}">
+        teamFive.innerHTML = `<div class="pkm vertical shadow type1-${arr.type1}-type2-${arr.type2}">
    
 
         <img class="image" src="${arr.img}" alt="">
@@ -534,7 +534,7 @@ function addTeam(arr) {
         TeamMember4 = true;
         team.splice(4,1, arr);
     } else if (TeamMember5 === false) {
-        teamSix.innerHTML = `<div class="pkm vertical type1-${arr.type1}-type2-${arr.type2}">
+        teamSix.innerHTML = `<div class="pkm vertical shadow type1-${arr.type1}-type2-${arr.type2}">
    
 
         <img class="image" src="${arr.img}" alt="">

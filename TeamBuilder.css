@@ -90,16 +90,16 @@ margin: auto;
  z-index: 2;
  
 }
-.pkm, .placeholder{
-
-  max-width: 300px;
-
+.pkm{
+    max-width: 300px;
+    display: flex;
+    border-radius: 100%;
+}
+.placeholder{
   display:flex;
   border-radius: 100%;
-
-
 }
-.name{
+.shadow{
   box-shadow: 0 0 4px 4px #50514f;
 }
 .row{
