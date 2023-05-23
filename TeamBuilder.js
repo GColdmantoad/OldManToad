@@ -24,6 +24,8 @@ let vgcTeam = []
 let rdmTeam = [0, 4, 6, 7, 15, 24];
 let enemyTeam = [];
 let enemyVgcTeam = [];
+let activeEnemy = [];
+let activeTeam = [];
 let navMenu = document.getElementById("navButtons");
 let pkm = [{
     id: 0,
@@ -774,25 +776,49 @@ function gameTime() {
     document.getElementById('activePartner').innerHTML += `<img class="left" id="partner0" src="${vgcTeam[0].img}">`
     document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right" src="${enemyVgcTeam[1].img}">`
     document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" src="${vgcTeam[1].img}">`
+    vgcTeam[0].isActive = true;
+    vgcTeam[1].isActive = true;
+    vgcTeam[2].isActive = false;
+    vgcTeam[3].isActive = false;
+    enemyVgcTeam[0].isActive = true;
+    enemyVgcTeam[1].isActive = true;
+    enemyVgcTeam[2].isActive = false;
+    enemyVgcTeam[3].isActive = false;
+    for (i = 0; i < 4; i++) {
+        if (enemyVgcTeam[i].isActive == true) {
+            activeEnemy.push(enemyVgcTeam[i])
+        }
+    }
+    for (i = 0; i < 4; i++) {
+        if (vgcTeam[i].isActive == true) {
+            activeTeam.push(vgcTeam[i])
+        }
+    }
     turn1();
 }
 function turn1() {
-    vgcTeam[1].isActive = true;
-    vgcTeam[0].isActive = true;
-    enemyVgcTeam[0].isActive = true;
-    enemyVgcTeam[1].isActive = true;
+
     document.getElementById('teamViewer').innerHTML = `
-    <h3>What will ${vgcTeam[1].name} do?</h3>
+    <h3>What will ${activeTeam[1].name} do?</h3>
     <div class="moveOptions">
-        <div class="btn" onclick="targetSelector(${vgcTeam[1].movePool[0]}, ${vgcTeam[1].id})">${pkmMoves[vgcTeam[1].movePool[0]].type} attack</div>
-        <div class="btn" onclick="targetSelector(${vgcTeam[1].movePool[1]}, ${vgcTeam[1].id})">${pkmMoves[vgcTeam[1].movePool[1]].type} attack</div>
-        <div class="btn">boost</div>
+        <div class="btn" onclick="targetSelector(${activeTeam[1].movePool[0]}, ${activeTeam[1].id})">${pkmMoves[activeTeam[1].movePool[0]].type} attack</div>
+        <div class="btn" onclick="targetSelector(${activeTeam[1].movePool[1]}, ${activeTeam[1].id})">${pkmMoves[activeTeam[1].movePool[1]].type} attack</div>
         <div class="btn" onclick="protect1()">protect</div>
-        <div class="btn">switch</div>
+        <div class="btn" onclick="switchOptions(activeTeam[1])">switch</div>
     </div>`
 }
+function switchOptions(arr) {
+    document.getElementById('teamViewer').innerHTML = `
+    <h3>Who will ${arr.name} switch with?</h3>
+    <div class="moveOptions">
+        <img onclick="switchPkm(${arr}, ${vgcTeam[2].id})" class="pkmOpt"  src='${vgcTeam[2].img}' >
+        <img onclick="damageCalc(${arr}, ${vgcTeam[3].id})" class="pkmOpt" src="${vgcTeam[3].img}" >
+    </div>
+    `
+}
+
 function targetSelector(type, pkmId) {
-    let activeEnemy = [];
+
     let typing = type;
     let pokemonName = pkmId;
     for (i = 0; i < 4; i++) {
@@ -820,13 +846,12 @@ function protect0() {
 }
 function turn2() {
     document.getElementById('teamViewer').innerHTML = `
-    <h3>What will ${vgcTeam[0].name} do?</h3>
+    <h3>What will ${activeTeam[0].name} do?</h3>
     <div class="moveOptions">
-        <div class="btn" onclick="targetSelector(${vgcTeam[0].movePool[0]}, ${vgcTeam[0].id})">${pkmMoves[vgcTeam[0].movePool[0]].type} attack</div>
-        <div class="btn" onclick="targetSelector(${vgcTeam[0].movePool[1]}, ${vgcTeam[0].id})">${pkmMoves[vgcTeam[0].movePool[1]].type} attack</div>
-        <div class="btn">boost</div>
+        <div class="btn" onclick="targetSelector(${activeTeam[0].movePool[0]}, ${activeTeam[0].id})">${pkmMoves[activeTeam[0].movePool[0]].type} attack</div>
+        <div class="btn" onclick="targetSelector(${activeTeam[0].movePool[1]}, ${activeTeam[0].id})">${pkmMoves[activeTeam[0].movePool[1]].type} attack</div>
         <div class="btn" onclick="protect1()">protect</div>
-        <div class="btn">switch</div>
+        <div class="btn" onclick="switchOptions(activeTeam[0])">switch</div>
     </div>`
 }
 function addTeam(arr) {
@@ -893,4 +918,4 @@ function addTeam(arr) {
         team.splice(5,1);
         team.push(arr);
     }
-  }  
+}  
