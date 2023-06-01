@@ -28,10 +28,13 @@ let activeEnemy = [];
 let activeTeam = [];
 let inactiveEnemy = [];
 let inactiveTeam = [];
+let floatingTeam = [2,3];
+let floatingEnemy = [2,3];
 let move1 = 0;
 let move2 = 1;
 let counter = 0;
 let navMenu = document.getElementById("navButtons");
+let menuButton = document.getElementById("menuButton");
 const pkm = [{
     id: 0,
     name: "kilowattrel",
@@ -546,9 +549,20 @@ const pkmMoves = [{
     accuracy: 100,
     }];
 
+menuButton.addEventListener("click", () => {
+    if (navMenu.className == 'hidden') {
+        navMenu.classList.remove("hidden");
+        document.getElementById("menuButton").innerHTML = 'hide menu'
+    } else {
+        navMenu.classList.add('hidden')
+        document.getElementById("menuButton").innerHTML = 'menu'
+    }
+}
+);
+
 function damageCalc(moveId, activeEnemyId, atkId) {
     let move = pkmMoves[moveId];
-    let defender = pkm[activeEnemyId.id];
+    let defender = enemyVgcTeam[activeEnemyId];
     let attacker = pkm[atkId];
     let attackStat = 0;
     let defenseStat = 0;
@@ -560,10 +574,8 @@ function damageCalc(moveId, activeEnemyId, atkId) {
         defenseStat = defender.specialDef;
     };
     let damage = Math.floor(defender.weakness[move.id][0] * attackStat * move.power / defenseStat);
-    document.getElementById('teamViewer').innerHTML = `<h3>you do ${damage} damage to ${defender.name}</h3>`
-}
-function swapStyleSheet(sheet) {
-    document.getElementById("css").setAttribute("href", sheet);
+    defender.hitPoints -= damage;
+    document.getElementById('teamViewer').innerHTML = `<h3>${attacker.name} does ${damage} damage to ${defender.name}</h3>`
 }
 
 function genArray() {
@@ -573,7 +585,6 @@ function genArray() {
     numberType[1] = team[0].weakness[i][1];
     teamWeaknessArr.splice(i,1, numberType);
     }
- console.log(teamWeaknessArr)
 }
 
 function genWeakness() {
@@ -581,7 +592,6 @@ function genWeakness() {
     for (let i = 0; i < 18 ; i++) {
         if (teamWeaknessArr[i][0]>8){
             teamWeakness.push(teamWeaknessArr[i][1]);
-            console.log(teamWeaknessArr[i][1])
         }
     }
     targetWeakness.innerHTML = '|';
@@ -623,11 +633,8 @@ function uniqueRandomNumber(num,team){
         let rdm  = numbers[getRandomInt(numbers.length)];
         randomNumbers.push(rdm);
         numbers.splice(numbers.indexOf(rdm),1);
-
     }
     return randomNumbers;
-    console.log(randomNumbers);
-    console.log(numbers);
 }
 
 function clearTeam() {
@@ -648,17 +655,6 @@ function clearTeam() {
     teamFive.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
     teamSix.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
 }
-
-document.getElementById("menuButton").addEventListener("click", () => {
-    if (navMenu.className == 'hidden') {
-        navMenu.classList.remove("hidden");
-        document.getElementById("menuButton").innerHTML = 'hide menu'
-    } else {
-        navMenu.classList.add('hidden')
-        document.getElementById("menuButton").innerHTML = 'menu'
-    }
-}
-);
 
 function removeTeamOne(){
     TeamMember0 = false;
@@ -748,7 +744,6 @@ function fourGuys(arr) {
         vgcTeam.splice(arr)
         counter--;
     } else {
-        console.log(pokemon)
         vgcTeam.push(arr)
         counter++;
         document.getElementById(arr.id).innerHTML = `<div class='pkmOpt'>${counter}</div>`;
@@ -768,7 +763,7 @@ function enemyVgc() {
 }
 function gameTime() {
     document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
-    document.querySelector('body').innerHTML += `<div class="btn" style="position: fixed; bottom: 0;" onclick="turn1()">restart turn</div>`;
+    document.querySelector('body').innerHTML += `<div class="btn" style="position: fixed; bottom: 0;" onclick="turn1()">restart turn</div><div class="btn" style="position: fixed; bottom: 0; right: 0;" onclick="updateActiveTargets()">update switch options</div>`; 
     enemyVgc();
     document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
@@ -780,55 +775,37 @@ function gameTime() {
     startingActiveTargets()
     turn1();
 }
+
 function startingActiveTargets() {
-    vgcTeam[0].isActive = true;
-    vgcTeam[1].isActive = true;
-    vgcTeam[2].isActive = false;
-    vgcTeam[3].isActive = false;
-    enemyVgcTeam[0].isActive = true;
-    enemyVgcTeam[1].isActive = true;
-    enemyVgcTeam[2].isActive = false;
-    enemyVgcTeam[3].isActive = false;
-    for (i = 0; i < 4; i++) {
-        if (enemyVgcTeam[i].isActive == true) {
-            activeEnemy.push(enemyVgcTeam[i])
-        }
+    activeEnemy = [0, 1];
+    activeTeam = [0, 1];
+    for (let i = 0; i < floatingEnemy.length; i++) {
+        inactiveEnemy.push(floatingEnemy[i]);
+        inactiveTeam.push(floatingTeam[i]);
     }
-    for (i = 0; i < 4; i++) {
-        if (vgcTeam[i].isActive == true) {
-            activeTeam.push(vgcTeam[i])
-        }
-    }
-    for (i = 0; i < 4; i++) {
-        if (enemyVgcTeam[i].isActive == false) {
-            inactiveEnemy.push(enemyVgcTeam[i])
-        }
-    }
-    for (i = 0; i < 4; i++) {
-        if (vgcTeam[i].isActive == false) {
-            inactiveTeam.push(vgcTeam[i])
-        }
-    }
+    floatingEnemy = [];
+    floatingTeam = [];
 }
 function battleScreenUpdate() {
     document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
     <div class="partner" id="activePartner"></div>`;
     if (activeEnemy.length == 1) {
-        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0"  src="${activeEnemy[0].img}">`
+        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
     } else {
-        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0"  src="${activeEnemy[0].img}">`
-        document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right" src="${activeEnemy[1].img}">`
+        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
+        document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right" src="${enemyVgcTeam[activeEnemy[1]].img}">`
     }
 
     if (activeTeam.length == 1) {
-        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" src="${activeTeam[0].img}">`
+        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" src="${vgcTeam[activeTeam[0]].img}">`
     } else {
-        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" src="${activeTeam[0].img}">`
-        document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" src="${activeTeam[1].img}">`
+        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" src="${vgcTeam[activeTeam[0]].img}">`
+        document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" src="${vgcTeam[activeTeam[1]].img}">`
     }
 
 }
+
 function turn1() {
     let list = document.getElementById('partner1').classList;
     list.remove('protect');
@@ -836,56 +813,75 @@ function turn1() {
     list.remove('protect');
 
     document.getElementById('teamViewer').innerHTML = `
-    <h3>What will ${activeTeam[1].name} do?</h3>
+    <h3>What will ${vgcTeam[activeTeam[0]].name} do?</h3>
     <div class="moveOptions">
-        <div class="btn" onclick="targetSelector(${activeTeam[1].movePool[0]}, ${activeTeam[1].id})">${pkmMoves[activeTeam[1].movePool[0]].type} attack</div>
-        <div class="btn" onclick="targetSelector(${activeTeam[1].movePool[1]}, ${activeTeam[1].id})">${pkmMoves[activeTeam[1].movePool[1]].type} attack</div>
-        <div class="btn" onclick="protect(activeTeam[1])">protect</div>
-        <div class="btn" onclick="switchOptions(activeTeam[1])">switch</div>
+        <div class="btn" onclick="targetSelector(${vgcTeam[activeTeam[0]].movePool[0]}, ${vgcTeam[activeTeam[0]].id})">${pkmMoves[vgcTeam[activeTeam[0]].movePool[0]].type} attack</div>
+        <div class="btn" onclick="targetSelector(${vgcTeam[activeTeam[0]].movePool[1]}, ${vgcTeam[activeTeam[0]].id})">${pkmMoves[vgcTeam[activeTeam[0]].movePool[1]].type} attack</div>
+        <div class="btn" onclick="protect(activeTeam[0])">protect</div>
+        <div class="btn" onclick="switchOptions(activeTeam[0])">switch</div>
     </div>`
 }
+// if their number is in active enemy or their hit points are < 0 then do not add them to switch options, else add them to swith options
 function switchOptions(arr) {
-    let arrayname = ''
-    if (arr.id === activeTeam[1].id) {
-        arrayname = 'activeTeam[1]'
+    let pkm = vgcTeam[arr]
+    let inactivePkm0 = vgcTeam[inactiveTeam[0]]
+    let inactivePkm1 = vgcTeam[inactiveTeam[1]]
+    let place = '';
+    if (arr === activeTeam[1]) {
+        place = 1
     } else {
-        arrayname = 'activeTeam[0]'
+        place = 0
     }
-    if (document.getElementById('partner1').src == inactiveTeam[1].img) {
+    if (inactiveTeam.length == 1) {
         document.getElementById('teamViewer').innerHTML = `
-    <h3>Who will ${arr.name} switch with?</h3>
-    <div class="moveOptions">
-        <img onclick="switchPkm(${arrayname}, ${inactiveTeam[0].id})" class="pkmOpt" src="${inactiveTeam[0].img}" >
-    </div>
-    `
-    } else if (document.getElementById('partner1').src == inactiveTeam[0].img) {
+            <h3>Who will ${pkm.name} switch with?</h3>
+            <div class="moveOptions">
+                <img class="pkmOpt"  onclick="switchPkm(${place}, 0)" src="${inactivePkm0.img}" >
+            </div>
+            `
+    } else {
         document.getElementById('teamViewer').innerHTML = `
-    <h3>Who will ${arr.name} switch with?</h3>
-    <div class="moveOptions">
-        <img onclick="switchPkm(${arrayname}, ${inactiveTeam[1].id})" class="pkmOpt" src="${inactiveTeam[1].img}" >
-    </div>
-    `
-    } else { 
-    document.getElementById('teamViewer').innerHTML = `
-    <h3>Who will ${arr.name} switch with?</h3>
-    <div class="moveOptions">
-        <img onclick="switchPkm(${arrayname}, ${inactiveTeam[1].id})" class="pkmOpt"  src='${inactiveTeam[1].img}' >
-        <img onclick="switchPkm(${arrayname}, ${inactiveTeam[0].id})" class="pkmOpt" src="${inactiveTeam[0].img}" >
-    </div>
-    `
+        <h3>Who will ${pkm.name} switch with?</h3>
+        <div class="moveOptions">
+            <img class="pkmOpt"  onclick="switchPkm(${place}, 0)" src="${inactivePkm0.img}" >
+            <img class="pkmOpt" onclick="switchPkm(${place}, 1)" src="${inactivePkm1.img}" >
+        </div>
+        `
+    }
+
+}
+
+function switchPkm(activePlace, inactivePlace) {
+    floatingTeam.push(activeTeam[activePlace]);
+    activeTeam.splice(activePlace, 1, inactiveTeam[inactivePlace]);
+    inactiveTeam.splice(inactivePlace, 1);
+    battleScreenUpdate();
+    if (activePlace == 0) {
+        turn2(1);
+    }
+
+}
+
+function updateActiveTargets() { 
+    inactiveEnemy.push(floatingEnemy[0]);
+    inactiveTeam.push(floatingTeam[0]);
+    inactiveEnemy.push(floatingEnemy[1]);
+    inactiveTeam.push(floatingTeam[1]);
+    floatingEnemy = [];
+    floatingTeam = [];
+}
+
+function protect(arr) {
+    if (arr == activeTeam[0]) {
+        const list = document.getElementById('partner0').classList;
+        list.add('protect');
+        turn2(1);
+    } else if (arr == activeTeam[1]) {
+        const list = document.getElementById('partner1').classList;
+        list.add('protect');
     }
 }
 
-function updateActiveTargets(arr) {
-    let position = 1;
-    if (vgcTeam.findIndex(x => x.id === arr.id) == 1) {
-        activeTeam.splice(0, 1);
-        activeTeam.unshift(arr);
-    } else {
-        activeTeam.splice(1, 1);
-        activeTeam.push(arr);
-    }
-}
 
 function targetSelector(type, pkmId) {
     let typing = type;
@@ -893,45 +889,24 @@ function targetSelector(type, pkmId) {
     document.getElementById('teamViewer').innerHTML = `
     <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
     <div class="moveOptions">
-        <img onclick="damageCalc(${typing}, activeEnemy[1], ${pokemonName})" class="pkmOpt"  src='${activeEnemy[1].img}' >
-        <img onclick="damageCalc(${typing}, activeEnemy[0], ${pokemonName})" class="pkmOpt" src="${activeEnemy[0].img}" >
+        <img onclick="damageCalc(${typing}, activeEnemy[1], ${pokemonName})" class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >
+        <img onclick="damageCalc(${typing}, activeEnemy[0], ${pokemonName})" class="pkmOpt" src="${enemyVgcTeam[activeEnemy[0]].img}" >
     </div>
     `
 }
-let arraayTest = [switchPkm, activeTeam[1], 4]
-
-function switchPkm(active, inactive) {
-    let switchIn = pkm[inactive]
-
-    vgcTeam[vgcTeam.findIndex(x => x.id === active.id)].isActive = false;
-    vgcTeam[vgcTeam.findIndex(x => x.id === switchIn.id)].isActive = true;
-// you need to add function to update position of switch in
-    battleScreenUpdate();
-    turn2(0);
-}
-function protect(arr) {
-    if (arr == activeTeam[1]) {
-        const list = document.getElementById('partner1').classList;
-        list.add('protect');
-        turn2(0);
-    } else if (arr == activeTeam[0]) {
-        const list = document.getElementById('partner0').classList;
-        list.add('protect');
-    }
-}
 
 function turn2(activeId) {
+    let pokemon = vgcTeam[activeTeam[activeId]];
     document.getElementById('teamViewer').innerHTML = `
-    <h3>What will ${activeTeam[activeId].name} do?</h3>
+    <h3>What will ${pokemon.name} do?</h3>
     <div class="moveOptions">
-        <div class="btn" onclick="targetSelector(${activeTeam[activeId].movePool[0]}, ${activeTeam[activeId].id})">${pkmMoves[activeTeam[activeId].movePool[0]].type} attack</div>
-        <div class="btn" onclick="targetSelector(${activeTeam[activeId].movePool[1]}, ${activeTeam[activeId].id})">${pkmMoves[activeTeam[activeId].movePool[1]].type} attack</div>
+        <div class="btn" onclick="targetSelector(${pokemon.movePool[0]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[0]].type} attack</div>
+        <div class="btn" onclick="targetSelector(${pokemon.movePool[1]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[1]].type} attack</div>
         <div class="btn" onclick="protect(activeTeam[${activeId}])">protect</div>
-        <div class="btn" onclick="switchOptions(activeTeam[0])">switch</div>
+        <div class="btn" onclick="switchOptions(activeTeam[${activeId}])">switch</div>
     </div>`
 }
 function addTeam(arr) {
-
     let typing = ''
     if (arr.type1 == arr.type2){
          typing = `${arr.type1}`
