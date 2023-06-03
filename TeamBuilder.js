@@ -35,6 +35,27 @@ let move2 = 1;
 let counter = 0;
 let navMenu = document.getElementById("navButtons");
 let menuButton = document.getElementById("menuButton");
+let gameBoyText = '';
+const gameBoy = {
+    updateScreen: 0,//battleScreenUpdate(),
+    damageCalc: function damageCalc(moveId, activeEnemyId, atkId) {
+        let move = pkmMoves[moveId];
+        let defender = enemyVgcTeam[activeEnemyId];
+        let attacker = pkm[atkId];
+        let attackStat = 0;
+        let defenseStat = 0;
+        if (attacker.physicalAtk > attacker.specialAtk) {
+            attackStat = attacker.physicalAtk;
+            defenseStat = defender.physicalDef;
+        } else {
+            attackStat = attacker.specialAtk;
+            defenseStat = defender.specialDef;
+        };
+        let damage = Math.floor(defender.weakness[move.id][0] * attackStat * move.power / defenseStat);
+        defender.hitPoints -= damage;
+        document.getElementById('teamViewer').innerHTML = `<h3>${attacker.name} does ${damage} damage to ${defender.name}</h3>`
+    }
+};
 const pkm = [{
     id: 0,
     name: "kilowattrel",
@@ -560,7 +581,7 @@ menuButton.addEventListener("click", () => {
 }
 );
 
-function damageCalc(moveId, activeEnemyId, atkId) {
+function damageCalc(moveId, activeEnemyId, atkId, turn) {
     let move = pkmMoves[moveId];
     let defender = enemyVgcTeam[activeEnemyId];
     let attacker = pkm[atkId];
@@ -575,9 +596,21 @@ function damageCalc(moveId, activeEnemyId, atkId) {
     };
     let damage = Math.floor(defender.weakness[move.id][0] * attackStat * move.power / defenseStat);
     defender.hitPoints -= damage;
-    document.getElementById('teamViewer').innerHTML = `<h3>${attacker.name} does ${damage} damage to ${defender.name}</h3>`
+    /*document.getElementById('teamViewer').innerHTML*/ gameBoyText += `${attacker.name} does ${damage} damage to ${defender.name}<br>`
+    if (turn == 0) {
+        removeAnimation();
+        turn2(1)
+    } else {
+        removeAnimation();
+        document.getElementById('teamViewer').innerHTML = `<p style="color: white">${gameBoyText}</p>`;
+        gameBoyText = '';
+    };
 }
-
+function removeAnimation() {
+    document.querySelectorAll('*').forEach((element) => {
+        element.classList.remove('bounce');
+    });
+}
 function genArray() {
     for (let i = 0; i < team[0].weakness.length ; i++) {
     let numberType = [0,0];
@@ -763,17 +796,17 @@ function enemyVgc() {
 }
 function gameTime() {
     document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
-    document.querySelector('body').innerHTML += `<div class="btn" style="position: fixed; bottom: 0;" onclick="turn1()">restart turn</div><div class="btn" style="position: fixed; bottom: 0; right: 0;" onclick="updateActiveTargets()">update switch options</div>`; 
+    document.querySelector('body').innerHTML += `<div class="btn" style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div><div class="btn" style="position: fixed; bottom: 0; right: 0;" onclick="updateActiveTargets()">update switch options</div>`; 
     enemyVgc();
     document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
     <div class="partner" id="activePartner"></div>`;
-    document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0"  src="${enemyVgcTeam[0].img}">`
+    document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0" src="${enemyVgcTeam[0].img}">`
     document.getElementById('activePartner').innerHTML += `<img class="left" id="partner0" src="${vgcTeam[0].img}">`
-    document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right" src="${enemyVgcTeam[1].img}">`
+    document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right"  src="${enemyVgcTeam[1].img}">`
     document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" src="${vgcTeam[1].img}">`
     startingActiveTargets()
-    turn1();
+    turn2(0);
 }
 
 function startingActiveTargets() {
@@ -811,7 +844,13 @@ function turn1() {
     list.remove('protect');
     list = document.getElementById('partner0').classList;
     list.remove('protect');
-
+    if (activeId == activeTeam[0]) {
+        const list = document.getElementById('partner0').classList;
+        list.add('bounce');
+    } else if (activeId == activeTeam[1]) {
+        const list = document.getElementById('partner1').classList;
+        list.add('bounce');
+    }
     document.getElementById('teamViewer').innerHTML = `
     <h3>What will ${vgcTeam[activeTeam[0]].name} do?</h3>
     <div class="moveOptions">
@@ -884,18 +923,31 @@ function protect(arr) {
 
 
 function targetSelector(type, pkmId) {
+    let current = 0
     let typing = type;
     let pokemonName = pkmId;
+    if (pokemonName == vgcTeam[activeTeam[1]].id) {current = 1 }
     document.getElementById('teamViewer').innerHTML = `
     <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
     <div class="moveOptions">
-        <img onclick="damageCalc(${typing}, activeEnemy[1], ${pokemonName})" class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >
-        <img onclick="damageCalc(${typing}, activeEnemy[0], ${pokemonName})" class="pkmOpt" src="${enemyVgcTeam[activeEnemy[0]].img}" >
+        <img onclick="damageCalc(${typing}, activeEnemy[1], ${pokemonName}, ${current})" class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >
+        <img onclick="damageCalc(${typing}, activeEnemy[0], ${pokemonName}, ${current})" class="pkmOpt" src="${enemyVgcTeam[activeEnemy[0]].img}" >
     </div>
     `
 }
 
 function turn2(activeId) {
+    if (activeId == 0) {
+        gameBoyText = ''
+    }
+    removeAnimation();
+    if (activeId == activeTeam[0]) {
+        const list = document.getElementById('partner0').classList;
+        list.add('bounce');
+    } else if (activeId == activeTeam[1]) {
+        const list = document.getElementById('partner1').classList;
+        list.add('bounce');
+    }
     let pokemon = vgcTeam[activeTeam[activeId]];
     document.getElementById('teamViewer').innerHTML = `
     <h3>What will ${pokemon.name} do?</h3>

@@ -7,7 +7,7 @@ body {
     margin: 0;
     position: relative;
 }
-h3{
+h3, p{
     text-align:center;
     color: white;
 }
@@ -193,7 +193,7 @@ margin: auto;
 
 .right {
     float: right;
-    width: 130px;
+    width: 100px;
 }
 
 .partner {
@@ -414,4 +414,65 @@ background: linear-gradient(90deg, rgba(99,144,240,1) 45%, rgba(214,133,173,1) 6
 }
 .psychic{
   background: rgba(249,85,135,1)
+}
+
+.bounce {
+    animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+    70% {
+        transform: translateY(0%);
+    }
+
+    80% {
+        transform: translateY(-15%);
+    }
+
+    90% {
+        transform: translateY(0%);
+    }
+
+    95% {
+        transform: translateY(-7%);
+    }
+
+    97% {
+        transform: translateY(0%);
+    }
+
+    99% {
+        transform: translateY(-3%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.grow {
+    animation: grow 2s ease 1;
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+.pulse {
+    animation: pulse 1s infinite ease-in-out alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
 }
