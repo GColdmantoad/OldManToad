@@ -29,7 +29,11 @@ let activeTeam = [];
 let inactiveEnemy = [];
 let inactiveTeam = [];
 let floatingTeam = [2,3];
-let floatingEnemy = [2,3];
+let floatingEnemy = [2, 3];
+let turnStorage = [
+    [switchPkm, 1, 0]
+    [switchPkm, 0, 0]
+];
 let move1 = 0;
 let move2 = 1;
 let counter = 0;
@@ -569,7 +573,6 @@ const pkmMoves = [{
     power: 90,
     accuracy: 100,
     }];
-
 menuButton.addEventListener("click", () => {
     if (navMenu.className == 'hidden') {
         navMenu.classList.remove("hidden");
@@ -580,7 +583,11 @@ menuButton.addEventListener("click", () => {
     }
 }
 );
-
+function runTurnOrder() {
+    for (let i = 0; i < turnStorage.length; i++) {
+        return turnStorage[i]
+    }
+}
 function damageCalc(moveId, activeEnemyId, atkId, turn) {
     let move = pkmMoves[moveId];
     let defender = enemyVgcTeam[activeEnemyId];
@@ -596,7 +603,7 @@ function damageCalc(moveId, activeEnemyId, atkId, turn) {
     };
     let damage = Math.floor(defender.weakness[move.id][0] * attackStat * move.power / defenseStat);
     defender.hitPoints -= damage;
-    /*document.getElementById('teamViewer').innerHTML*/ gameBoyText += `${attacker.name} does ${damage} damage to ${defender.name}.<br>`
+    gameBoyText += `${attacker.name} does ${damage} damage to ${defender.name}.<br>`
     if (defender.hitPoints < 0) {
         gameBoyText += `${defender.name} fainted.<br>`
     }
@@ -608,11 +615,9 @@ function endTurn(turn) {
         turn2(1)
     } else {
         removeAnimation();
-        document.getElementById('teamViewer').innerHTML = `
-        <p style="color: white">${gameBoyText}</p>
-        <div class="btn" onclick="turn2(0)">Next Turn?</div>
-        `;
+        document.getElementById('teamViewer').innerHTML = `<p style="color: white">${gameBoyText}</p> `;
         gameBoyText = '';
+        document.querySelector('.btn').innerHTML = "next turn";
     };
 }
 function removeAnimation() {
@@ -955,6 +960,7 @@ function turn2(activeId) {
         gameBoyText = ''
         updateActiveTargets();
         battleScreenUpdate();
+        document.querySelector('.btn').innerHTML = "restart turn";
     }
     removeAnimation();
     if (activeId == 0) {
