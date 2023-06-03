@@ -596,19 +596,33 @@ function damageCalc(moveId, activeEnemyId, atkId, turn) {
     };
     let damage = Math.floor(defender.weakness[move.id][0] * attackStat * move.power / defenseStat);
     defender.hitPoints -= damage;
-    /*document.getElementById('teamViewer').innerHTML*/ gameBoyText += `${attacker.name} does ${damage} damage to ${defender.name}<br>`
+    /*document.getElementById('teamViewer').innerHTML*/ gameBoyText += `${attacker.name} does ${damage} damage to ${defender.name}.<br>`
+    if (defender.hitPoints < 0) {
+        gameBoyText += `${defender.name} fainted.<br>`
+    }
+    endTurn(turn);
+}
+function endTurn(turn) {
     if (turn == 0) {
         removeAnimation();
         turn2(1)
     } else {
         removeAnimation();
-        document.getElementById('teamViewer').innerHTML = `<p style="color: white">${gameBoyText}</p>`;
+        document.getElementById('teamViewer').innerHTML = `
+        <p style="color: white">${gameBoyText}</p>
+        <div class="btn" onclick="turn2(0)">Next Turn?</div>
+        `;
         gameBoyText = '';
     };
 }
 function removeAnimation() {
     document.querySelectorAll('*').forEach((element) => {
         element.classList.remove('bounce');
+    });
+}
+function clearProtect() {
+    document.querySelectorAll('*').forEach((element) => {
+        element.classList.remove('protect');
     });
 }
 function genArray() {
@@ -796,7 +810,7 @@ function enemyVgc() {
 }
 function gameTime() {
     document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
-    document.querySelector('body').innerHTML += `<div class="btn" style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div><div class="btn" style="position: fixed; bottom: 0; right: 0;" onclick="updateActiveTargets()">update switch options</div>`; 
+    document.querySelector('body').innerHTML += `<div class="btn" style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div>`; 
     enemyVgc();
     document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
@@ -805,7 +819,7 @@ function gameTime() {
     document.getElementById('activePartner').innerHTML += `<img class="left" id="partner0" src="${vgcTeam[0].img}">`
     document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right"  src="${enemyVgcTeam[1].img}">`
     document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" src="${vgcTeam[1].img}">`
-    startingActiveTargets()
+    startingActiveTargets();
     turn2(0);
 }
 
@@ -819,14 +833,15 @@ function startingActiveTargets() {
     floatingEnemy = [];
     floatingTeam = [];
 }
+
 function battleScreenUpdate() {
-    document.getElementById('enemyTeamViewer').innerHTML = `
+    /*document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
-    <div class="partner" id="activePartner"></div>`;
+    <div class="partner" id="activePartner"></div>`;*/
     if (activeEnemy.length == 1) {
-        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
+        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
     } else {
-        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
+        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
         document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right" src="${enemyVgcTeam[activeEnemy[1]].img}">`
     }
 
@@ -839,27 +854,6 @@ function battleScreenUpdate() {
 
 }
 
-function turn1() {
-    let list = document.getElementById('partner1').classList;
-    list.remove('protect');
-    list = document.getElementById('partner0').classList;
-    list.remove('protect');
-    if (activeId == activeTeam[0]) {
-        const list = document.getElementById('partner0').classList;
-        list.add('bounce');
-    } else if (activeId == activeTeam[1]) {
-        const list = document.getElementById('partner1').classList;
-        list.add('bounce');
-    }
-    document.getElementById('teamViewer').innerHTML = `
-    <h3>What will ${vgcTeam[activeTeam[0]].name} do?</h3>
-    <div class="moveOptions">
-        <div class="btn" onclick="targetSelector(${vgcTeam[activeTeam[0]].movePool[0]}, ${vgcTeam[activeTeam[0]].id})">${pkmMoves[vgcTeam[activeTeam[0]].movePool[0]].type} attack</div>
-        <div class="btn" onclick="targetSelector(${vgcTeam[activeTeam[0]].movePool[1]}, ${vgcTeam[activeTeam[0]].id})">${pkmMoves[vgcTeam[activeTeam[0]].movePool[1]].type} attack</div>
-        <div class="btn" onclick="protect(activeTeam[0])">protect</div>
-        <div class="btn" onclick="switchOptions(activeTeam[0])">switch</div>
-    </div>`
-}
 // if their number is in active enemy or their hit points are < 0 then do not add them to switch options, else add them to swith options
 function switchOptions(arr) {
     let pkm = vgcTeam[arr]
@@ -891,21 +885,34 @@ function switchOptions(arr) {
 }
 
 function switchPkm(activePlace, inactivePlace) {
+    gameBoyText += `${vgcTeam[activeTeam[activePlace]].name} switched with ${vgcTeam[inactiveTeam[inactivePlace]].name}.<br>`
     floatingTeam.push(activeTeam[activePlace]);
     activeTeam.splice(activePlace, 1, inactiveTeam[inactivePlace]);
     inactiveTeam.splice(inactivePlace, 1);
     battleScreenUpdate();
     if (activePlace == 0) {
         turn2(1);
+    } else {
+        endTurn(1)
     }
 
 }
 
-function updateActiveTargets() { 
-    inactiveEnemy.push(floatingEnemy[0]);
-    inactiveTeam.push(floatingTeam[0]);
-    inactiveEnemy.push(floatingEnemy[1]);
-    inactiveTeam.push(floatingTeam[1]);
+function updateActiveTargets() {
+    if (floatingEnemy.length == 2) {
+        inactiveEnemy.push(floatingEnemy[0]);
+        inactiveEnemy.push(floatingEnemy[1]);
+    } else if (floatingEnemy.length == 1) {
+        floatingEnemy.push(floatingEnemy[0]);
+    }
+
+    if (floatingTeam.length == 2) {
+        inactiveTeam.push(floatingTeam[0]);
+        inactiveTeam.push(floatingTeam[1]);
+    } else if (floatingTeam.length == 1) {
+        inactiveTeam.push(floatingTeam[0]);
+    }
+
     floatingEnemy = [];
     floatingTeam = [];
 }
@@ -914,10 +921,13 @@ function protect(arr) {
     if (arr == activeTeam[0]) {
         const list = document.getElementById('partner0').classList;
         list.add('protect');
+        gameBoyText += `${vgcTeam[arr].name} protects itself from incoming damage.<br>`
         turn2(1);
     } else if (arr == activeTeam[1]) {
         const list = document.getElementById('partner1').classList;
         list.add('protect');
+        gameBoyText += `${vgcTeam[arr].name} protects itself from incoming damage.<br>`
+        endTurn(1)
     }
 }
 
@@ -935,13 +945,19 @@ function targetSelector(type, pkmId) {
     </div>
     `
 }
-
+function deadPokemon() {
+    if (enemyVgcTeam[activeEnemy[1]].hitPoints < 0) {
+        activeEnemy[1] = inactiveEnemy[0];
+    }
+}
 function turn2(activeId) {
     if (activeId == 0) {
         gameBoyText = ''
+        updateActiveTargets();
+        battleScreenUpdate();
     }
     removeAnimation();
-    if (activeId == activeTeam[0]) {
+    if (activeId == 0) {
         const list = document.getElementById('partner0').classList;
         list.add('bounce');
     } else if (activeId == activeTeam[1]) {
