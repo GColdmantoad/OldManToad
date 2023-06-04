@@ -924,8 +924,8 @@ function targetSelector(type, pkmId) {
     document.getElementById('teamViewer').innerHTML = `
     <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
     <div class="moveOptions">
-        <img onclick="addTurn(damageCalc, [${typing}, 1, ${pokemonName}, ${current}], ${pkm[pokemonName].speed}, ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >
-        <img onclick="addTurn(damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${pkm[pokemonName].speed}, ${current})" class="pkmOpt" src="${enemyVgcTeam[activeEnemy[0]].img}" >
+        <img onclick="addTurn(9${pkm[pokemonName].speed}, damageCalc, [${typing}, 1, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >
+        <img onclick="addTurn(9${pkm[pokemonName].speed}, damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${current})" class="pkmOpt" src="${enemyVgcTeam[activeEnemy[0]].img}" >
     </div>
     `
 }
@@ -997,7 +997,7 @@ function turn2(activeId) {
     <div class="moveOptions">
         <div class="btn" onclick="targetSelector(${pokemon.movePool[0]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[0]].type} attack</div>
         <div class="btn" onclick="targetSelector(${pokemon.movePool[1]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[1]].type} attack</div>
-        <div class="btn" onclick="addTurn(protect, activeTeam[${activeId}], 999, ${activeId})">protect</div>
+        <div class="btn" onclick="addTurn(0002, protect, activeTeam[${activeId}], ${activeId})">protect</div>
         <div class="btn" onclick="switchOptions(activeTeam[${activeId}])">switch</div>
     </div>`
 }
@@ -1011,9 +1011,8 @@ function addTurn(theFunction, parameter, priority, nextTurn) {
 }
 function runTurnOrder() {
     turnStorage = turnStorage.sort();
-    turnStorage = turnStorage.reverse();
     for (let i = 0; i < turnStorage.length; i++) {
-        turnStorage[i][0](turnStorage[i][1])
+        turnStorage[i][1](turnStorage[i][2])
     }
 }
 function endTurn(turn) {
