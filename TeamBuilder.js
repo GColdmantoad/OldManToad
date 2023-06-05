@@ -864,22 +864,22 @@ function switchOptions(arr) {
         document.getElementById('teamViewer').innerHTML = `
             <h3>Who will ${pkm.name} switch with?</h3>
             <div class="moveOptions">
-                <img class="pkmOpt" onclick="preSwitch(${place}, 1, addTurn(switchPkm, [${place}, 1], 1000, ${place}))" src="${inactivePkm1.img}" >
+                <img class="pkmOpt" onclick="preSwitch(${place}, 1, addTurn(1000, switchPkm, [${place}, 1], ${place}))" src="${inactivePkm1.img}" >
             </div>
             `
     } else if (inactiveTeam[1] === true) {
         document.getElementById('teamViewer').innerHTML = `
             <h3>Who will ${pkm.name} switch with?</h3>
             <div class="moveOptions">
-                <img class="pkmOpt" onclick="preSwitch(${place}, 0, addTurn(switchPkm, [${place}, 0], 1000, ${place}))" src="${inactivePkm0.img}" >
+                <img class="pkmOpt" onclick="preSwitch(${place}, 0, addTurn(1000, switchPkm, [${place}, 0], ${place}))" src="${inactivePkm0.img}" >
             </div>
             `
     } else {
         document.getElementById('teamViewer').innerHTML = `
         <h3>Who will ${pkm.name} switch with?</h3>
         <div class="moveOptions">
-            <img class="pkmOpt"  onclick="preSwitch(${place}, 0, addTurn(switchPkm, [${place}, 0], 1000, ${place}))" src="${inactivePkm0.img}" >
-            <img class="pkmOpt" onclick="preSwitch(${place}, 1, addTurn(switchPkm, [${place}, 1], 1000, ${place}))" src="${inactivePkm1.img}" >
+            <img class="pkmOpt"  onclick="preSwitch(${place}, 0, addTurn(1000, switchPkm, [${place}, 0], ${place}))" src="${inactivePkm0.img}" >
+            <img class="pkmOpt" onclick="preSwitch(${place}, 1, addTurn(1000, switchPkm, [${place}, 1], ${place}))" src="${inactivePkm1.img}" >
         </div>
         `
     }
@@ -947,7 +947,10 @@ function damageCalc(parameter) {
             attackStat = attacker.specialAtk;
             defenseStat = defender.specialDef;
         };
-        let damage = Math.floor(defender.weakness[move.id][0] * attackStat * move.power / defenseStat);
+        let damage = 22 * attackStat * move.power / defenseStat;
+        damage = damage/50;
+        damage += 2;
+        damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5);
         defender.hitPoints -= damage;
         gameBoyText += `${attacker.name} does ${damage} damage to ${defender.name}.<br>`
         if (defender.hitPoints < 0) {
@@ -960,12 +963,10 @@ function protect(arr) {
         const list = document.getElementById('partner0').classList;
         list.add('protect');
         gameBoyText += `${vgcTeam[arr].name} protects itself from incoming damage.<br>`
-        turn2(1);
     } else if (arr == activeTeam[1]) {
         const list = document.getElementById('partner1').classList;
         list.add('protect');
         gameBoyText += `${vgcTeam[arr].name} protects itself from incoming damage.<br>`
-        endTurn(1)
     }
 }
 
