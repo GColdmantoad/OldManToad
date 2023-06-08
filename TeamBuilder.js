@@ -30,7 +30,7 @@ let teamSwitchOptions = [];
 let inactiveEnemy = [];
 let inactiveTeam = [];
 let inactiveTeamCopy = [];
-let floatingTeam = [2,3];
+let floatingTeam = [2, 3];
 let floatingEnemy = [2, 3];
 let turnStorage = [];
 let move1 = 0;
@@ -552,7 +552,7 @@ const pkmMoves = [{
     type: "fairy",
     power: 90,
     accuracy: 100,
-    }];
+}];
 menuButton.addEventListener("click", () => {
     if (navMenu.className == 'hidden') {
         navMenu.classList.remove("hidden");
@@ -566,36 +566,36 @@ menuButton.addEventListener("click", () => {
 
 // Figure out the weakness of your team
 function genArray() {
-    for (let i = 0; i < team[0].weakness.length ; i++) {
-    let numberType = [0,0];
-    numberType[0] = team[0].weakness[i][0] + team[1].weakness[i][0] + team[2].weakness[i][0] + team[3].weakness[i][0] + team[4].weakness[i][0] + team[5].weakness[i][0];
-    numberType[1] = team[0].weakness[i][1];
-    teamWeaknessArr.splice(i,1, numberType);
+    for (let i = 0; i < team[0].weakness.length; i++) {
+        let numberType = [0, 0];
+        numberType[0] = team[0].weakness[i][0] + team[1].weakness[i][0] + team[2].weakness[i][0] + team[3].weakness[i][0] + team[4].weakness[i][0] + team[5].weakness[i][0];
+        numberType[1] = team[0].weakness[i][1];
+        teamWeaknessArr.splice(i, 1, numberType);
     }
 }
 function genWeakness() {
     genArray();
-    for (let i = 0; i < 18 ; i++) {
-        if (teamWeaknessArr[i][0]>8){
+    for (let i = 0; i < 18; i++) {
+        if (teamWeaknessArr[i][0] > 8) {
             teamWeakness.push(teamWeaknessArr[i][1]);
         }
     }
     targetWeakness.innerHTML = '|';
-    for (let i = 0; i < teamWeakness.length ; i++) {
+    for (let i = 0; i < teamWeakness.length; i++) {
         targetWeakness.innerHTML += `    ${teamWeakness[i]}    |`
     }
 }
 function genTile() {
-    for ( let i = 0; i < teamWeakness.length; i++){
+    for (let i = 0; i < teamWeakness.length; i++) {
         tileSpace.innerHTML += `<div class='tile'>${teamWeakness[i]}</div>`;
     }
 }
 
 // Team building functionality
-function generateRandomTeam(){
+function generateRandomTeam() {
     clearTeam();
-    let rdm = uniqueRandomNumber(6,pkm.length)
-    for (var i = 0; i < 6; i++){
+    let rdm = uniqueRandomNumber(6, pkm.length)
+    for (var i = 0; i < 6; i++) {
         addTeam(pkm[rdm[i]])
     }
 }
@@ -606,16 +606,16 @@ function randomResetTeam() {
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
-function uniqueRandomNumber(num,team){
-    let numbers=[];
-    let randomNumbers=[];
-    for (var i = 0; i < team; i++){
+function uniqueRandomNumber(num, team) {
+    let numbers = [];
+    let randomNumbers = [];
+    for (var i = 0; i < team; i++) {
         numbers.push(i);
     }
-    for (var i = 0; i < num; i++){
-        let rdm  = numbers[getRandomInt(numbers.length)];
+    for (var i = 0; i < num; i++) {
+        let rdm = numbers[getRandomInt(numbers.length)];
         randomNumbers.push(rdm);
-        numbers.splice(numbers.indexOf(rdm),1);
+        numbers.splice(numbers.indexOf(rdm), 1);
     }
     return randomNumbers;
 }
@@ -637,51 +637,51 @@ function clearTeam() {
     teamFive.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
     teamSix.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
 }
-function removeTeamOne(){
+function removeTeamOne() {
     TeamMember0 = false;
     teamOne.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    team.splice(0,1);
+    team.splice(0, 1);
     team.unshift(0);
     teamWeakness = [];
     teamWeaknessArr = [];
     targetWeakness.innerHTML = `what is your team weak against?`;
 }
-function removeTeamTwo(){
+function removeTeamTwo() {
     TeamMember1 = false;
     teamTwo.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    team.splice(1,1,0);
+    team.splice(1, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
     targetWeakness.innerHTML = `what is your team weak against?`;
 }
-function removeTeamThree(){
+function removeTeamThree() {
     TeamMember2 = false;
     teamThree.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    team.splice(2,1,0);
+    team.splice(2, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
     targetWeakness.innerHTML = `what is your team weak against?`;
 }
-function removeTeamFour(){
+function removeTeamFour() {
     TeamMember3 = false;
     teamFour.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    team.splice(3,1,0);
+    team.splice(3, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
     targetWeakness.innerHTML = `what is your team weak against?`;
 }
-function removeTeamFive(){
+function removeTeamFive() {
     TeamMember4 = false;
     teamFive.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    team.splice(4,1,0);
+    team.splice(4, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
     targetWeakness.innerHTML = `what is your team weak against?`;
 }
-function removeTeamSix(){
+function removeTeamSix() {
     TeamMember5 = false;
     teamSix.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    team.splice(5,1,0);
+    team.splice(5, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
     targetWeakness.innerHTML = `what is your team weak against?`;
@@ -758,7 +758,7 @@ function addTeam(arr) {
         team.splice(5, 1);
         team.push(arr);
     }
-}  
+}
 
 // functions for getting the game started
 function battleTeam() {
@@ -772,8 +772,8 @@ function battleTeam() {
         vgcTeamSelector();
         document.querySelector('body').innerHTML += `<div class="btn" onclick="vgcTeamSelector()">reset</div>`;
     } else {
-            alert('You need to select 6 pokemon')
-        }
+        alert('You need to select 6 pokemon')
+    }
 }
 function vgcTeamSelector() {
     counter = 0;
@@ -782,7 +782,7 @@ function vgcTeamSelector() {
     for (let i = 0; i < team.length; i++) {
         document.getElementById('teamViewer').innerHTML += `<div id='${team[i].id}'><img class="pkmOpt"  value='${team[i].id}' onclick="fourGuys(pkm[${team[i].id}])"src="${team[i].img}" alt=""></div>`
     }
-    
+
 }
 function fourGuys(arr) {
     let pokemon = arr.name
@@ -809,7 +809,7 @@ function enemyVgc() {
 }
 function gameTime() {
     document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
-    document.querySelector('body').innerHTML += `<div class="btn" style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div>`; 
+    document.querySelector('body').innerHTML += `<div class="btn" id='turnBtn' style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div>`;
     enemyVgc();
     document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
@@ -826,8 +826,8 @@ function startingActiveTargets() {
     activeTeam = [0, 1];
     inactiveTeam = [2, 3];
     inactiveEnemy = [2, 3]
-    floatingEnemy = [4,4];
-    floatingTeam = [4,4];
+    floatingEnemy = [4, 4];
+    floatingTeam = [4, 4];
 }
 function battleScreenUpdate() {
     /*document.getElementById('enemyTeamViewer').innerHTML = `
@@ -867,67 +867,59 @@ function switchOptions(arr) {
             document.getElementById('teamViewer').innerHTML = `
             <h3>Who will ${pkm.name} switch with?</h3>
             <div class="moveOptions">
-                <img class="pkmOpt" onclick="preSwitch(${place}, 1, addTurn(1000, switchPkm, [${place}, 1], ${place}))" src="${vgcTeam[inactiveTeam[1]].img}" >
+                <img class="pkmOpt" onclick="preSwitch(${place}, 1, ${place})" src="${vgcTeam[inactiveTeam[1]].img}" >
             </div>
             `
         } else if (inactiveTeam[1] > 3 || pleaseKeepTrackOfSwitch == 1) {
             document.getElementById('teamViewer').innerHTML = `
             <h3>Who will ${pkm.name} switch with?</h3>
             <div class="moveOptions">
-                <img class="pkmOpt" onclick="preSwitch(${place}, 0, addTurn(1000, switchPkm, [${place}, 0], ${place}))" src="${vgcTeam[inactiveTeam[0]].img}" >
+                <img class="pkmOpt" onclick="preSwitch(${place}, 0, ${place})" src="${vgcTeam[inactiveTeam[0]].img}" >
             </div>
             `
         } else {
             document.getElementById('teamViewer').innerHTML = `
         <h3>Who will ${pkm.name} switch with?</h3>
         <div class="moveOptions">
-            <img class="pkmOpt"  onclick = "preSwitch(${place}, 0, addTurn(1000, switchPkm, [${place}, 0], ${place}))" src = "${inactivePkm0.img}" >
-            <img class="pkmOpt" onclick="preSwitch(${place}, 1, addTurn(1000, switchPkm, [${place}, 1], ${place}))" src="${inactivePkm1.img}" >
+            <img class="pkmOpt"  onclick = "preSwitch(${place}, 0, ${place})" src = "${inactivePkm0.img}" >
+            <img class="pkmOpt" onclick="preSwitch(${place}, 1, ${place})" src="${inactivePkm1.img}" >
         </div>
         `
-            /* < img class="pkmOpt"  onclick = "preSwitch(${place}, 0, addTurn(1000, switchPkm, [${place}, 0], ${place}))" src = "${inactivePkm0.img}" >
-                 <img class="pkmOpt" onclick="preSwitch(${place}, 1, addTurn(1000, switchPkm, [${place}, 1], ${place}))" src="${inactivePkm1.img}" >*/
         }
     }
 }
-function preSwitch(activePlace, inactivePlace, theFunction) {
-    /*if (inactiveTeam[0] > 3 && inactiveTeam[1] > 3) {
-        alert('you dont have anymore pokemon')
-    } else {
-        floatingTeam.splice(inactivePlace, 1, activeTeam[activePlace]);
-        activeTeam.splice(activePlace, 1, inactiveTeam[inactivePlace]);
-        inactiveTeam.splice(inactivePlace, 1, 4);
-    }*/
-    loading(activePlace, inactivePlace);
-    pleaseKeepTrackOfSwitch = inactivePlace;
-    
-}
-function loading(activePlace, inactivePlace) {
+function preSwitch(activePlace, inactivePlace, turn) {
     if (inactiveTeam[0] > 3 && inactiveTeam[1] > 3) {
         alert('you dont have anymore pokemon')
     } else {
-        pleaseKeepTrackOfSwitch = inactivePlace
-        gameBoyText += `${vgcTeam[activeTeam[activePlace]].name} switched with ${vgcTeam[inactiveTeam[inactivePlace]].name}.<br>`
-        floatingTeam.splice(inactivePlace, 1, activeTeam[activePlace]);
-        activeTeam.splice(activePlace, 1, inactiveTeam[inactivePlace]);
-        inactiveTeam.splice(inactivePlace, 1, 4);
+        pleaseKeepTrackOfSwitch = inactivePlace;
+        addTurn(1000, switchPkm, [activePlace, inactivePlace, turn], turn)
     }
 }
 function switchPkm(parameter) {
-    let activePlace = parameter[0];
-    let inactivePlace = parameter[1];
-    gameBoyText += `${vgcTeam[floatingTeam[inactivePlace]].name} switched with ${vgcTeam[activeTeam[activePlace]].name}.<br>`
-    battleScreenUpdate();
+    let activePlace = parameter[0]
+    let inactivePlace = parameter[1]
+    let turn = parameter[2]
+    pleaseKeepTrackOfSwitch = 4
+    if (turn === 1) {
+        gameBoyText += `${vgcTeam[activeTeam[activePlace]].name} switched with ${vgcTeam[inactiveTeam[inactivePlace]].name}.<br>`
+    } else {
+        gameBoyText += `${vgcTeam[activeTeam[activePlace]].name} switched with ${vgcTeam[inactiveTeam[inactivePlace]].name}.<br>`
+    }
+    floatingTeam.splice(inactivePlace, 1, activeTeam[activePlace]);
+    activeTeam.splice(activePlace, 1, inactiveTeam[inactivePlace]);
+    inactiveTeam.splice(inactivePlace, 1, 4);
+    battleScreenUpdate()
 }
 function updateActiveTargets() {
-    if (floatingTeam[0] != 4) {
+    if (inactiveTeam[0] == 4) {
         inactiveTeam.splice(0, 1, floatingTeam[0]);
     }
-    if (floatingTeam[1] != 4) {
+    if (inactiveTeam[1] == 4) {
         inactiveTeam.splice(1, 1, floatingTeam[1]);
     }
-    floatingEnemy = [5, 7];
-    floatingTeam = [5,7];
+    floatingEnemy = [7, 7];
+    floatingTeam = [7, 7];
 }
 
 // Damage functions
@@ -935,7 +927,7 @@ function targetSelector(type, pkmId) {
     let current = 0
     let typing = type;
     let pokemonName = pkmId;
-    if (pokemonName == vgcTeam[activeTeam[1]].id) {current = 1 }
+    if (pokemonName == vgcTeam[activeTeam[1]].id) { current = 1 }
     document.getElementById('teamViewer').innerHTML = `
     <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
     <div class="moveOptions">
@@ -963,7 +955,7 @@ function damageCalc(parameter) {
             defenseStat = defender.specialDef;
         };
         let damage = 22 * attackStat * move.power / defenseStat;
-        damage = damage/50;
+        damage = damage / 50;
         damage += 2;
         damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5);
         defender.hitPoints -= damage;
@@ -987,17 +979,24 @@ function protect(arr) {
 
 //Turn Functionality
 function deadPokemon() {
-    if (enemyVgcTeam[activeEnemy[1]].hitPoints < 0) {
-        activeEnemy[1] = inactiveEnemy[0];
+    if (enemyVgcTeam[0].hitPoints < 1 && enemyVgcTeam[1].hitPoints < 1 && enemyVgcTeam[2].hitPoints < 1 && enemyVgcTeam[3].hitPoints < 1) {
+        document.getElementById('teamViewer').innerHTML = `<p style="color: white">You win!</p> `;
+    }
+    if (enemyVgcTeam[activeEnemy[0]].hitPoints < 1) {
+        activeEnemy.splice(0, 1, inactiveEnemy[0])
+    }
+    if (enemyVgcTeam[activeEnemy[1]].hitPoints < 1) {
+        activeEnemy.splice(1, 1, inactiveEnemy[1])
     }
 }
 function turn2(activeId) {
     if (activeId == 0) {
         turnStorage = [];
         gameBoyText = ''
+        deadPokemon()
         updateActiveTargets();
         battleScreenUpdate();
-        document.querySelector('.btn').innerHTML = "restart turn";
+
     }
     removeAnimation();
     if (activeId == 0) {
@@ -1008,6 +1007,7 @@ function turn2(activeId) {
         list.add('bounce');
     }
     let pokemon = vgcTeam[activeTeam[activeId]];
+    document.querySelector('#turnBtn').style.visibility = 'hidden'
     document.getElementById('teamViewer').innerHTML = `
     <h3>What will ${pokemon.name} do?</h3>
     <div class="moveOptions">
@@ -1039,7 +1039,8 @@ function endTurn(turn) {
         removeAnimation();
         runTurnOrder();
         document.getElementById('teamViewer').innerHTML = `<p style="color: white">${gameBoyText}</p> `;
-        document.querySelector('.btn').innerHTML = "next turn";
+        document.querySelector('#turnBtn').style.visibility = 'visible'
+        document.querySelector('#turnBtn').innerHTML = 'next turn'
 
     };
 }
