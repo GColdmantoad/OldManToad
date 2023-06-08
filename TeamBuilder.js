@@ -979,14 +979,16 @@ function protect(arr) {
 
 //Turn Functionality
 function deadPokemon() {
-    if (enemyVgcTeam[0].hitPoints < 1 && enemyVgcTeam[1].hitPoints < 1 && enemyVgcTeam[2].hitPoints < 1 && enemyVgcTeam[3].hitPoints < 1) {
-        document.getElementById('teamViewer').innerHTML = `<p style="color: white">You win!</p> `;
-    }
     if (enemyVgcTeam[activeEnemy[0]].hitPoints < 1) {
         activeEnemy.splice(0, 1, inactiveEnemy[0])
     }
     if (enemyVgcTeam[activeEnemy[1]].hitPoints < 1) {
         activeEnemy.splice(1, 1, inactiveEnemy[1])
+    }
+}
+function winCon() {
+    if (enemyVgcTeam[0].hitPoints < 1 && enemyVgcTeam[1].hitPoints < 1 && enemyVgcTeam[2].hitPoints < 1 && enemyVgcTeam[3].hitPoints < 1) {
+        document.getElementById('teamViewer').innerHTML = `<p style="color: white">You win!</p> `;
     }
 }
 function turn2(activeId) {
@@ -1016,6 +1018,7 @@ function turn2(activeId) {
         <div class="btn" onclick="addTurn(2, protect, activeTeam[${activeId}], ${activeId})">protect</div>
         <div class="btn" onclick="switchOptions(activeTeam[${activeId}])">switch</div>
     </div>`
+    winCon();
 }
 function addTurn(theFunction, parameter, priority, nextTurn) {
     turnStorage.push([theFunction, parameter, priority])
