@@ -65,7 +65,7 @@ const pkm = [{
     physicalDef: 145,
     specialAtk: 120,
     specialDef: 135,
-    speed: 8070,
+    speed: 5070,
     movePool: [4, 16],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/082.png",
@@ -80,7 +80,7 @@ const pkm = [{
     physicalDef: 80,
     specialAtk: 60,
     specialDef: 80,
-    speed: 8050,
+    speed: 5050,
     movePool: [2, 17],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/184.png",
@@ -95,7 +95,7 @@ const pkm = [{
     physicalDef: 100,
     specialAtk: 55,
     specialDef: 80,
-    speed: 8065,
+    speed: 5065,
     movePool: [11, 16],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/212.png",
@@ -110,7 +110,7 @@ const pkm = [{
     physicalDef: 65,
     specialAtk: 135,
     specialDef: 105,
-    speed: 8100,
+    speed: 5100,
     movePool: [1, 11],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/637.png",
@@ -125,7 +125,7 @@ const pkm = [{
     physicalDef: 131,
     specialAtk: 53,
     specialDef: 53,
-    speed: 8087,
+    speed: 5087,
     movePool: [6, 8],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/984.png",
@@ -140,7 +140,7 @@ const pkm = [{
     physicalDef: 80,
     specialAtk: 135,
     specialDef: 120,
-    speed: 8100,
+    speed: 5100,
     movePool: [1, 14],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/1004.png",
@@ -155,7 +155,7 @@ const pkm = [{
     physicalDef: 95,
     specialAtk: 80,
     specialDef: 85,
-    speed: 8102,
+    speed: 5102,
     movePool: [8, 15],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/445.png",
@@ -170,7 +170,7 @@ const pkm = [{
     physicalDef: 92,
     specialAtk: 75,
     specialDef: 86,
-    speed: 8087,
+    speed: 5087,
     movePool: [5, 15],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/998.png",
@@ -185,7 +185,7 @@ const pkm = [{
     physicalDef: 110,
     specialAtk: 100,
     specialDef: 80,
-    speed: 8030,
+    speed: 5030,
     movePool: [2, 10],
     special: true,
     img: "https://www.serebii.net/swordshield/pokemon/080.png",
@@ -200,7 +200,7 @@ const pkm = [{
     physicalDef: 70,
     specialAtk: 81,
     specialDef: 70,
-    speed: 8123,
+    speed: 5123,
     movePool: [3, 14],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/908.png",
@@ -215,7 +215,7 @@ const pkm = [{
     physicalDef: 105,
     specialAtk: 30,
     specialDef: 70,
-    speed: 8100,
+    speed: 5100,
     movePool: [1, 6],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/128-b.png",
@@ -230,7 +230,7 @@ const pkm = [{
     physicalDef: 60,
     specialAtk: 130,
     specialDef: 75,
-    speed: 8110,
+    speed: 5110,
     movePool: [7, 13],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/094.png",
@@ -245,7 +245,7 @@ const pkm = [{
     physicalDef: 90,
     specialAtk: 125,
     specialDef: 90,
-    speed: 8098,
+    speed: 5098,
     movePool: [14, 15],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/635.png",
@@ -260,7 +260,7 @@ const pkm = [{
     physicalDef: 95,
     specialAtk: 133,
     specialDef: 91,
-    speed: 8084,
+    speed: 5084,
     movePool: [13, 16],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/1000.png",
@@ -275,7 +275,7 @@ const pkm = [{
     physicalDef: 80,
     specialAtk: 100,
     specialDef: 110,
-    speed: 8030,
+    speed: 5030,
     movePool: [2, 10],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/199.png",
@@ -290,7 +290,7 @@ const pkm = [{
     physicalDef: 95,
     specialAtk: 100,
     specialDef: 100,
-    speed: 8080,
+    speed: 5080,
     movePool: [9, 15],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/149.png",
@@ -305,7 +305,7 @@ const pkm = [{
     physicalDef: 120,
     specialAtk: 60,
     specialDef: 60,
-    speed: 8050,
+    speed: 5050,
     movePool: [8, 8],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/232.png",
@@ -320,7 +320,7 @@ const pkm = [{
     physicalDef: 100,
     specialAtk: 100,
     specialDef: 75,
-    speed: 8142,
+    speed: 5142,
     movePool: [13, 15],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/887.png",
@@ -335,7 +335,7 @@ const pkm = [{
     physicalDef: 90,
     specialAtk: 130,
     specialDef: 81,
-    speed: 8086,
+    speed: 5086,
     movePool: [7, 12],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/970.png",
@@ -350,7 +350,7 @@ const pkm = [{
     physicalDef: 68,
     specialAtk: 92,
     specialDef: 82,
-    speed: 8039,
+    speed: 5039,
     movePool: [2, 8],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/423.png",
@@ -365,7 +365,7 @@ const pkm = [{
     physicalDef: 80,
     specialAtk: 60,
     specialDef: 60,
-    speed: 8070,
+    speed: 5070,
     movePool: [3, 6],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/286.png",
@@ -380,7 +380,7 @@ const pkm = [{
     physicalDef: 80,
     specialAtk: 90,
     specialDef: 65,
-    speed: 8135,
+    speed: 5135,
     movePool: [5, 14],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/1002.png",
@@ -395,7 +395,7 @@ const pkm = [{
     physicalDef: 70,
     specialAtk: 65,
     specialDef: 75,
-    speed: 8111,
+    speed: 5111,
     movePool: [0, 0],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/925-f.png",
@@ -410,7 +410,7 @@ const pkm = [{
     physicalDef: 80,
     specialAtk: 60,
     specialDef: 100,
-    speed: 8085,
+    speed: 5085,
     movePool: [1, 13],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/937.png",
@@ -425,7 +425,7 @@ const pkm = [{
     physicalDef: 108,
     specialAtk: 50,
     specialDef: 68,
-    speed: 8050,
+    speed: 5050,
     movePool: [4, 6],
     special: false,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/992.png",
@@ -440,7 +440,7 @@ const pkm = [{
     physicalDef: 55,
     specialAtk: 135,
     specialDef: 135,
-    speed: 8135,
+    speed: 5135,
     movePool: [13, 17],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/987.png",
@@ -455,7 +455,7 @@ const pkm = [{
     physicalDef: 60,
     specialAtk: 101,
     specialDef: 60,
-    speed: 80105,
+    speed: 5105,
     movePool: [10, 10],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/956.png",
@@ -825,6 +825,7 @@ function gameTime() {
     document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right"  src="${enemyVgcTeam[1].img}">`
     document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" src="${vgcTeam[1].img}">`
     startingActiveTargets();
+    health();
     turn2(0);
 }
 function startingActiveTargets() {
@@ -899,7 +900,7 @@ function preSwitch(activePlace, inactivePlace, turn) {
         alert('you dont have anymore pokemon')
     } else {
         pleaseKeepTrackOfSwitch = inactivePlace;
-        addTurn(1000, switchPkm, [activePlace, inactivePlace, turn], turn)
+        addTurn(9000, switchPkm, [activePlace, inactivePlace, turn], turn)
     }
 }
 function switchPkm(parameter) {
@@ -929,6 +930,12 @@ function updateActiveTargets() {
 }
 
 // Damage functions
+function health() {
+    for (let i = 0; i < vgcTeam.length; i++) {
+        vgcTeam[i].health = vgcTeam[i].hitPoints + 60
+        enemyVgcTeam[i].health = enemyVgcTeam[i].hitPoints + 60
+    }
+}
 function targetSelector(type, pkmId) {
     let current = 0
     let typing = type;
@@ -964,9 +971,9 @@ function damageCalc(parameter) {
         damage = damage / 50;
         damage += 2;
         damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5);
-        defender.hitPoints -= damage;
+        defender.health -= damage;
         gameBoyText += `${attacker.name} does ${damage} damage to ${defender.name}.<br>`
-        if (defender.hitPoints < 0) {
+        if (defender.health < 0) {
             gameBoyText += `${defender.name} fainted.<br>`
         }
     }
@@ -985,15 +992,15 @@ function protect(arr) {
 
 //Turn Functionality
 function deadPokemon() {
-    if (enemyVgcTeam[activeEnemy[0]].hitPoints < 1) {
+    if (enemyVgcTeam[activeEnemy[0]].health < 1) {
         activeEnemy.splice(0, 1, inactiveEnemy[0])
     }
-    if (enemyVgcTeam[activeEnemy[1]].hitPoints < 1) {
+    if (enemyVgcTeam[activeEnemy[1]].health < 1) {
         activeEnemy.splice(1, 1, inactiveEnemy[1])
     }
 }
 function winCon() {
-    if (enemyVgcTeam[0].hitPoints < 1 && enemyVgcTeam[1].hitPoints < 1 && enemyVgcTeam[2].hitPoints < 1 && enemyVgcTeam[3].hitPoints < 1) {
+    if (enemyVgcTeam[0].health < 1 && enemyVgcTeam[1].health < 1 && enemyVgcTeam[2].health < 1 && enemyVgcTeam[3].health < 1) {
         document.getElementById('teamViewer').innerHTML = `<p style="color: white">You win!</p> `;
         document.getElementById('teamViewer').innerHTML += `<div class='btn' onclick='battleTeam()'>another game?</div> `;
     }
@@ -1022,7 +1029,7 @@ function turn2(activeId) {
     <div class="moveOptions">
         <div class="btn" onclick="targetSelector(${pokemon.movePool[0]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[0]].type} attack</div>
         <div class="btn" onclick="targetSelector(${pokemon.movePool[1]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[1]].type} attack</div>
-        <div class="btn" onclick="addTurn(2, protect, activeTeam[${activeId}], ${activeId})">protect</div>
+        <div class="btn" onclick="addTurn(8, protect, activeTeam[${activeId}], ${activeId})">protect</div>
         <div class="btn" onclick="switchOptions(activeTeam[${activeId}])">switch</div>
     </div>`
     winCon();
@@ -1037,6 +1044,7 @@ function addTurn(theFunction, parameter, priority, nextTurn) {
 }
 function runTurnOrder() {
     turnStorage = turnStorage.sort();
+    turnStorage = turnStorage.reverse();
     for (let i = 0; i < turnStorage.length; i++) {
         turnStorage[i][1](turnStorage[i][2])
     }
