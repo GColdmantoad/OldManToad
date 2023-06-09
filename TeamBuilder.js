@@ -688,6 +688,7 @@ function removeTeamSix() {
 }
 function generateRandomEnemyTeam() {
     let rdm = uniqueRandomNumber(6, pkm.length)
+    enemyTeam = []
     function addRandomTeam(arr) {
         enemyTeam.splice(i, 1, arr);
     }
@@ -764,7 +765,7 @@ function addTeam(arr) {
 function battleTeam() {
     if (team.length > 5) {
         document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
-
+        vgcReset();
         generateRandomEnemyTeam();
         for (let i = 0; i < team.length; i++) {
             document.getElementById('enemyTeamViewer').innerHTML += `<img class="enemyTeam"src="${enemyTeam[i].img}" alt="">`
@@ -774,6 +775,10 @@ function battleTeam() {
     } else {
         alert('You need to select 6 pokemon')
     }
+}
+function vgcReset() {
+    vgcTeam = []
+    enemyVgcTeam = [];
 }
 function vgcTeamSelector() {
     counter = 0;
@@ -798,6 +803,7 @@ function fourGuys(arr) {
         gameTime();
     }
 }
+
 function enemyVgc() {
     let rdm = uniqueRandomNumber(4, enemyVgcTeam.length)
     function addRandomTeam(arr) {
@@ -989,6 +995,7 @@ function deadPokemon() {
 function winCon() {
     if (enemyVgcTeam[0].hitPoints < 1 && enemyVgcTeam[1].hitPoints < 1 && enemyVgcTeam[2].hitPoints < 1 && enemyVgcTeam[3].hitPoints < 1) {
         document.getElementById('teamViewer').innerHTML = `<p style="color: white">You win!</p> `;
+        document.getElementById('teamViewer').innerHTML += `<div class='btn' onclick='battleTeam()'>another game?</div> `;
     }
 }
 function turn2(activeId) {
