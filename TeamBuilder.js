@@ -803,7 +803,6 @@ function fourGuys(arr) {
         gameTime();
     }
 }
-
 function enemyVgc() {
     let rdm = uniqueRandomNumber(4, enemyVgcTeam.length)
     function addRandomTeam(arr) {
@@ -840,7 +839,9 @@ function battleScreenUpdate() {
     /*document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
     <div class="partner" id="activePartner"></div>`;*/
-    if (activeEnemy.length == 1) {
+    if (activeEnemy[0] === 7) {
+        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy1"  src="${enemyVgcTeam[activeEnemy[1]].img}">`
+    } else if (activeEnemy[1] === 7) { 
         document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
     } else {
         document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
@@ -943,11 +944,24 @@ function targetSelector(type, pkmId) {
     if (pokemonName == vgcTeam[activeTeam[1]].id) { current = 1 }
     document.getElementById('teamViewer').innerHTML = `
     <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
+    <div class="moveOptions"></div>`
+    if (activeEnemy[1] != 7) {
+        document.querySelector('.moveOptions').innerHTML += `<img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 1, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >`
+    }
+    if (activeEnemy[0] != 7) {
+        document.querySelector('.moveOptions').innerHTML += `<img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[0]].img}' >`
+    }
+ /*else {
+        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
+        document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right" src="${enemyVgcTeam[activeEnemy[1]].img}">`
+    }
+    document.getElementById('teamViewer').innerHTML = `
+    <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
     <div class="moveOptions">
         <img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 1, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >
         <img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${current})" class="pkmOpt" src="${enemyVgcTeam[activeEnemy[0]].img}" >
     </div>
-    `
+    `*/
 }
 function damageCalc(parameter) {
     let moveId = parameter[0];
@@ -993,16 +1007,28 @@ function protect(arr) {
 //Turn Functionality
 function deadPokemon() {
     if (enemyVgcTeam[activeEnemy[0]].health < 1) {
-        activeEnemy.splice(0, 1, inactiveEnemy[0])
+        if (inactiveEnemy[0] != 7) {
+            activeEnemy.splice(0, 1, inactiveEnemy[0])
+            inactiveEnemy.splice(0, 1, 7)
+        } else if (inactiveEnemy[1] != 7) {
+            activeEnemy.splice(0, 1, inactiveEnemy[1])
+            inactiveEnemy.splice(1, 1, 7)
+        }
     }
     if (enemyVgcTeam[activeEnemy[1]].health < 1) {
-        activeEnemy.splice(1, 1, inactiveEnemy[1])
+        if (inactiveEnemy[0] != 7) {
+            activeEnemy.splice(1, 1, inactiveEnemy[0])
+            inactiveEnemy.splice(0, 1, 7)
+        } else if (inactiveEnemy[1] != 7) {
+            activeEnemy.splice(1, 1, inactiveEnemy[1])
+            inactiveEnemy.splice(1, 1, 7)
+        }
     }
 }
 function winCon() {
     if (enemyVgcTeam[0].health < 1 && enemyVgcTeam[1].health < 1 && enemyVgcTeam[2].health < 1 && enemyVgcTeam[3].health < 1) {
-        document.getElementById('teamViewer').innerHTML = `<p style="color: white">You win!</p> `;
-        document.getElementById('teamViewer').innerHTML += `<div class='btn' onclick='battleTeam()'>another game?</div> `;
+        document.getElementById('teamViewer').innerHTML = `<div style="color: white">You win!</div> `;
+        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0;" onclick='battleTeam()'>another game?</div> `;
     }
 }
 function turn2(activeId) {
