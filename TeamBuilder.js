@@ -839,14 +839,17 @@ function battleScreenUpdate() {
     /*document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
     <div class="partner" id="activePartner"></div>`;*/
-    if (activeEnemy[0] === 7) {
-        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy1"  src="${enemyVgcTeam[activeEnemy[1]].img}">`
-    } else if (activeEnemy[1] === 7) { 
-        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
-    } else {
-        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
-        document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right" src="${enemyVgcTeam[activeEnemy[1]].img}">`
+    document.getElementById('activeEnemy').innerHTML =""
+    if (activeEnemy[0] != 7) {
+        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`;
+        healthCheck();
     }
+    if (activeEnemy[1] != 7) {
+        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy1"  src="${enemyVgcTeam[activeEnemy[1]].img}">`
+        healthCheck();
+    }
+
+
 
     if (activeTeam.length == 1) {
         document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" src="${vgcTeam[activeTeam[0]].img}">`
@@ -945,10 +948,10 @@ function targetSelector(type, pkmId) {
     document.getElementById('teamViewer').innerHTML = `
     <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
     <div class="moveOptions"></div>`
-    if (activeEnemy[1] != 7) {
+    if (enemyVgcTeam[activeEnemy[1]].health > 1) {
         document.querySelector('.moveOptions').innerHTML += `<img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 1, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >`
     }
-    if (activeEnemy[0] != 7) {
+    if (enemyVgcTeam[activeEnemy[0]].health > 1) {
         document.querySelector('.moveOptions').innerHTML += `<img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[0]].img}' >`
     }
  /*else {
@@ -995,12 +998,12 @@ function damageCalc(parameter) {
 function protect(arr) {
     if (arr == activeTeam[0]) {
         const list = document.getElementById('partner0').classList;
-        list.add('protect');
-        gameBoyText += `${vgcTeam[arr].name} protects itself from incoming damage.<br>`
+        list.add('flip');
+        gameBoyText += `${vgcTeam[arr].name} dodged all incoming attacks.<br>`
     } else if (arr == activeTeam[1]) {
         const list = document.getElementById('partner1').classList;
-        list.add('protect');
-        gameBoyText += `${vgcTeam[arr].name} protects itself from incoming damage.<br>`
+        list.add('shake');
+        gameBoyText += `${vgcTeam[arr].name} dodged all incoming attacks.<br>`
     }
 }
 
@@ -1013,7 +1016,7 @@ function deadPokemon() {
         } else if (inactiveEnemy[1] != 7) {
             activeEnemy.splice(0, 1, inactiveEnemy[1])
             inactiveEnemy.splice(1, 1, 7)
-        }
+        } 
     }
     if (enemyVgcTeam[activeEnemy[1]].health < 1) {
         if (inactiveEnemy[0] != 7) {
@@ -1022,6 +1025,18 @@ function deadPokemon() {
         } else if (inactiveEnemy[1] != 7) {
             activeEnemy.splice(1, 1, inactiveEnemy[1])
             inactiveEnemy.splice(1, 1, 7)
+        } 
+    }
+}
+function healthCheck(aGuy) {
+    if (document.querySelector('#enemy0') != null) {
+        if (enemyVgcTeam[activeEnemy[0]].health < 1) {
+            document.querySelector('#enemy0').style.visibility = 'hidden'
+        }
+    }
+    if (document.querySelector('#enemy1') != null) {
+        if (enemyVgcTeam[activeEnemy[1]].health < 1) {
+            document.querySelector('#enemy1').style.visibility = 'hidden'
         }
     }
 }
@@ -1032,13 +1047,17 @@ function winCon() {
     }
 }
 function turn2(activeId) {
+    winCon()
+    let pokemon = vgcTeam[activeTeam[activeId]];
     if (activeId == 0) {
         turnStorage = [];
         gameBoyText = ''
         deadPokemon()
         updateActiveTargets();
         battleScreenUpdate();
-
+        if (pokemon.health > 1) {
+            turn2(1)
+        }
     }
     removeAnimation();
     if (activeId == 0) {
@@ -1048,17 +1067,20 @@ function turn2(activeId) {
         const list = document.getElementById('partner1').classList;
         list.add('bounce');
     }
-    let pokemon = vgcTeam[activeTeam[activeId]];
-    document.querySelector('#turnBtn').style.visibility = 'hidden'
-    document.getElementById('teamViewer').innerHTML = `
+
+
+        document.querySelector('#turnBtn').style.visibility = 'hidden'
+        document.getElementById('teamViewer').innerHTML = `
     <h3>What will ${pokemon.name} do?</h3>
     <div class="moveOptions">
         <div class="btn" onclick="targetSelector(${pokemon.movePool[0]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[0]].type} attack</div>
         <div class="btn" onclick="targetSelector(${pokemon.movePool[1]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[1]].type} attack</div>
-        <div class="btn" onclick="addTurn(8, protect, activeTeam[${activeId}], ${activeId})">protect</div>
+        <div class="btn" onclick="addTurn(8, protect, activeTeam[${activeId}], ${activeId})">dodge</div>
         <div class="btn" onclick="switchOptions(activeTeam[${activeId}])">switch</div>
     </div>`
-    winCon();
+        winCon();
+ 
+
 }
 function addTurn(theFunction, parameter, priority, nextTurn) {
     turnStorage.push([theFunction, parameter, priority])
@@ -1090,7 +1112,7 @@ function endTurn(turn) {
 }
 function removeAnimation() {
     document.querySelectorAll('*').forEach((element) => {
-        element.classList.remove('bounce');
+        element.classList.remove('bounce','shake','flip');
     });
 }
 function clearProtect() {
