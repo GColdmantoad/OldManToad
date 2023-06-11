@@ -640,6 +640,7 @@ menuButton.addEventListener("click", () => {
     }
 }
 );
+loadPokemon(); 
 
 // Figure out the weakness of your team
 function genArray() {
