@@ -85,10 +85,8 @@ margin: auto;
   max-height: 320px;
 }
 .image {
- width: 100%;
  height: 100%;
  z-index: 2;
- 
 }
 .pkm{
     max-width: 300px;
@@ -148,25 +146,28 @@ margin: auto;
     max-height: 20vw;
     margin: auto;
 }
-.pkmBox{
-  color: #fffcff;
-  border-radius: 50px;
-  box-shadow: 0 0 4px 4px #50514f;
-  transition: all 300ms ease-in-out;
-  margin: 12px;
-  flex: 1 25%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-  font-size: 1.5rem;
+.pkmBox {
+    color: #fffcff;
+    border-radius: 15px;
+    box-shadow: 0 0 4px 4px #50514f;
+    margin: 12px;
+    flex: 1 25%;
+    font-size: 1.25rem;
+    display: flex;
+    width: 300px;
+    height: 80px;
+    padding: 5px;
+    align-items: center;
 }
-
-.pkmBox{
-  text-align: left;
-  line-height: 60px;
-
-  padding: 1rem;
-  max-width: 300px;
+.flex {
+    flex: 1;
+}
+.center {
+    text-align: center;
+}
+.option {
+    width: 80px;
+    height: 80px;
 }
 .pkmBox:hover {
   background-color: #f24236;

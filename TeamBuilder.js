@@ -460,6 +460,83 @@ const pkm = [{
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/956.png",
     weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
+}, {
+    id: 28,
+    name: "Glastrier",
+    type1: "ice",
+    type2: "ice",
+    hitPoints: 100,
+    physicalAtk: 145,
+    physicalDef: 130,
+    specialAtk: 65,
+    specialDef: 110,
+    speed: 5030,
+    movePool: [5, 5],
+    special: false,
+    img: "https://www.serebii.net/swordshield/pokemon/896.png",
+    weakness: [[1, 'normal'], [2, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [.5, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [2, 'steel'], [1, 'fairy']]
+}, {
+    id: 29,
+    name: "Rillaboom",
+    type1: "grass",
+    type2: "grass",
+    hitPoints: 100,
+    physicalAtk: 125,
+    physicalDef: 90,
+    specialAtk: 60,
+    specialDef: 70,
+    speed: 5085,
+    movePool: [3, 3],
+    special: false,
+    img: "https://www.serebii.net/scarletviolet/pokemon/new/812.png",
+    weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [1, 'fighting'], [2, 'poison'], [.5, 'ground'], [2, 'flying'], [1, 'psychic'], [2, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
+}, {
+    id: 30,
+    name: "Cresselia",
+    type1: "psychic",
+    type2: "psychic",
+    hitPoints: 100,
+    physicalAtk: 125,
+    physicalDef: 90,
+    specialAtk: 60,
+    specialDef: 70,
+    speed: 5085,
+    movePool: [10, 10],
+    special: true,
+    img: "https://www.serebii.net/scarletviolet/pokemon/new/488.png",
+    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
+}, {
+    id: 31,
+    name: "Regieleki",
+    type1: "electric",
+    type2: "electric",
+    hitPoints: 80,
+    physicalAtk: 100,
+    physicalDef: 50,
+    specialAtk: 130,
+    specialDef: 50,
+    speed: 5200,
+    movePool: [4, 4],
+    special: true,
+    img: "https://www.serebii.net/swordshield/pokemon/894.png",
+    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [.5, 'electric'], [1, 'ice'], [1, 'fighting'], [1, 'poison'],
+    [2, 'ground'], [.5, 'flying'], [1, 'psychic'], [1, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+}, {
+    id: 32,
+    name: "Amoonguss",
+    type1: "grass",
+    type2: "poison",
+    hitPoints: 114,
+    physicalAtk: 85,
+    physicalDef: 70,
+    specialAtk: 86,
+    specialDef: 80,
+    speed: 5030,
+    movePool: [3, 7],
+    special: true,
+    img: "https://www.serebii.net/swordshield/pokemon/591.png",
+    weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.25, 'grass'], [.5, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'],
+    [1, 'ground'], [2, 'flying'], [2, 'psychic'], [1, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [.5, 'fairy']]
 }
 ]
 const pkmMoves = [{
@@ -760,6 +837,15 @@ function addTeam(arr) {
         team.push(arr);
     }
 }
+function loadPokemon() {
+    for (let i = 0; i < pkm.length; i++) {
+        document.querySelector('#box').innerHTML += `
+        <div class="pkmBox" onclick="addTeam(pkm[${i}])">
+            <img class='image option' src="${pkm[i].img}">
+                <div class="flex center">${pkm[i].name}</div>
+        </div>`
+    }
+}
 
 // functions for getting the game started
 function battleTeam() {
@@ -1028,7 +1114,7 @@ function deadPokemon() {
         } 
     }
 }
-function healthCheck(aGuy) {
+function healthCheck() {
     if (document.querySelector('#enemy0') != null) {
         if (enemyVgcTeam[activeEnemy[0]].health < 1) {
             document.querySelector('#enemy0').style.visibility = 'hidden'
@@ -1042,6 +1128,7 @@ function healthCheck(aGuy) {
 }
 function winCon() {
     if (enemyVgcTeam[0].health < 1 && enemyVgcTeam[1].health < 1 && enemyVgcTeam[2].health < 1 && enemyVgcTeam[3].health < 1) {
+        removeAnimation();
         document.getElementById('teamViewer').innerHTML = `<div style="color: white">You win!</div> `;
         document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0;" onclick='battleTeam()'>another game?</div> `;
     }
