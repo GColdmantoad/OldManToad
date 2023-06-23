@@ -537,7 +537,25 @@ const pkm = [{
     img: "https://www.serebii.net/swordshield/pokemon/591.png",
     weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.25, 'grass'], [.5, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'],
     [1, 'ground'], [2, 'flying'], [2, 'psychic'], [1, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [.5, 'fairy']]
+}, {
+    id: 33,
+    name: "Rapid Urshifu",
+    type1: "water",
+    type2: "fighting",
+    hitPoints: 100,
+    physicalAtk: 130,
+    physicalDef: 100,
+    specialAtk: 86,
+    specialDef: 60,
+    speed: 5097,
+    movePool: [2, 6],
+    special: false,
+    img: "https://www.serebii.net/swordshield/pokemon/892-r.png",
+    weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [1, 'fighting'], [1, 'poison'],
+    [1, 'ground'], [2, 'flying'], [2, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [2, 'fairy']]
 }
+
+
 ]
 const pkmMoves = [{
     id: 0,
@@ -782,12 +800,7 @@ function addTeam(arr) {
         typing = `${arr.type1}<span>&#47;</span>${arr.type2}`;
     }
     if (TeamMember0 === false) {
-        teamOne.innerHTML = `<div class="pkm type1-${arr.type1}-type2-${arr.type2}">
-   
-
-        <img class="image type1-${arr.type1}-type2-${arr.type2}"  src="${arr.img}" alt="${arr.name}">
-
-        </div>`;
+        teamOne.innerHTML = `<img class=" pkm image type1-${arr.type1}-type2-${arr.type2}"  src="${arr.img}" alt="${arr.name}">`;
         TeamMember0 = true;
         team.splice(0, 1);
         team.unshift(arr);
