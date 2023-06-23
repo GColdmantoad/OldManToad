@@ -495,16 +495,16 @@ const pkm = [{
     name: "Cresselia",
     type1: "psychic",
     type2: "psychic",
-    hitPoints: 100,
-    physicalAtk: 125,
-    physicalDef: 90,
-    specialAtk: 60,
-    specialDef: 70,
+    hitPoints: 120,
+    physicalAtk: 25,
+    physicalDef: 110,
+    specialAtk: 75,
+    specialDef: 120,
     speed: 5085,
     movePool: [10, 10],
     special: true,
     img: "https://www.serebii.net/scarletviolet/pokemon/new/488.png",
-    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
+    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
 }, {
     id: 31,
     name: "Regieleki",
@@ -553,9 +553,39 @@ const pkm = [{
     img: "https://www.serebii.net/swordshield/pokemon/892-r.png",
     weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [1, 'fighting'], [1, 'poison'],
     [1, 'ground'], [2, 'flying'], [2, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [2, 'fairy']]
+}, {
+    id: 34,
+    name: "Zapdos",
+    type1: "electric",
+    type2: "flying",
+    hitPoints: 90,
+    physicalAtk: 90,
+    physicalDef: 90,
+    specialAtk: 125,
+    specialDef: 90,
+    speed: 5100,
+    movePool: [4, 9],
+    special: true,
+    img: "https://www.serebii.net/Shiny/SV/new/145.png",
+    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'],
+    [0, 'ground'], [.5, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+}, {
+    id: 35,
+    name: "Heatran",
+    type1: "fire",
+    type2: "steel",
+    hitPoints: 91,
+    physicalAtk: 90,
+    physicalDef: 106,
+    specialAtk: 130,
+    specialDef: 106,
+    speed: 5077,
+    movePool: [1, 16],
+    special: true,
+    img: "https://www.serebii.net/Shiny/SV/new/485.png",
+    weakness: [[.5, 'normal'], [0, 'fire'], [2, 'water'], [.25, 'grass'], [1, 'electric'], [.25, 'ice'], [2, 'fighting'], [0, 'poison'],
+    [4, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.25, 'steel'], [.25, 'fairy']]
 }
-
-
 ]
 const pkmMoves = [{
     id: 0,
@@ -805,47 +835,23 @@ function addTeam(arr) {
         team.splice(0, 1);
         team.unshift(arr);
     } else if (TeamMember1 === false) {
-        teamTwo.innerHTML = `<div class="pkm vertical shadow type1-${arr.type1}-type2-${arr.type2}">
-  
-        <img class="image" src="${arr.img}" alt="">
-
-        </div>`;
+        teamTwo.innerHTML = `<img class=" pkm image type1-${arr.type1}-type2-${arr.type2}"  src="${arr.img}" alt="${arr.name}">`;
         TeamMember1 = true;
         team.splice(1, 1, arr);
     } else if (TeamMember2 === false) {
-        teamThree.innerHTML = `<div class="pkm shadow vertical type1-${arr.type1}-type2-${arr.type2}">
-   
-
-        <img class="image" src="${arr.img}" alt="">
-
-        </div>`;
+        teamThree.innerHTML = `<img class=" pkm image type1-${arr.type1}-type2-${arr.type2}"  src="${arr.img}" alt="${arr.name}">`;
         TeamMember2 = true;
         team.splice(2, 1, arr);
     } else if (TeamMember3 === false) {
-        teamFour.innerHTML = `<div class="pkm vertical shadow type1-${arr.type1}-type2-${arr.type2}">
-   
-
-        <img class="image" src="${arr.img}" alt="">
-
-        </div>`;
+        teamFour.innerHTML = `<img class=" pkm image type1-${arr.type1}-type2-${arr.type2}"  src="${arr.img}" alt="${arr.name}">`;
         TeamMember3 = true;
         team.splice(3, 1, arr);
     } else if (TeamMember4 === false) {
-        teamFive.innerHTML = `<div class="pkm vertical shadow type1-${arr.type1}-type2-${arr.type2}">
-   
-
-        <img class="image" src="${arr.img}" alt="">
-
-        </div>`;
+        teamFive.innerHTML = `<img class=" pkm image type1-${arr.type1}-type2-${arr.type2}"  src="${arr.img}" alt="${arr.name}">`;
         TeamMember4 = true;
         team.splice(4, 1, arr);
     } else if (TeamMember5 === false) {
-        teamSix.innerHTML = `<div class="pkm vertical shadow type1-${arr.type1}-type2-${arr.type2}">
-   
-
-        <img class="image" src="${arr.img}" alt="">
-
-        </div>`;
+        teamSix.innerHTML = `<img class=" pkm image type1-${arr.type1}-type2-${arr.type2}"  src="${arr.img}" alt="${arr.name}">`;
         TeamMember5 = true;
         team.splice(5, 1);
         team.push(arr);

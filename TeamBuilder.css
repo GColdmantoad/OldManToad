@@ -50,7 +50,6 @@ margin: auto;
 .vertical {
     max-width: 10vh;
     max-height: 10vh;
-    padding: 2px;
 }
 #pkmTeam {
     height: 100%;
@@ -243,183 +242,105 @@ margin: auto;
 }
 
 
-#Magneton{
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/082.png);
-}
-#Garchomp{
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/445.png);
-}
-#Baxcalibur {
-  background-image:  url(https://www.serebii.net/scarletviolet/pokemon/new/998.png);
-}
-#Slowbro {
-  background-image: url(https://www.serebii.net/swordshield/pokemon/080.png);
-}
-#Kilowattrel {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/941.png);
-}
-
-#Meowscarada {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/908.png);
-}
-#Tauros {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/128-b.png);
-}
-#Gengar {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/094.png);
-}
-#Hydreigon {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/635.png);
-}
-#Gholdengo {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/1000.png);
-}
-#Espathra {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/956.png);
-}
-#Slowking {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/199.png);
-}
-#Dragonite {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/149.png);
-}
-#Donphan {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/232.png);
-}
-#Dragapult {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/887.png);
-}
-#GreatTusk {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/984.png);
-}
-#Glimmora {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/970.png);
-}
-#Chi-Yu {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/1004.png);
-}
-#Gastrodon {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/423.png);
-}
-#Breloom {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/286.png);
-}
-#Chein-Pao {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/1002.png);
-}
-#Volcarona {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/637.png);
-}
-#Maushold {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/925-f.png);
-}
-#Azumaril {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/184.png);
-}
-#Scizor {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/212.png);
-}
-#Ceruledge {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/937.png);
-}
-#IronHands {
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/992.png);
-}
-#FlutterMane{
-  background-image: url(https://www.serebii.net/scarletviolet/pokemon/new/987.png);
-}
 .type1-steel-type2-bug{
-background: linear-gradient(90deg, rgba(183,183,206,1) 45%, rgba(166,185,26,1) 65%);
+background: linear-gradient(0deg, rgba(183,183,206,1) 45%, rgba(166,185,26,1) 65%);
 }
 .type1-fire-type2-bug{
-background: linear-gradient(90deg, rgba(238,129,48,1) 45%, rgba(166,185,26,1) 65%);
+background: linear-gradient(0deg, rgba(238,129,48,1) 45%, rgba(166,185,26,1) 65%);
 }
 .type1-ghost-type2-fairy{
-  background: linear-gradient(90deg, rgba(115,87,151,1) 45%, rgba(214,133,173,1) 65%);
+  background: linear-gradient(0deg, rgba(115,87,151,1) 45%, rgba(214,133,173,1) 65%);
   }
 .type1-water-type2-fairy{
-background: linear-gradient(90deg, rgba(99,144,240,1) 45%, rgba(214,133,173,1) 65%);
+background: linear-gradient(0deg, rgba(99,144,240,1) 45%, rgba(214,133,173,1) 65%);
 }
 .type1-electric-type2-flying{
-  background: linear-gradient(90deg, rgba(247,208,44,1) 45%, rgba(169,143,243,1) 65%);
+  background: linear-gradient(0deg, rgba(247,208,44,1) 45%, rgba(169,143,243,1) 65%);
 }
 .type1-dragon-type2-ground{
-  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(226,191,101,1) 65%);
+  background: linear-gradient(0deg, rgba(111,53,252,1) 45%, rgba(226,191,101,1) 65%);
 }
 .type1-electric-type2-steel{
-  background: linear-gradient(90deg, rgba(247,208,44,1) 45%, rgba(183,183,206,1) 65%);
+  background: linear-gradient(0deg, rgba(247,208,44,1) 45%, rgba(183,183,206,1) 65%);
 
 }.type1-fighting-type2-ground{
-  background:  linear-gradient(90deg, rgba(194,46,40,1) 45%, rgba(226,191,101,1) 65%);
+  background:  linear-gradient(0deg, rgba(194,46,40,1) 45%, rgba(226,191,101,1) 65%);
 }
-
 .type1-dragon-type2-ice{
-  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(150,217,214,1) 65%);
+  background: linear-gradient(0deg, rgba(111,53,252,1) 45%, rgba(150,217,214,1) 65%);
 }
-
 .type1-water-type2-psychic{
-  background: linear-gradient(90deg, rgba(99,144,240,1) 45%, rgba(249,85,135,1) 65%);
+  background: linear-gradient(0deg, rgba(99,144,240,1) 45%, rgba(249,85,135,1) 65%);
 }
-
 .type1-grass-type2-dark{
-  background: linear-gradient(90deg, rgba(122,199,76,1) 45%, rgba(64,54,48,1) 65%);
+  background: linear-gradient(0deg, rgba(122,199,76,1) 45%, rgba(64,54,48,1) 65%);
 }
 .type1-fire-type2-dark{
-  background: linear-gradient(90deg, rgba(238,129,48,1) 45%, rgba(64,54,48,1) 65%);
+  background: linear-gradient(0deg, rgba(238,129,48,1) 45%, rgba(64,54,48,1) 65%);
   }
 .type1-fire-type2-fighting{
-  background: linear-gradient(90deg, rgba(238,129,48,1) 45%, rgba(194,46,40,1) 65%);
+  background: linear-gradient(0deg, rgba(238,129,48,1) 45%, rgba(194,46,40,1) 65%);
 }
-
 .type1-ghost-type2-poison{
-  background: linear-gradient(90deg, rgba(115,87,151,1) 45%, rgba(163,62,161,1) 65%);
+  background: linear-gradient(0deg, rgba(115,87,151,1) 45%, rgba(163,62,161,1) 65%);
 }
 .type1-dragon-type2-dark{
-  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(64,54,48,1) 65%);
+  background: linear-gradient(0deg, rgba(111,53,252,1) 45%, rgba(64,54,48,1) 65%);
 }
 .type1-ghost-type2-steel{
-  background: linear-gradient(90deg, rgba(115,87,151,1) 45%, rgba(183,183,206,1) 65%);
+  background: linear-gradient(0deg, rgba(115,87,151,1) 45%, rgba(183,183,206,1) 65%);
 }
 .type1-psychic-type2-psychic{
-  background:linear-gradient(90deg, rgba(249,85,135,1) 45%, rgba(203,53,98,1) 65%);
+  background:linear-gradient(0deg, rgba(249,85,135,1) 45%, rgba(203,53,98,1) 65%);
 }
 .type1-dragon-type2-flying{
-  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(169,143,243,1) 65%);
+  background: linear-gradient(0deg, rgba(111,53,252,1) 45%, rgba(169,143,243,1) 65%);
 }
 .type1-ground-type2-ground{
-  background: linear-gradient(90deg,  rgba(226,191,101,1) 45%, rgba(200,160,56,1) 65%);
-
+  background: linear-gradient(0deg,  rgba(226,191,101,1) 45%, rgba(200,160,56,1) 65%);
 }
 .type1-dragon-type2-ghost{
-  background: linear-gradient(90deg, rgba(111,53,252,1) 45%, rgba(115,87,151,1) 65%);
+  background: linear-gradient(0deg, rgba(111,53,252,1) 45%, rgba(115,87,151,1) 65%);
 }
 .type1-rock-type2-poison{
-  background: linear-gradient(90deg, rgba(182,161,54,1) 45%, rgba(163,62,161,1) 65%);
+  background: linear-gradient(0deg, rgba(182,161,54,1) 45%, rgba(163,62,161,1) 65%);
 }
 .type1-water-type2-ground{
-  background: linear-gradient(90deg, rgba(99,144,240,1) 45%, rgba(226,191,101,1) 65%);
+  background: linear-gradient(0deg, rgba(99,144,240,1) 45%, rgba(226,191,101,1) 65%);
 }
 .type1-grass-type2-fighting{
-  background: linear-gradient(90deg, rgba(122,199,76,1) 45%, rgba(194,46,40,1) 65%);
+  background: linear-gradient(0deg, rgba(122,199,76,1) 45%, rgba(194,46,40,1) 65%);
 }
 .type1-ice-type2-dark{
-  background: linear-gradient(90deg, rgba(150,217,214,1) 45%, rgba(64,54,48,1) 65%);
+  background: linear-gradient(0deg, rgba(150,217,214,1) 45%, rgba(64,54,48,1) 65%);
 }
 .type1-normal-type2-normal{
-  background: linear-gradient(90deg, rgba(168,167,122,1) 45%, rgba(136,136,104,1) 65%);
+  background: linear-gradient(0deg, rgba(168,167,122,1) 45%, rgba(136,136,104,1) 65%);
 }
 .type1-ghost-type2-fire{
-  background:  linear-gradient(90deg, rgba(115,87,151,1) 45%, rgba(238,129,48,1) 65%);
+  background:  linear-gradient(0deg, rgba(115,87,151,1) 45%, rgba(238,129,48,1) 65%);
 }
 .type1-electric-type2-fighting{
-  background: linear-gradient(90deg, rgba(247,208,44,1) 45%, rgba(194,46,40,1) 65%);
+  background: linear-gradient(0deg, rgba(247,208,44,1) 45%, rgba(194,46,40,1) 65%);
 }
-.psychic{
-  background: rgba(249,85,135,1);
+.type1-water-type2-fighting {
+    background: linear-gradient(0deg, rgba(99,144,240,1) 45%, rgba(194,46,40,1) 65%);
 }
-
-
-
+.type1-grass-type2-poison {
+    background: linear-gradient(0deg, rgba(122,199,76,1) 45%, rgba(163,62,161,1) 65%);
+}
+.type1-fire-type2-steel {
+    background: linear-gradient(0deg, rgba(238,129,48,1) 45%, rgba(183,183,206,1) 65%);
+}
+.type1-grass-type2-grass {
+    background: linear-gradient(0deg, rgba(122,199,76,1) 45%, rgba(92,190,33,1) 65%);
+}
+.type1-ice-type2-ice {
+    background: linear-gradient(0deg, rgba(150,217,214,1) 45%, rgba(93,199,194,1) 65%);
+}
+.type1-electric-type2-electric {
+    background: linear-gradient(0deg, rgba(247,208,44,1) 45%, rgba(236,196,28,1) 65%);
+}
 .loader {
     background: linear-gradient(to right, rgb(22, 113, 202) 50%, transparent 50%);
     animation: spin 1s infinite linear;
