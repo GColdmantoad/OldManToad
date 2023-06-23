@@ -785,7 +785,7 @@ function addTeam(arr) {
         teamOne.innerHTML = `<div class="pkm type1-${arr.type1}-type2-${arr.type2}">
    
 
-        <img class="image"  src="${arr.img}" alt="${arr.name}">
+        <img class="image type1-${arr.type1}-type2-${arr.type2}"  src="${arr.img}" alt="${arr.name}">
 
         </div>`;
         TeamMember0 = true;
