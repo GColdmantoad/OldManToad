@@ -1031,7 +1031,6 @@ function deadSwitchOptions(theNowDeadPokemonsActiveSpot) {
     if (inactiveTeam[1] == 7 && inactiveTeam[0] == 7) {
         turn2(0)
     }
-
     let place = theNowDeadPokemonsActiveSpot;
     let pkm = vgcTeam[activeTeam[theNowDeadPokemonsActiveSpot]]
 
@@ -1189,7 +1188,9 @@ function deadPokemon() {
     }
 }
 function deadTeamCheck() {
-    if (vgcTeam[activeTeam[0]].health <= 0) {
+    if (inactiveTeam[1] == 7 && inactiveTeam[0] == 7 && vgcTeam[activeTeam[0]].health <= 0) {
+        turn2(1)
+    } else if (vgcTeam[activeTeam[0]].health <= 0) {
         deadSwitchOptions(0);
     } else if (vgcTeam[activeTeam[1]].health <= 0) {
         deadSwitchOptions(1);
