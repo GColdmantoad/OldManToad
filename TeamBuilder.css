@@ -96,8 +96,8 @@ margin: auto;
     display: flex;
     border-radius: 100%;
 }
-.shadow{
-  box-shadow: 0 0 4px 4px #50514f;
+.shadow {
+    box-shadow: 0 0 4px 4px #403630;
 }
 .row{
   display: flex;

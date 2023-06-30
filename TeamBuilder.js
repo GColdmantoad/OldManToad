@@ -980,23 +980,22 @@ function switchOptions(arr) {
     if (inactiveTeam[0] > 3 && inactiveTeam[1] > 3) {
         alert('you dont have anymore pokemon')
     } else {
+        document.getElementById('teamViewer').innerHTML = `
+            <h3>Who will ${pkm.name} switch with?</h3>`
         if (inactiveTeam[0] > 3 || pleaseKeepTrackOfSwitch == 0) {
-            document.getElementById('teamViewer').innerHTML = `
-            <h3>Who will ${pkm.name} switch with?</h3>
+            document.getElementById('teamViewer').innerHTML += `
             <div class="moveOptions">
                 <img class="pkmOpt" onclick="preSwitch(${place}, 1, ${place})" src="${vgcTeam[inactiveTeam[1]].img}" >
             </div>
             `
         } else if (inactiveTeam[1] > 3 || pleaseKeepTrackOfSwitch == 1) {
-            document.getElementById('teamViewer').innerHTML = `
-            <h3>Who will ${pkm.name} switch with?</h3>
+            document.getElementById('teamViewer').innerHTML += `
             <div class="moveOptions">
                 <img class="pkmOpt" onclick="preSwitch(${place}, 0, ${place})" src="${vgcTeam[inactiveTeam[0]].img}" >
             </div>
             `
         } else {
-            document.getElementById('teamViewer').innerHTML = `
-        <h3>Who will ${pkm.name} switch with?</h3>
+            document.getElementById('teamViewer').innerHTML += `
         <div class="moveOptions">
             <img class="pkmOpt"  onclick = "preSwitch(${place}, 0, ${place})" src = "${inactivePkm0.img}" >
             <img class="pkmOpt" onclick="preSwitch(${place}, 1, ${place})" src="${inactivePkm1.img}" >
@@ -1028,6 +1027,34 @@ function switchPkm(parameter) {
     inactiveTeam.splice(inactivePlace, 1, 4);
     battleScreenUpdate()
 }
+function deadSwitchOptions(theNowDeadPokemonsActiveSpot) {
+    let place = theNowDeadPokemonsActiveSpot;
+    let pkm = vgcTeam[activeTeam[theNowDeadPokemonsActiveSpot]]
+    document.getElementById('teamViewer').innerHTML = `
+            <h3>Who will ${pkm.name} switch with?</h3>`;
+    if (inactiveTeam[0] != 7) {
+        document.getElementById('teamViewer').innerHTML += `
+            <div class="moveOptions">
+                <img class="pkmOpt" onclick="switchDeadPkm([${place}, 0])" src="${vgcTeam[inactiveTeam[0]].img}" >
+            </div> `
+    }
+    if (inactiveTeam[1] != 7) {
+        document.getElementById('teamViewer').innerHTML += `
+            <div class="moveOptions">
+                <img class="pkmOpt" onclick="switchDeadPkm([${place}, 1])" src="${vgcTeam[inactiveTeam[1]].img}" >
+            </div> `
+    }
+}
+function switchDeadPkm(parameter) {
+    let activePlace = parameter[0]
+    let inactivePlace = parameter[1]
+    floatingTeam.splice(inactivePlace, 1, activeTeam[activePlace]);
+    activeTeam.splice(activePlace, 1, inactiveTeam[inactivePlace]);
+    inactiveTeam.splice(inactivePlace, 1, 7);
+    deadPokemon();
+    battleScreenUpdate();
+    deadTeamCheck()
+}
 function updateActiveTargets() {
     if (inactiveTeam[0] == 4) {
         inactiveTeam.splice(0, 1, floatingTeam[0]);
@@ -1054,23 +1081,12 @@ function targetSelector(type, pkmId) {
     document.getElementById('teamViewer').innerHTML = `
     <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
     <div class="moveOptions"></div>`
-    if (enemyVgcTeam[activeEnemy[1]].health > 1) {
+    if (enemyVgcTeam[activeEnemy[1]].health >= 1) {
         document.querySelector('.moveOptions').innerHTML += `<img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 1, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >`
     }
-    if (enemyVgcTeam[activeEnemy[0]].health > 1) {
+    if (enemyVgcTeam[activeEnemy[0]].health >= 1) {
         document.querySelector('.moveOptions').innerHTML += `<img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[0]].img}' >`
     }
- /*else {
-        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`
-        document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right" src="${enemyVgcTeam[activeEnemy[1]].img}">`
-    }
-    document.getElementById('teamViewer').innerHTML = `
-    <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
-    <div class="moveOptions">
-        <img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 1, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >
-        <img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${current})" class="pkmOpt" src="${enemyVgcTeam[activeEnemy[0]].img}" >
-    </div>
-    `*/
 }
 function damageCalc(parameter) {
     let moveId = parameter[0];
@@ -1082,7 +1098,7 @@ function damageCalc(parameter) {
     let attacker = pkm[atkId];
     let attackStat = 0;
     let defenseStat = 0;
-    if (vgcTeam[activeTeam[turn]].hitPoints > 0) {
+    if (vgcTeam[activeTeam[turn]].health > 0) {
         if (attacker.physicalAtk > attacker.specialAtk) {
             attackStat = attacker.physicalAtk;
             defenseStat = defender.physicalDef;
@@ -1101,6 +1117,37 @@ function damageCalc(parameter) {
         }
     }
 }
+function enemyDamageCalc(parameter) {
+    let moveId = parameter[0];
+    let activeId = parameter[1];
+    let atkId = parameter[2];
+    let turn = parameter[3];
+    let move = pkmMoves[moveId];
+    let defender = vgcTeam[activeTeam[activeId]];
+    let attacker = pkm[atkId];
+    let attackStat = 0;
+    let defenseStat = 0;
+    if (enemyVgcTeam[activeEnemy[turn]].health > 0) {
+        if (attacker.physicalAtk > attacker.specialAtk) {
+            attackStat = attacker.physicalAtk;
+            defenseStat = defender.physicalDef;
+        } else {
+            attackStat = attacker.specialAtk;
+            defenseStat = defender.specialDef;
+        };
+        let damage = 22 * attackStat * move.power / defenseStat;
+        damage = damage / 50;
+        damage += 2;
+        damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5);
+        defender.health -= damage;
+        gameBoyText += `${attacker.name} does ${damage} damage to ${defender.name}.<br>`
+        if (defender.health < 0) {
+            gameBoyText += `${defender.name} fainted.<br>`
+        }
+    } else {
+        gameBoyText += `${attacker.name} fainted and cant move.<br>`
+    }
+}
 function protect(arr) {
     if (arr == activeTeam[0]) {
         const list = document.getElementById('partner0').classList;
@@ -1115,7 +1162,7 @@ function protect(arr) {
 
 //Turn Functionality
 function deadPokemon() {
-    if (enemyVgcTeam[activeEnemy[0]].health < 1) {
+    if (enemyVgcTeam[activeEnemy[0]].health <= 0) {
         if (inactiveEnemy[0] != 7) {
             activeEnemy.splice(0, 1, inactiveEnemy[0])
             inactiveEnemy.splice(0, 1, 7)
@@ -1124,7 +1171,7 @@ function deadPokemon() {
             inactiveEnemy.splice(1, 1, 7)
         } 
     }
-    if (enemyVgcTeam[activeEnemy[1]].health < 1) {
+    if (enemyVgcTeam[activeEnemy[1]].health <= 0) {
         if (inactiveEnemy[0] != 7) {
             activeEnemy.splice(1, 1, inactiveEnemy[0])
             inactiveEnemy.splice(0, 1, 7)
@@ -1132,6 +1179,15 @@ function deadPokemon() {
             activeEnemy.splice(1, 1, inactiveEnemy[1])
             inactiveEnemy.splice(1, 1, 7)
         } 
+    }
+}
+function deadTeamCheck() {
+    if (vgcTeam[activeTeam[0]].health <= 0) {
+        deadSwitchOptions(0);
+    } else if (vgcTeam[activeTeam[1]].health <= 0) {
+        deadSwitchOptions(1);
+    } else {
+    turn2(0)
     }
 }
 function healthCheck() {
@@ -1145,6 +1201,16 @@ function healthCheck() {
             document.querySelector('#enemy1').style.visibility = 'hidden'
         }
     }
+    if (document.querySelector('#partner0') != null) {
+        if (vgcTeam[activeTeam[0]].health < 1) {
+            document.querySelector('#partner0').style.visibility = 'hidden'
+        }
+    }
+    if (document.querySelector('#partner1') != null) {
+        if (vgcTeam[activeTeam[1]].health < 1) {
+            document.querySelector('#partner1').style.visibility = 'hidden'
+        }
+    }
 }
 function winCon() {
     if (enemyVgcTeam[0].health < 1 && enemyVgcTeam[1].health < 1 && enemyVgcTeam[2].health < 1 && enemyVgcTeam[3].health < 1) {
@@ -1154,15 +1220,14 @@ function winCon() {
     }
 }
 function turn2(activeId) {
-    winCon()
     let pokemon = vgcTeam[activeTeam[activeId]];
     if (activeId == 0) {
         turnStorage = [];
         gameBoyText = ''
-        deadPokemon()
+        deadPokemon();
         updateActiveTargets();
         battleScreenUpdate();
-        if (pokemon.health > 1) {
+        if (pokemon.health >= 0) {
             turn2(1)
         }
     }
@@ -1174,20 +1239,16 @@ function turn2(activeId) {
         const list = document.getElementById('partner1').classList;
         list.add('bounce');
     }
-
-
-        document.querySelector('#turnBtn').style.visibility = 'hidden'
-        document.getElementById('teamViewer').innerHTML = `
-    <h3>What will ${pokemon.name} do?</h3>
-    <div class="moveOptions">
-        <div class="btn" onclick="targetSelector(${pokemon.movePool[0]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[0]].type} attack</div>
-        <div class="btn" onclick="targetSelector(${pokemon.movePool[1]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[1]].type} attack</div>
-        <div class="btn" onclick="addTurn(8, protect, activeTeam[${activeId}], ${activeId})">dodge</div>
-        <div class="btn" onclick="switchOptions(activeTeam[${activeId}])">switch</div>
-    </div>`
-        winCon();
- 
-
+    document.querySelector('#turnBtn').style.visibility = 'hidden'
+    document.getElementById('teamViewer').innerHTML = `
+        <h3>What will ${pokemon.name} do?</h3>
+        <div class="moveOptions">
+            <div class="btn" onclick="targetSelector(${pokemon.movePool[0]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[0]].type} attack</div>
+            <div class="btn" onclick="targetSelector(${pokemon.movePool[1]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[1]].type} attack</div>
+            <div class="btn" onclick="addTurn(8, protect, activeTeam[${activeId}], ${activeId})">dodge</div>
+            <div class="btn" onclick="switchOptions(activeTeam[${activeId}])">switch</div>
+        </div>`
+    winCon();
 }
 function addTurn(theFunction, parameter, priority, nextTurn) {
     turnStorage.push([theFunction, parameter, priority])
@@ -1212,9 +1273,8 @@ function endTurn(turn) {
         removeAnimation();
         runTurnOrder();
         document.getElementById('teamViewer').innerHTML = `<p style="color: white">${gameBoyText}</p> `;
-        document.querySelector('#turnBtn').style.visibility = 'visible'
-        document.querySelector('#turnBtn').innerHTML = 'next turn'
-
+        document.querySelector('#turnBtn').style.visibility = 'visible';
+        document.querySelector('#turnBtn').innerHTML = 'next turn';
     };
 }
 function removeAnimation() {
