@@ -7,6 +7,9 @@ body {
     margin: 0;
     position: relative;
 }
+p{
+    margin-bottom: 60px;
+}
 h3, p{
     text-align:center;
     color: white;
