@@ -1028,8 +1028,13 @@ function switchPkm(parameter) {
     battleScreenUpdate()
 }
 function deadSwitchOptions(theNowDeadPokemonsActiveSpot) {
+    if (inactiveTeam[1] == 7 && inactiveTeam[0] == 7) {
+        turn2(0)
+    }
+
     let place = theNowDeadPokemonsActiveSpot;
     let pkm = vgcTeam[activeTeam[theNowDeadPokemonsActiveSpot]]
+
     document.getElementById('teamViewer').innerHTML = `
             <h3>Who will ${pkm.name} switch with?</h3>`;
     if (inactiveTeam[0] != 7) {
@@ -1037,12 +1042,14 @@ function deadSwitchOptions(theNowDeadPokemonsActiveSpot) {
             <div class="moveOptions">
                 <img class="pkmOpt" onclick="switchDeadPkm([${place}, 0])" src="${vgcTeam[inactiveTeam[0]].img}" >
             </div> `
+        activeTeam.splice(place, 1, 7)
     }
     if (inactiveTeam[1] != 7) {
         document.getElementById('teamViewer').innerHTML += `
             <div class="moveOptions">
                 <img class="pkmOpt" onclick="switchDeadPkm([${place}, 1])" src="${vgcTeam[inactiveTeam[1]].img}" >
             </div> `
+        activeTeam.splice(place, 1, 7)
     }
 }
 function switchDeadPkm(parameter) {
@@ -1239,8 +1246,9 @@ function turn2(activeId) {
         const list = document.getElementById('partner1').classList;
         list.add('bounce');
     }
-    document.querySelector('#turnBtn').style.visibility = 'hidden'
-    document.getElementById('teamViewer').innerHTML = `
+    if (pokemon.health >= 1) {
+        document.querySelector('#turnBtn').style.visibility = 'hidden'
+        document.getElementById('teamViewer').innerHTML = `
         <h3>What will ${pokemon.name} do?</h3>
         <div class="moveOptions">
             <div class="btn" onclick="targetSelector(${pokemon.movePool[0]}, ${pokemon.id})">${pkmMoves[pokemon.movePool[0]].type} attack</div>
@@ -1248,6 +1256,10 @@ function turn2(activeId) {
             <div class="btn" onclick="addTurn(8, protect, activeTeam[${activeId}], ${activeId})">dodge</div>
             <div class="btn" onclick="switchOptions(activeTeam[${activeId}])">switch</div>
         </div>`
+    } else {
+        endTurn(1)
+    }
+    healthCheck();
     winCon();
 }
 function addTurn(theFunction, parameter, priority, nextTurn) {
@@ -1273,8 +1285,7 @@ function endTurn(turn) {
         removeAnimation();
         runTurnOrder();
         document.getElementById('teamViewer').innerHTML = `<p style="color: white">${gameBoyText}</p> `;
-        document.querySelector('#turnBtn').style.visibility = 'visible';
-        document.querySelector('#turnBtn').innerHTML = 'next turn';
+        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0;" onclick='deadTeamCheck()'>Next Turn</div> `;
     };
 }
 function removeAnimation() {
