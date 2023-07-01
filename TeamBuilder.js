@@ -689,6 +689,7 @@ menuButton.addEventListener("click", () => {
     }
 }
 );
+
 loadPokemon(); 
 
 // Figure out the weakness of your team
@@ -923,13 +924,13 @@ function gameTime() {
     document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
     document.querySelector('body').innerHTML += `
         <div class="btn" id='turnBtn' style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div>
-        <div class="btn" id='infoBtn' style="position: fixed; bottom: 0; right: 0;">Info</div>
+        <div class="btn" id='infoBtn' style="position: fixed; bottom: 0; right: 0;" onclick="info()" >Info</div>
     `;
     enemyVgc();
     document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
     <div class="partner" id="activePartner"></div>`;
-    document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0" src="${enemyVgcTeam[0].img}">`
+    document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy0"  src="${enemyVgcTeam[0].img}">`
     document.getElementById('activePartner').innerHTML += `<img class="left" id="partner0" src="${vgcTeam[0].img}">`
     document.getElementById('activeEnemy').innerHTML += `<img id="enemy1" class="right"  src="${enemyVgcTeam[1].img}">`
     document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" src="${vgcTeam[1].img}">`
@@ -953,21 +954,19 @@ function battleScreenUpdate() {
     <div class="partner" id="activePartner"></div>`;*/
     document.getElementById('activeEnemy').innerHTML =""
     if (activeEnemy[0] != 7) {
-        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0"  src="${enemyVgcTeam[activeEnemy[0]].img}">`;
+        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0" onclick ='enemyInformation(0)' src="${enemyVgcTeam[activeEnemy[0]].img}">`;
         healthCheck();
     }
     if (activeEnemy[1] != 7) {
-        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy1"  src="${enemyVgcTeam[activeEnemy[1]].img}">`
+        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy1" onclick ='enemyInformation(1)' src="${enemyVgcTeam[activeEnemy[1]].img}">`
         healthCheck();
     }
 
-
-
     if (activeTeam.length == 1) {
-        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" src="${vgcTeam[activeTeam[0]].img}">`
+        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" onclick ='teamInformation(0)' src="${vgcTeam[activeTeam[0]].img}">`
     } else {
-        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" src="${vgcTeam[activeTeam[0]].img}">`
-        document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" src="${vgcTeam[activeTeam[1]].img}">`
+        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" onclick ='teamInformation(0)' src="${vgcTeam[activeTeam[0]].img}">`
+        document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" onclick ='teamInformation(1)' src="${vgcTeam[activeTeam[1]].img}">`
     }
     healthCheck()
 }
@@ -1545,4 +1544,56 @@ function enemyLogic() {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 1])
         }
     }
+}
+
+function enemyInformation(target) {
+    let pokemon = enemyVgcTeam[activeEnemy[target]]
+    let Weakness = '| '
+    for (let i = 0; i < pokemon.weakness.length; i++) {
+        if (pokemon.weakness[i][0] >= 2) {
+            Weakness += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
+        }
+    }
+    let resistances = '| '
+    for (let i = 0; i < pokemon.weakness.length; i++) {
+        if (pokemon.weakness[i][0] <= .5) {
+            resistances += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
+        }
+    }
+    let speed = pokemon.speed - 5000
+    let message = `
+    Name: ${pokemon.name}
+    Current Health: ${pokemon.enemyHealth}
+    Weakness: ${Weakness}
+    Resistances: ${resistances}
+    Speed: ${speed}
+    `
+    alert(message)
+}
+function teamInformation(target) {
+    let pokemon = vgcTeam[activeTeam[target]]
+    let Weakness = '| '
+    for (let i = 0; i < pokemon.weakness.length; i++) {
+        if (pokemon.weakness[i][0] >= 2) {
+            Weakness += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
+        }
+    }
+    let resistances = '| '
+    for (let i = 0; i < pokemon.weakness.length; i++) {
+        if (pokemon.weakness[i][0] <= .5) {
+            resistances += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
+        }
+    }
+    let speed = pokemon.speed - 5000
+    let message = `
+    Name: ${pokemon.name}
+    Current Health: ${pokemon.health}
+    Weakness: ${Weakness}
+    Resistances: ${resistances}
+    Speed: ${speed}
+    `
+    alert(message)
+}
+function info() {
+    alert('Click on any of the pokemon on screen to learn more about them')
 }
