@@ -40,6 +40,7 @@ let navMenu = document.getElementById("navButtons");
 let menuButton = document.getElementById("menuButton");
 let gameBoyText = '';
 let pleaseKeepTrackOfSwitch = 3
+let pleaseKeepTrackOfEnemySwitch = 3
 const pkm = [
     {
     id: 0,
@@ -970,6 +971,57 @@ function battleScreenUpdate() {
     }
     healthCheck()
 }
+function enemyInformation(target) {
+    let pokemon = enemyVgcTeam[activeEnemy[target]]
+    let Weakness = '| '
+    for (let i = 0; i < pokemon.weakness.length; i++) {
+        if (pokemon.weakness[i][0] >= 2) {
+            Weakness += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
+        }
+    }
+    let resistances = '| '
+    for (let i = 0; i < pokemon.weakness.length; i++) {
+        if (pokemon.weakness[i][0] <= .5) {
+            resistances += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
+        }
+    }
+    let speed = pokemon.speed - 5000
+    let message = `
+    Name: ${pokemon.name}
+    Current Health: ${pokemon.enemyHealth}
+    Weakness: ${Weakness}
+    Resistances: ${resistances}
+    Speed: ${speed}
+    `
+    alert(message)
+}
+function teamInformation(target) {
+    let pokemon = vgcTeam[activeTeam[target]]
+    let Weakness = '| '
+    for (let i = 0; i < pokemon.weakness.length; i++) {
+        if (pokemon.weakness[i][0] >= 2) {
+            Weakness += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
+        }
+    }
+    let resistances = '| '
+    for (let i = 0; i < pokemon.weakness.length; i++) {
+        if (pokemon.weakness[i][0] <= .5) {
+            resistances += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
+        }
+    }
+    let speed = pokemon.speed - 5000
+    let message = `
+    Name: ${pokemon.name}
+    Current Health: ${pokemon.health}
+    Weakness: ${Weakness}
+    Resistances: ${resistances}
+    Speed: ${speed}
+    `
+    alert(message)
+}
+function info() {
+    alert('Click on any of the pokemon on screen to learn more about them')
+}
 
 // Switch Functions
 function switchOptions(arr) {
@@ -1031,6 +1083,21 @@ function switchPkm(parameter) {
     floatingTeam.splice(inactivePlace, 1, activeTeam[activePlace]);
     activeTeam.splice(activePlace, 1, inactiveTeam[inactivePlace]);
     inactiveTeam.splice(inactivePlace, 1, 4);
+    battleScreenUpdate()
+}
+function switchEnemyPkm(parameter) {
+    let activePlace = parameter[0]
+    let inactivePlace = parameter[1]
+    let turn = parameter[2]
+    pleaseKeepTrackOfEnemySwitch = 4
+    if (turn === 1) {
+        gameBoyText += `${enemyVgcTeam[activeEnemy[activePlace]].name} switched with ${enemyVgcTeam[inactiveEnemy[inactivePlace]].name}.<br>`
+    } else {
+        gameBoyText += `${enemyVgcTeam[activeEnemy[activePlace]].name} switched with ${enemyVgcTeam[inactiveEnemy[inactivePlace]].name}.<br>`
+    }
+    floatingEnemy.splice(inactivePlace, 1, activeEnemy[activePlace]);
+    activeEnemy.splice(activePlace, 1, inactiveEnemy[inactivePlace]);
+    inactiveEnemy.splice(inactivePlace, 1, 4);
     battleScreenUpdate()
 }
 function deadSwitchOptions(theNowDeadPokemonsActiveSpot) {
@@ -1432,69 +1499,145 @@ function order68() {
 
 //Enemy Logic
 function enemyLogic() {
-    if (vgcTeam[activeTeam[0]].health >= 1) {
-        activeTarget0 = vgcTeam[activeTeam[0]]
-    } 
-    if (vgcTeam[activeTeam[1]].health >=1) {
-        activeTarget1 = vgcTeam[activeTeam[1]]
+    //Active Pokemon
+    let activeTeam0 = vgcTeam[activeTeam[0]]
+    let activeTeam1 = vgcTeam[activeTeam[1]]
+    let enemyPkm0 = enemyVgcTeam[activeEnemy[0]]
+    let enemyPkm1 = enemyVgcTeam[activeEnemy[1]]
+    //All Enemy Moves
+    let enemy0Move0 = enemyVgcTeam[activeEnemy[0]].movePool[0]
+    let enemy0Move1 = enemyVgcTeam[activeEnemy[0]].movePool[1]
+    let enemy1Move0 = enemyVgcTeam[activeEnemy[1]].movePool[0]
+    let enemy1Move1 = enemyVgcTeam[activeEnemy[1]].movePool[1]
+    //All Team Moves
+    let team0Move0 = vgcTeam[activeTeam[0]].movePool[0]
+    let team0Move1 = vgcTeam[activeTeam[0]].movePool[1]
+    let team1Move0 = vgcTeam[activeTeam[1]].movePool[0]
+    let team1Move1 = vgcTeam[activeTeam[1]].movePool[1]
+
+    if (enemyPkm1.weakness[team0Move0][0] >=4 && !enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        protect1attackFrom0()
+    } else
+    if (enemyPkm1.weakness[team0Move1][0] >=4 && !enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        protect1attackFrom0()
+    } else
+    if (enemyPkm1.weakness[team1Move0][0] >= 4 && !enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        protect1attackFrom0()
+    } else
+    if (enemyPkm1.weakness[team1Move1][0] >= 4 && !enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        protect1attackFrom0()
+    } else
+
+    if (enemyPkm0.weakness[team0Move0][0] >= 4 && !enemyPkm0.wasEnemyProtectUsedLastTurn) {
+        protect0attackFrom1()
+    } else
+    if (enemyPkm0.weakness[team0Move1][0] >= 4 && !enemyPkm0.wasEnemyProtectUsedLastTurn) {
+        protect0attackFrom1()
+    } else
+    if (enemyPkm0.weakness[team1Move0][0] >= 4 && !enemyPkm0.wasEnemyProtectUsedLastTurn) {
+        protect0attackFrom1()
+    } else
+    if (enemyPkm0.weakness[team1Move1][0] >= 4 && !enemyPkm0.wasEnemyProtectUsedLastTurn) {
+        protect0attackFrom1()
+    } else
+
+
+    if (enemyPkm1.weakness[team0Move0][0] >= 2 && !enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        protect1attackFrom0()
     }
+    else {
+        strongAttackFrom0();
+        strongAttackFrom1();
+    }
+
+}
+function enemyAiDamageCalc(moveId, defenderID, attkerId) {
+    let move = pkmMoves[moveId];
+    let defender = pkm[defenderID];
+    let attacker = pkm[attkerId];
+    let attackStat = 0;
+    let defenseStat = 0;
+    if (attacker.physicalAtk > attacker.specialAtk) {
+        attackStat = attacker.physicalAtk;
+        defenseStat = defender.physicalDef;
+    } else {
+        attackStat = attacker.specialAtk;
+        defenseStat = defender.specialDef;
+    };
+    let damage = 22 * attackStat * move.power / defenseStat;
+    damage = damage / 50;
+    damage += 2;
+    damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5);
+    return damage
+}
+function strongAttackFrom0() {
+
+    let activeTarget0 = vgcTeam[activeTeam[0]]
+    let activeTarget1 = vgcTeam[activeTeam[1]]
+
     if (enemyVgcTeam[activeEnemy[0]].enemyHealth >= 1) {
         let enemyPkm = enemyVgcTeam[activeEnemy[0]]
         let Move0 = enemyVgcTeam[activeEnemy[0]].movePool[0]
         let Move1 = enemyVgcTeam[activeEnemy[0]].movePool[1]
         // 4x damage checker 0 move
-        if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= 4) { 
-        addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 0])
+        if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= 4) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 0])
         } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move0][0] >= 4) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 0])
         }
-                // 4x damage checker 1 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move1][0] >= 4) {
+        // 4x damage checker 1 move
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move1][0] >= 4) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move1][0] >= 4) {
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move1][0] >= 4) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 0])
         }
-                // 2x damage checker 0 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move0][0] >= 2) {
+        // 2x damage checker 0 move
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= 2) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move0][0] >= 2) {
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move0][0] >= 2) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 0])
         }
-                // 2x damage checker 1 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move1][0] >= 2) {
+        // 2x damage checker 1 move
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move1][0] >= 2) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move1][0] >= 2) {
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move1][0] >= 2) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 0])
         }
         // 1x damage checker 0 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move0][0] >= 1) {
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= 1) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move0][0] >= 1) {
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move0][0] >= 1) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 0])
         }
         // 1x damage checker 1 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move1][0] >= 1) {
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move1][0] >= 1) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move1][0] >= 1) {
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move1][0] >= 1) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 0])
         }
         // .5x damage checker 0 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move0][0] >= .5) {
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= .5) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move0][0] >= .5) {
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move0][0] >= .5) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 0])
         }
         // .5x damage checker 1 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move1][0] >= .5) {
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move1][0] >= .5) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move1][0] >= .5) {
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move1][0] >= .5) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 0])
         }
     }
-    if (enemyVgcTeam[activeEnemy[1]].enemyHealth >=1) {
+}
+function strongAttackFrom1() {
+
+    let activeTarget0 = vgcTeam[activeTeam[0]]
+    let activeTarget1 = vgcTeam[activeTeam[1]]
+
+    if (enemyVgcTeam[activeEnemy[1]].enemyHealth >= 1) {
         let enemyPkm = enemyVgcTeam[activeEnemy[1]]
         let Move0 = enemyVgcTeam[activeEnemy[1]].movePool[0]
-        let  Move1 = enemyVgcTeam[activeEnemy[1]].movePool[1]
+        let Move1 = enemyVgcTeam[activeEnemy[1]].movePool[1]
         // 4x damage checker 0 move
         if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= 4) {
             addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 1])
@@ -1545,55 +1688,15 @@ function enemyLogic() {
         }
     }
 }
-
-function enemyInformation(target) {
-    let pokemon = enemyVgcTeam[activeEnemy[target]]
-    let Weakness = '| '
-    for (let i = 0; i < pokemon.weakness.length; i++) {
-        if (pokemon.weakness[i][0] >= 2) {
-            Weakness += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
-        }
+function protect0attackFrom1() {
+    if (enemyVgcTeam[activeEnemy[0]].enemyHealth >= 1) {
+        addTurn(8, enemyProtect, activeEnemy[0]);
     }
-    let resistances = '| '
-    for (let i = 0; i < pokemon.weakness.length; i++) {
-        if (pokemon.weakness[i][0] <= .5) {
-            resistances += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
-        }
-    }
-    let speed = pokemon.speed - 5000
-    let message = `
-    Name: ${pokemon.name}
-    Current Health: ${pokemon.enemyHealth}
-    Weakness: ${Weakness}
-    Resistances: ${resistances}
-    Speed: ${speed}
-    `
-    alert(message)
+    strongAttackFrom1();
 }
-function teamInformation(target) {
-    let pokemon = vgcTeam[activeTeam[target]]
-    let Weakness = '| '
-    for (let i = 0; i < pokemon.weakness.length; i++) {
-        if (pokemon.weakness[i][0] >= 2) {
-            Weakness += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
-        }
+function protect1attackFrom0() {
+    if (enemyVgcTeam[activeEnemy[1]].enemyHealth >= 1) {
+        addTurn(8, enemyProtect, activeEnemy[1]);
     }
-    let resistances = '| '
-    for (let i = 0; i < pokemon.weakness.length; i++) {
-        if (pokemon.weakness[i][0] <= .5) {
-            resistances += `${pokemon.weakness[i][1].toUpperCase()} x ${pokemon.weakness[i][0]} | `
-        }
-    }
-    let speed = pokemon.speed - 5000
-    let message = `
-    Name: ${pokemon.name}
-    Current Health: ${pokemon.health}
-    Weakness: ${Weakness}
-    Resistances: ${resistances}
-    Speed: ${speed}
-    `
-    alert(message)
-}
-function info() {
-    alert('Click on any of the pokemon on screen to learn more about them')
+    strongAttackFrom0();
 }
