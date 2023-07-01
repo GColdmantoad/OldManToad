@@ -40,7 +40,8 @@ let navMenu = document.getElementById("navButtons");
 let menuButton = document.getElementById("menuButton");
 let gameBoyText = '';
 let pleaseKeepTrackOfSwitch = 3
-const pkm = [{
+const pkm = [
+    {
     id: 0,
     name: "kilowattrel",
     type1: "electric",
@@ -51,7 +52,7 @@ const pkm = [{
     physicalDef: 60,
     specialAtk: 105,
     specialDef: 60,
-    speed: 8125,
+    speed: 5125,
     movePool: [4, 9],
     special: true,
     weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [.5, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
@@ -920,7 +921,10 @@ function enemyVgc() {
 }
 function gameTime() {
     document.querySelector('body').innerHTML = `<div class="batttleGround" id="enemyTeamViewer"></div>    <div class="moveOptions" id="teamViewer"></div>`;
-    document.querySelector('body').innerHTML += `<div class="btn" id='turnBtn' style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div>`;
+    document.querySelector('body').innerHTML += `
+        <div class="btn" id='turnBtn' style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div>
+        <div class="btn" id='infoBtn' style="position: fixed; bottom: 0; right: 0;">Info</div>
+    `;
     enemyVgc();
     document.getElementById('enemyTeamViewer').innerHTML = `
     <div class="enemy" id="activeEnemy"></div>
@@ -933,6 +937,7 @@ function gameTime() {
     health();
     addProtectToTeams();
     turn2(0);
+    gameBoyText = '';
 }
 function startingActiveTargets() {
     activeEnemy = [0, 1];
@@ -964,7 +969,7 @@ function battleScreenUpdate() {
         document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" src="${vgcTeam[activeTeam[0]].img}">`
         document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" src="${vgcTeam[activeTeam[1]].img}">`
     }
-
+    healthCheck()
 }
 
 // Switch Functions
@@ -1003,6 +1008,7 @@ function switchOptions(arr) {
         </div>
         `
         }
+        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0; left: 0;" onclick='turn2(${place})'>back</div> `;
     }
 }
 function preSwitch(activePlace, inactivePlace, turn) {
@@ -1030,7 +1036,7 @@ function switchPkm(parameter) {
 }
 function deadSwitchOptions(theNowDeadPokemonsActiveSpot) {
     updateActiveTargets();
-    if (inactiveTeam[1] == 7 && inactiveTeam[0] == 7) {
+    if (inactiveTeam[1] == 7 && inactiveTeam[0] == 7 && vgcTeam[activeTeam[0]].health >= 1) {
         turn2(0)
     }
     let place = theNowDeadPokemonsActiveSpot;
@@ -1095,6 +1101,8 @@ function targetSelector(type, pkmId) {
     if (enemyVgcTeam[activeEnemy[0]].enemyHealth >= 1) {
         document.querySelector('.moveOptions').innerHTML += `<img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[0]].img}' >`
     }
+    document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0; left: 0;" onclick='turn2(${current})'>back</div> `;
+
 }
 function damageCalc(parameter) {
     let moveId = parameter[0];
@@ -1106,6 +1114,12 @@ function damageCalc(parameter) {
     let attacker = pkm[atkId];
     let attackStat = 0;
     let defenseStat = 0;
+    if (defender.enemyHealth <= 0 && activeEnemyId == 0) {
+        defender = enemyVgcTeam[activeEnemy[1]]
+    }
+    if (defender.enemyHealth <= 0 && activeEnemyId == 1) {
+        defender = enemyVgcTeam[activeEnemy[0]]
+    }
     if (vgcTeam[activeTeam[turn]].health > 0) {
         if (attacker.physicalAtk > attacker.specialAtk) {
             attackStat = attacker.physicalAtk;
@@ -1143,6 +1157,12 @@ function enemyDamageCalc(parameter) {
     let attacker = pkm[atkId];
     let attackStat = 0;
     let defenseStat = 0;
+    if (defender.health <= 0 && activeId == 0) {
+        defender = vgcTeam[activeTeam[1]]
+    }
+    if (defender.health <= 0 && activeId == 1) {
+        defender = vgcTeam[activeTeam[0]]
+    }
     if (enemyVgcTeam[activeEnemy[turn]].enemyHealth > 0) {
         if (attacker.physicalAtk > attacker.specialAtk) {
             attackStat = attacker.physicalAtk;
@@ -1306,12 +1326,15 @@ function winCon() {
     if (enemyVgcTeam[0].enemyHealth <= 0 && enemyVgcTeam[1].enemyHealth <= 0 && enemyVgcTeam[2].enemyHealth <= 0 && enemyVgcTeam[3].enemyHealth <= 0) {
         removeAnimation();
         document.getElementById('teamViewer').innerHTML = `<div style="color: white">You win!</div> `;
-        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0;" onclick='battleTeam()'>another game?</div> `;
+        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0; left: 0;" onclick='battleTeam()'>another game?</div> `;
+        turnStorage = []
     } else if (vgcTeam[0].health <= 0 && vgcTeam[1].health <= 0 && vgcTeam[2].health <= 0 && vgcTeam[3].health <= 0) {
         removeAnimation();
         document.getElementById('teamViewer').innerHTML = `<div style="color: white">You lose!</div> `;
-        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0;" onclick='battleTeam()'>another game?</div> `;
-
+        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0; left: 0;" onclick='battleTeam()'>another game?</div> `;
+        turnStorage = []
+    } else {
+        protectCheck()
     }
 }
 function turn2(activeId) {
@@ -1321,7 +1344,7 @@ function turn2(activeId) {
         deadPokemon();
         updateActiveTargets();
         battleScreenUpdate();
-        if (pokemon.health >= 0) {
+        if (pokemon.health <= 0) {
             turn2(1)
         }
     }
@@ -1339,7 +1362,7 @@ function turn2(activeId) {
         const list = document.getElementById('partner1').classList;
         list.add('bounce');
     }
-    if (pokemon.health >= 1) {
+    if (pokemon.health >= 0) {
         document.querySelector('#turnBtn').style.visibility = 'hidden'
         document.getElementById('teamViewer').innerHTML = `
         <h3>What will ${pokemon.name} do?</h3>
@@ -1353,10 +1376,9 @@ function turn2(activeId) {
         endTurn(1)
     }
     healthCheck();
-    winCon();
 }
-function addTurn(theFunction, parameter, priority, nextTurn) {
-    turnStorage.push([theFunction, parameter, priority])
+function addTurn(priority, theFunction, parameter, nextTurn) {
+    turnStorage.push([priority, theFunction, parameter, ])
     if (nextTurn == 0) {
         turn2(1)
     } else if (nextTurn == 1){
@@ -1364,12 +1386,14 @@ function addTurn(theFunction, parameter, priority, nextTurn) {
     }
 }
 function runTurnOrder() {
+    gameBoyText = ''
     enemyLogic();
     turnStorage = turnStorage.sort();
     turnStorage = turnStorage.reverse();
     for (let i = 0; i < turnStorage.length; i++) {
         turnStorage[i][1](turnStorage[i][2])
     }
+    healthCheck();
 }
 function endTurn(turn) {
     if (turn == 0) {
@@ -1379,7 +1403,7 @@ function endTurn(turn) {
         removeAnimation();
         runTurnOrder();
         document.getElementById('teamViewer').innerHTML = `<p style="color: white">${gameBoyText}</p> `;
-        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0;" onclick='protectCheck()'>Next Turn</div> `;
+        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0; left: 0;" onclick='winCon()'>Next Turn</div> `;
     };
 }
 function removeAnimation() {
@@ -1409,122 +1433,116 @@ function order68() {
 
 //Enemy Logic
 function enemyLogic() {
-    let activeTarget0 = 7
-    let activeTarget1 = 7
-    let activeEnemy0Move0 
-    let activeEnemy0Move1
-    let activeEnemy1Move0 
-    let activeEnemy1Move1
-    if (vgcTeam[activeTeam[0]] != 7) {
+    if (vgcTeam[activeTeam[0]].health >= 1) {
         activeTarget0 = vgcTeam[activeTeam[0]]
     } 
-    if (vgcTeam[activeTeam[1]] != 7) {
+    if (vgcTeam[activeTeam[1]].health >=1) {
         activeTarget1 = vgcTeam[activeTeam[1]]
     }
     if (enemyVgcTeam[activeEnemy[0]].enemyHealth >= 1) {
         let enemyPkm = enemyVgcTeam[activeEnemy[0]]
-        activeEnemy0Move0 = enemyVgcTeam[activeEnemy[0]].movePool[0]
-        activeEnemy0Move1 = enemyVgcTeam[activeEnemy[0]].movePool[1]
+        let Move0 = enemyVgcTeam[activeEnemy[0]].movePool[0]
+        let Move1 = enemyVgcTeam[activeEnemy[0]].movePool[1]
         // 4x damage checker 0 move
-        if (activeTarget0.health >= 1  && activeTarget0.weakness[activeEnemy0Move0][0] >= 4) { 
-        addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move0, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[activeEnemy0Move0][0] >= 4) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move0, 1, enemyPkm.id, 0])
+        if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= 4) { 
+        addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 0])
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move0][0] >= 4) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 0])
         }
                 // 4x damage checker 1 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[activeEnemy0Move1][0] >= 4) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move1, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[activeEnemy0Move1][0] >= 4) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move1, 1, enemyPkm.id, 0])
+        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move1][0] >= 4) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 0])
+        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move1][0] >= 4) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 0])
         }
                 // 2x damage checker 0 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[activeEnemy0Move0][0] >= 2) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move0, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[activeEnemy0Move0][0] >= 2) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move0, 1, enemyPkm.id, 0])
+        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move0][0] >= 2) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 0])
+        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move0][0] >= 2) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 0])
         }
                 // 2x damage checker 1 move
-        else if (activeTarget1.health >= 1  && activeTarget0.weakness[activeEnemy0Move1][0] >= 2) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move1, 1, enemyPkm.id, 0])
-        } else if (activeTarget0.health >= 1  && activeTarget1.weakness[activeEnemy0Move1][0] >= 2) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move1, 0, enemyPkm.id, 0])
+        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move1][0] >= 2) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 0])
+        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move1][0] >= 2) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 0])
         }
         // 1x damage checker 0 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[activeEnemy0Move0][0] >= 1) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move0, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[activeEnemy0Move0][0] >= 1) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move0, 1, enemyPkm.id, 0])
+        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move0][0] >= 1) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 0])
+        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move0][0] >= 1) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 0])
         }
         // 1x damage checker 1 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[activeEnemy0Move1][0] >= 1) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move1, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[activeEnemy0Move1][0] >= 1) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move1, 1, enemyPkm.id, 0])
+        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move1][0] >= 1) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 0])
+        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move1][0] >= 1) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 0])
         }
         // .5x damage checker 0 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[activeEnemy0Move0][0] >= .5) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move0, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[activeEnemy0Move0][0] >= .5) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move0, 1, enemyPkm.id, 0])
+        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move0][0] >= .5) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 0])
+        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move0][0] >= .5) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 0])
         }
         // .5x damage checker 1 move
-        else if (activeTarget0.health >= 1  && activeTarget0.weakness[activeEnemy0Move1][0] >= .5) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move1, 0, enemyPkm.id, 0])
-        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[activeEnemy0Move1][0] >= .5) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy0Move1, 1, enemyPkm.id, 0])
+        else if (activeTarget0.health >= 1  && activeTarget0.weakness[Move1][0] >= .5) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 0])
+        } else if (activeTarget1.health >= 1  && activeTarget1.weakness[Move1][0] >= .5) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 0])
         }
     }
     if (enemyVgcTeam[activeEnemy[1]].enemyHealth >=1) {
         let enemyPkm = enemyVgcTeam[activeEnemy[1]]
-        activeEnemy1Move0 = enemyVgcTeam[activeEnemy[1]].movePool[0]
-        activeEnemy1Move1 = enemyVgcTeam[activeEnemy[1]].movePool[1]
+        let Move0 = enemyVgcTeam[activeEnemy[1]].movePool[0]
+        let  Move1 = enemyVgcTeam[activeEnemy[1]].movePool[1]
         // 4x damage checker 0 move
-        if (activeTarget1.health >= 1 && activeTarget0.weakness[activeEnemy1Move0][0] >= 4) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move0, 1, enemyPkm.id, 1])
-        } else if (activeTarget0.health >= 1 && activeTarget1.weakness[activeEnemy1Move0][0] >= 4) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move0, 0, enemyPkm.id, 1])
+        if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= 4) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 1])
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move0][0] >= 4) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 1])
         }
         // 4x damage checker 1 move
-        else if (activeTarget0.health >= 1 && activeTarget0.weakness[activeEnemy1Move1][0] >= 4) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move1, 0, enemyPkm.id, 1])
-        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[activeEnemy1Move1][0] >= 4) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move1, 1, enemyPkm.id, 1])
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move1][0] >= 4) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 1])
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move1][0] >= 4) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 1])
         }
         // 2x damage checker 0 move
-        else if (activeTarget0.health >= 1 && activeTarget0.weakness[activeEnemy1Move0][0] >= 2) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move0, 0, enemyPkm.id, 1])
-        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[activeEnemy1Move0][0] >= 2) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move0, 1, enemyPkm.id, 1])
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= 2) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 1])
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move0][0] >= 2) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 1])
         }
         // 2x damage checker 1 move
-        else if (activeTarget1.health >= 1 && activeTarget0.weakness[activeEnemy1Move1][0] >= 2) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move1, 1, enemyPkm.id, 1])
-        } else if (activeTarget0.health >= 1 && activeTarget1.weakness[activeEnemy1Move1][0] >= 2) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move1, 0, enemyPkm.id, 1])
+        else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move1][0] >= 2) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 1])
+        } else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move1][0] >= 2) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 1])
         }
         // 1x damage checker 0 move
-        else if (activeTarget0.health >= 1 && activeTarget0.weakness[activeEnemy1Move0][0] >= 1) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move0, 0, enemyPkm.id, 1])
-        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[activeEnemy1Move0][0] >= 1) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move0, 1, enemyPkm.id, 1])
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= 1) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 1])
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move0][0] >= 1) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 1])
         }
         // 1x damage checker 1 move
-        else if (activeTarget0.health >= 1 && activeTarget0.weakness[activeEnemy1Move1][0] >= 1) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move1, 0, enemyPkm.id, 1])
-        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[activeEnemy1Move1][0] >= 1) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move1, 1, enemyPkm.id, 1])
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move1][0] >= 1) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 1])
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move1][0] >= 1) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 1])
         }
         // .5x damage checker 0 move
-        else if (activeTarget0.health >= 1 && activeTarget0.weakness[activeEnemy1Move0][0] >= .5) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move0, 0, enemyPkm.id, 1])
-        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[activeEnemy1Move0][0] >= .5) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move0, 1, enemyPkm.id, 1])
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move0][0] >= .5) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 0, enemyPkm.id, 1])
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move0][0] >= .5) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, 1, enemyPkm.id, 1])
         }
         // .5x damage checker 1 move
-        else if (activeTarget0.health >= 1 && activeTarget0.weakness[activeEnemy1Move1][0] >= .5) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move1, 0, enemyPkm.id, 1])
-        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[activeEnemy1Move1][0] >= .5) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [activeEnemy1Move1, 1, enemyPkm.id, 1])
+        else if (activeTarget0.health >= 1 && activeTarget0.weakness[Move1][0] >= .5) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 0, enemyPkm.id, 1])
+        } else if (activeTarget1.health >= 1 && activeTarget1.weakness[Move1][0] >= .5) {
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, 1, enemyPkm.id, 1])
         }
     }
 }
