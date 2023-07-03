@@ -1034,32 +1034,39 @@ function switchOptions(arr) {
     } else {
         place = 0
     }
+
     if (inactiveTeam[0] > 3 && inactiveTeam[1] > 3) {
+        alert('you dont have anymore pokemon')
+    } else
+    if (pleaseKeepTrackOfSwitch == 0 && inactiveTeam[1] == 7) {
+        alert('you dont have anymore pokemon')
+    } else
+    if (pleaseKeepTrackOfSwitch == 1 && inactiveTeam[0] == 7) {
         alert('you dont have anymore pokemon')
     } else {
         document.getElementById('teamViewer').innerHTML = `
             <h3>Who will ${pkm.name} switch with?</h3>`
+        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0; left: 0;" onclick='turn2(${place})'>back</div> `;
         if (inactiveTeam[0] > 3 || pleaseKeepTrackOfSwitch == 0) {
             document.getElementById('teamViewer').innerHTML += `
             <div class="moveOptions">
                 <img class="pkmOpt" onclick="preSwitch(${place}, 1, ${place})" src="${vgcTeam[inactiveTeam[1]].img}" >
             </div>
             `
-        } else if (inactiveTeam[1] > 3 || pleaseKeepTrackOfSwitch == 1) {
+        } else
+        if (inactiveTeam[1] > 3 || pleaseKeepTrackOfSwitch == 1) {
             document.getElementById('teamViewer').innerHTML += `
-            <div class="moveOptions">
-                <img class="pkmOpt" onclick="preSwitch(${place}, 0, ${place})" src="${vgcTeam[inactiveTeam[0]].img}" >
-            </div>
-            `
+                <div class="moveOptions">
+                    <img class="pkmOpt" onclick="preSwitch(${place}, 0, ${place})" src="${vgcTeam[inactiveTeam[0]].img}" >
+                </div>`
         } else {
             document.getElementById('teamViewer').innerHTML += `
-        <div class="moveOptions">
-            <img class="pkmOpt"  onclick = "preSwitch(${place}, 0, ${place})" src = "${inactivePkm0.img}" >
-            <img class="pkmOpt" onclick="preSwitch(${place}, 1, ${place})" src="${inactivePkm1.img}" >
-        </div>
-        `
+                <div class="moveOptions">
+                    <img class="pkmOpt"  onclick = "preSwitch(${place}, 0, ${place})" src = "${inactivePkm0.img}" >
+                    <img class="pkmOpt" onclick="preSwitch(${place}, 1, ${place})" src="${inactivePkm1.img}" >
+                </div>`
         }
-        document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0; left: 0;" onclick='turn2(${place})'>back</div> `;
+        
     }
 }
 function preSwitch(activePlace, inactivePlace, turn) {
@@ -1515,9 +1522,39 @@ function enemyLogic() {
     let team1Move0 = vgcTeam[activeTeam[1]].movePool[0]
     let team1Move1 = vgcTeam[activeTeam[1]].movePool[1]
 
+    if (enemyPkm0.speed >= activeTeam0.speed && strongestAttackCalc(0, 0) >= activeTeam0.health && enemyPkm1.speed >= activeTeam1.speed && strongestAttackCalc(1, 1) >= activeTeam1.health) {
+        targetedStrongestAttack(0, 0)
+        targetedStrongestAttack(1, 1)
+    } else
+    if (enemyPkm0.speed >= activeTeam1.speed && strongestAttackCalc(0, 1) >= activeTeam1.health && enemyPkm1.speed >= activeTeam0.speed && strongestAttackCalc(1, 0) >= activeTeam0.health) {
+        targetedStrongestAttack(0, 1)
+        targetedStrongestAttack(1, 0)
+    } else
+    if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm0.speed >= enemyPkm1.speed && strongestAttackCalc(0, 0) >= activeTeam0.health) {
+        targetedStrongestAttack(0, 0)
+        targetedStrongestAttack(1, 1)
+    } else
+    if (enemyPkm0.speed >= activeTeam1.speed && enemyPkm0.speed >= enemyPkm1.speed && strongestAttackCalc(0, 1) >= activeTeam1.health) {
+        targetedStrongestAttack(0, 1)
+        targetedStrongestAttack(1, 0)
+    } else
+    if (enemyPkm1.speed >= activeTeam0.speed && enemyPkm0.speed <= enemyPkm1.speed && strongestAttackCalc(1, 0) >= activeTeam0.health) {
+          
+        targetedStrongestAttack(0, 1)
+        targetedStrongestAttack(1, 0)
+    } else
+    if (enemyPkm1.speed >= activeTeam1.speed && enemyPkm0.speed <= enemyPkm1.speed && strongestAttackCalc(1, 1) >= activeTeam1.health) {
+        targetedStrongestAttack(0, 0)
+        targetedStrongestAttack(1, 1)
+    } else
+
     if (enemyPkm1.weakness[team0Move0][0] >= 4 || enemyPkm1.weakness[team0Move1][0] >= 4) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(0)
+        } else
+        if (enemyPkm0.speed >= activeTeam0.speed && strongestAttackCalc(0,0) >= activeTeam0.health) {
+            targetedStrongestAttack(0, 0)
+            targetedStrongestAttack(1, 1)
         } else
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(0)
@@ -1525,9 +1562,14 @@ function enemyLogic() {
             enemyFocus(0)
         }
     } else
+
     if (enemyPkm1.weakness[team1Move0][0] >= 4 || enemyPkm1.weakness[team1Move1][0] >= 4) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(1)
+        } else
+        if (enemyPkm0.speed >= activeTeam1.speed && strongestAttackCalc(0, 1) >= activeTeam1.health) {
+            targetedStrongestAttack(0, 1)
+            targetedStrongestAttack(1, 0)
         } else
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(1)
@@ -1541,7 +1583,11 @@ function enemyLogic() {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(0)
         } else
-        if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        if (enemyPkm1.speed >= activeTeam0.speed && strongestAttackCalc(1, 0) >= activeTeam0.health) {
+            targetedStrongestAttack(0, 1)
+            targetedStrongestAttack(1, 0)
+        } else
+        if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(0)
         } else {
             enemyFocus(0)
@@ -1551,15 +1597,32 @@ function enemyLogic() {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(1)
         } else
-        if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        if (enemyPkm1.speed >= activeTeam1.speed && strongestAttackCalc(1, 1) >= activeTeam1.health) {
+            targetedStrongestAttack(0, 0)
+            targetedStrongestAttack(1, 1)
+        } else
+        if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(1)
         } else {
             enemyFocus(1)
         }
     } else
 
+    if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
+        enemyFocus(0)
+    } else
+    if (enemyPkm0.speed >= activeTeam1.speed && enemyPkm1.speed >= activeTeam1.speed && bestCombinedAttacks(1) >= activeTeam1.health && activeTeam1.health >= 1) {
+        enemyFocus(1)
+    } else
 
     if (enemyPkm1.weakness[team0Move0][0] >= 2 || enemyPkm1.weakness[team0Move1][0] >= 2) {
+        if (enemyPkm1.weakness[team1Move0][0] >= 2 || enemyPkm1.weakness[team1Move1][0] >= 2) {
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
+                protectAttack(1,0)
+            } else {
+                enemyFocus(0)
+            }
+        } else
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(0)
         } else
@@ -1585,7 +1648,7 @@ function enemyLogic() {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(0)
         } else
-        if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(0)
         } else {
             enemyFocus(0)
@@ -1595,21 +1658,13 @@ function enemyLogic() {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(1)
         } else
-        if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(1)
         } else {
             enemyFocus(1)
         }
     } else
-
-    if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1){
-    enemyFocus(0)
-    } else
-    if (enemyPkm0.speed >= activeTeam1.speed && enemyPkm1.speed >= activeTeam1.speed && bestCombinedAttacks(1) >= activeTeam1.health && activeTeam1.health >= 1) {
-        enemyFocus(1)
-    }
-
-    else {
+    {
     strongestAttack(0);
     strongestAttack(1);
     }
