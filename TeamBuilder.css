@@ -254,6 +254,9 @@ background: linear-gradient(0deg, rgba(238,129,48,1) 45%, rgba(166,185,26,1) 65%
 .type1-ghost-type2-fairy{
   background: linear-gradient(0deg, rgba(115,87,151,1) 45%, rgba(214,133,173,1) 65%);
   }
+.type1-steel-type2-fairy {
+    background: linear-gradient(0deg, rgba(183,183,206,1) 45%, rgba(214,133,173,1) 65%);
+}
 .type1-water-type2-fairy{
 background: linear-gradient(0deg, rgba(99,144,240,1) 45%, rgba(214,133,173,1) 65%);
 }
@@ -277,6 +280,9 @@ background: linear-gradient(0deg, rgba(99,144,240,1) 45%, rgba(214,133,173,1) 65
 }
 .type1-grass-type2-dark{
   background: linear-gradient(0deg, rgba(122,199,76,1) 45%, rgba(64,54,48,1) 65%);
+}
+.type1-ground-type2-dark {
+    background: linear-gradient(0deg, rgba(226,191,101,1) 45%, rgba(64,54,48,1) 65%);
 }
 .type1-fire-type2-dark{
   background: linear-gradient(0deg, rgba(238,129,48,1) 45%, rgba(64,54,48,1) 65%);

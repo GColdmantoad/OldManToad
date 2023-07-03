@@ -65,9 +65,9 @@ const pkm = [
     type2: "steel",
     hitPoints: 50,
     physicalAtk: 60,
-    physicalDef: 145,
+    physicalDef: 160,
     specialAtk: 120,
-    specialDef: 135,
+    specialDef: 150,
     speed: 5070,
     movePool: [4, 16],
     special: true,
@@ -141,7 +141,7 @@ const pkm = [
     hitPoints: 55,
     physicalAtk: 80,
     physicalDef: 80,
-    specialAtk: 135,
+    specialAtk: 140,
     specialDef: 120,
     speed: 5100,
     movePool: [1, 14],
@@ -215,7 +215,7 @@ const pkm = [
     type2: "fighting",
     hitPoints: 75,
     physicalAtk: 110,
-    physicalDef: 105,
+    physicalDef: 135,
     specialAtk: 30,
     specialDef: 70,
     speed: 5100,
@@ -379,7 +379,7 @@ const pkm = [
     type1: "ice",
     type2: "dark",
     hitPoints: 80,
-    physicalAtk: 120,
+    physicalAtk: 135,
     physicalDef: 80,
     specialAtk: 90,
     specialDef: 65,
@@ -588,7 +588,40 @@ const pkm = [
     img: "https://www.serebii.net/Shiny/SV/new/485.png",
     weakness: [[.5, 'normal'], [0, 'fire'], [2, 'water'], [.25, 'grass'], [1, 'electric'], [.25, 'ice'], [2, 'fighting'], [0, 'poison'],
     [4, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.25, 'steel'], [.25, 'fairy']]
+}, {
+    id: 36,
+    name: "Tinkaton",
+    type1: "steel",
+    type2: "fairy",
+    hitPoints: 85,
+    physicalAtk: 75,
+    physicalDef: 77,
+    specialAtk: 70,
+    specialDef: 105,
+    speed: 5094,
+    movePool: [16, 17],
+    special: false,
+    img: "https://www.serebii.net/scarletviolet/pokemon/new/959.png",
+    weakness: [[.5, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [0, 'poison'],
+    [2, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [0, 'dragon'], [1, 'steel'], [.5, 'fairy']]
+}, {
+    id: 37,
+        name: "Ting-Lu",
+    type1: "ground",
+    type2: "dark",
+    hitPoints: 155,
+    physicalAtk: 110,
+    physicalDef: 125,
+    specialAtk: 55,
+    specialDef: 95,
+    speed: 5045,
+    movePool: [8, 14],
+    special: false,
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/1003.png",
+    weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [2, 'fighting'], [.5, 'poison'],
+    [1, 'ground'], [1, 'flying'], [0, 'psychic'], [2, 'bug'], [.5, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
 }
+
 ]
 const pkmMoves = [{
     id: 0,
@@ -955,11 +988,11 @@ function battleScreenUpdate() {
     <div class="enemy" id="activeEnemy"></div>
     <div class="partner" id="activePartner"></div>`;*/
     document.getElementById('activeEnemy').innerHTML =""
-    if (activeEnemy[0] != 7) {
+    if (!(activeEnemy[0]>=4)) {
         document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0" onclick ='enemyInformation(0)' src="${enemyVgcTeam[activeEnemy[0]].img}">`;
         healthCheck();
     }
-    if (activeEnemy[1] != 7) {
+    if (!(activeEnemy[1] >= 4)) {
         document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy1" onclick ='enemyInformation(1)' src="${enemyVgcTeam[activeEnemy[1]].img}">`
         healthCheck();
     }
@@ -1094,18 +1127,13 @@ function switchPkm(parameter) {
     battleScreenUpdate()
 }
 function switchEnemyPkm(parameter) {
-    let activePlace = parameter[0]
-    let inactivePlace = parameter[1]
-    let turn = parameter[2]
+    let activeEnemyPlace = parameter[0]
+    let inactiveEnemyPlace = parameter[1]
     pleaseKeepTrackOfEnemySwitch = 4
-    if (turn === 1) {
-        gameBoyText += `${enemyVgcTeam[activeEnemy[activePlace]].name} switched with ${enemyVgcTeam[inactiveEnemy[inactivePlace]].name}.<br>`
-    } else {
-        gameBoyText += `${enemyVgcTeam[activeEnemy[activePlace]].name} switched with ${enemyVgcTeam[inactiveEnemy[inactivePlace]].name}.<br>`
-    }
-    floatingEnemy.splice(inactivePlace, 1, activeEnemy[activePlace]);
-    activeEnemy.splice(activePlace, 1, inactiveEnemy[inactivePlace]);
-    inactiveEnemy.splice(inactivePlace, 1, 4);
+    gameBoyText += `${enemyVgcTeam[activeEnemy[activeEnemyPlace]].name} switched with ${enemyVgcTeam[inactiveEnemy[inactiveEnemyPlace]].name}.<br>`
+    floatingEnemy.splice(inactiveEnemyPlace, 1, activeEnemy[activeEnemyPlace]);
+    activeEnemy.splice(activeEnemyPlace, 1, inactiveEnemy[inactiveEnemyPlace]);
+    inactiveEnemy.splice(inactiveEnemyPlace, 1, 4);
     battleScreenUpdate()
 }
 function deadSwitchOptions(theNowDeadPokemonsActiveSpot) {
@@ -1149,6 +1177,12 @@ function updateActiveTargets() {
     }
     if (inactiveTeam[1] == 4) {
         inactiveTeam.splice(1, 1, floatingTeam[1]);
+    }
+    if (inactiveEnemy[0] == 4) {
+        inactiveEnemy.splice(0, 1, floatingEnemy[0]);
+    }
+    if (inactiveEnemy[1] == 4) {
+        inactiveEnemy.splice(1, 1, floatingEnemy[1]);
     }
     floatingEnemy = [7, 7];
     floatingTeam = [7, 7];
@@ -1512,6 +1546,9 @@ function enemyLogic() {
     let activeTeam1 = vgcTeam[activeTeam[1]]
     let enemyPkm0 = enemyVgcTeam[activeEnemy[0]]
     let enemyPkm1 = enemyVgcTeam[activeEnemy[1]]
+    //Inactive Enemy Pokemon
+    let enemyInactivePkm0 = enemyVgcTeam[inactiveEnemy[0]]
+    let enemyInactivePkm1 = enemyVgcTeam[inactiveEnemy[1]]
     //All Enemy Moves
     let enemy0Move0 = enemyVgcTeam[activeEnemy[0]].movePool[0]
     let enemy0Move1 = enemyVgcTeam[activeEnemy[0]].movePool[1]
@@ -1560,7 +1597,7 @@ function enemyLogic() {
             enemyFocus(0)
             errorCode = 126
         } else
-        if (enemyPkm0.speed >= activeTeam0.speed && strongestAttackCalc(0,0) >= activeTeam0.health) {
+        if (enemyPkm0.speed >= activeTeam0.speed && strongestAttackCalc(0, 0) >= activeTeam0.health) {
             targetedStrongestAttack(0, 0)
             targetedStrongestAttack(1, 1)
             errorCode = 127
@@ -1568,9 +1605,19 @@ function enemyLogic() {
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(0)
             errorCode = 1208
+        } else 
+        if (!(inactiveEnemy[0] >= 4)) {
+            if (enemyInactivePkm0.weakness[team0Move0][0] <= .5 || enemyInactivePkm0.weakness[team0Move1][0] <= .5) {
+                addTurn(9000, switchEnemyPkm, [1, 0])
+                targetedStrongestAttack(0,0)
+                errorCode = 1306112
+            } else {
+                enemyFocus(0)
+                errorCode = 130612
+            }
         } else {
             enemyFocus(0)
-            errorCode = 1209
+            errorCode = 1306
         }
     } else
 
@@ -1587,9 +1634,19 @@ function enemyLogic() {
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(1)
             errorCode = 1301
+        } else
+        if (!(inactiveEnemy[1] >= 4)) {
+            if (enemyInactivePkm1.weakness[team0Move0][0] <= .5 || enemyInactivePkm1.weakness[team0Move1][0] <= .5) {
+                addTurn(9000, switchEnemyPkm, [1, 1])
+                targetedStrongestAttack(0, 0)
+                errorCode = 13061155
+            } else {
+                enemyFocus(0)
+                errorCode = 130616654
+            }
         } else {
-            enemyFocus(1)
-            errorCode = 1302
+            enemyFocus(0)
+            errorCode = 1306787
         }
     } else
 
@@ -1599,18 +1656,30 @@ function enemyLogic() {
             enemyFocus(0)
             errorCode = 1303
         } else
-        if (enemyPkm1.speed >= activeTeam0.speed && strongestAttackCalc(1, 0) >= activeTeam0.health) {
-            targetedStrongestAttack(0, 1)
-            targetedStrongestAttack(1, 0)
-            errorCode = 1304
-        } else
-        if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
-            protect0attackFrom1(0)
-            errorCode = 1305
-        } else {
-            enemyFocus(0)
-            errorCode = 1306
-        }
+            if (enemyPkm1.speed >= activeTeam0.speed && strongestAttackCalc(1, 0) >= activeTeam0.health) {
+                targetedStrongestAttack(0, 1)
+                targetedStrongestAttack(1, 0)
+                errorCode = 1304
+            } else
+                if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
+                    protect0attackFrom1(0)
+                    errorCode = 1305
+                } else
+                if (!(inactiveEnemy[1] >= 4)) {
+                    if (enemyInactivePkm1.weakness[team0Move0][0] <= .5 || enemyInactivePkm1.weakness[team0Move1][0] <= .5) {
+                        addTurn(9000, switchEnemyPkm, [0, 1])
+                        targetedStrongestAttack(1, 0)
+                        errorCode = 130611
+                    } else {
+                        enemyFocus(0)
+                        errorCode = 13061
+                    }
+                } else {
+                    enemyFocus(0)
+                    errorCode = 1306
+                }
+
+
     } else
     if (enemyPkm0.weakness[team1Move0][0] >= 4 || enemyPkm0.weakness[team1Move1][0] >= 4) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
@@ -1625,9 +1694,19 @@ function enemyLogic() {
         if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(1)
             errorCode = 1309
+        } else
+        if (!(inactiveEnemy[1] >= 4)) {
+            if (enemyInactivePkm1.weakness[team1Move0][0] <= .5 || enemyInactivePkm1.weakness[team1Move1][0] <= .5) {
+                addTurn(9000, switchEnemyPkm, [0, 1])
+                targetedStrongestAttack(1, 1)
+                errorCode = 1306113
+            } else {
+                enemyFocus(0)
+                errorCode = 130614
+            }
         } else {
-            enemyFocus(1)
-            errorCode = 140
+            enemyFocus(0)
+            errorCode = 1306
         }
     } else
 
@@ -1640,7 +1719,7 @@ function enemyLogic() {
         errorCode = 1402
     } else
 
-    if (enemyPkm1.weakness[team0Move0][0] >= 2 || enemyPkm1.weakness[team0Move1][0] >= 2) {
+    if (enemyPkm1.weakness[team0Move0][0] >= 2 || enemyPkm1.weakness[team0Move1][0] >= 2 && activeTeam0.health >= 1) {
         if (enemyPkm1.weakness[team1Move0][0] >= 2 || enemyPkm1.weakness[team1Move1][0] >= 2) {
             if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
                 protectAttack(1, 0)
@@ -1657,12 +1736,22 @@ function enemyLogic() {
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(0)
             errorCode = 1406
+        } else
+        if (!(inactiveEnemy[1] >= 4)) {
+            if (enemyInactivePkm1.weakness[team0Move0][0] <= .25 || enemyInactivePkm1.weakness[team0Move1][0] <= .25) {
+                addTurn(9000, switchEnemyPkm, [1, 1])
+                targetedStrongestAttack(0, 0)
+                errorCode = 15004726
+            } else {
+                enemyFocus(0)
+                errorCode = 15002628
+            }
         } else {
             enemyFocus(0)
             errorCode = 1407
         }
     } else
-        if (enemyPkm1.weakness[team1Move0][0] >= 2 || enemyPkm1.weakness[team1Move1][0] >= 2 && activeTeam1.health >= 1) {
+    if (enemyPkm1.weakness[team1Move0][0] >= 2 || enemyPkm1.weakness[team1Move1][0] >= 2 && activeTeam1.health >= 1) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(1)
             errorCode = 1408
@@ -1670,6 +1759,16 @@ function enemyLogic() {
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(1)
             errorCode = 1409
+        } else
+        if (!(inactiveEnemy[1] >= 4)) {
+            if (enemyInactivePkm1.weakness[team1Move0][0] <= .25 || enemyInactivePkm1.weakness[team1Move1][0] <= .25) {
+                addTurn(9000, switchEnemyPkm, [1, 1])
+                targetedStrongestAttack(0, 1)
+                errorCode = 15004726
+            } else {
+                enemyFocus(0)
+                errorCode = 15002628
+            }
         } else {
             enemyFocus(1)
             errorCode = 150
@@ -1677,7 +1776,7 @@ function enemyLogic() {
     } else
 
 
-        if (enemyPkm0.weakness[team0Move0][0] >= 2 || enemyPkm0.weakness[team0Move1][0] >= 2 && activeTeam0.health >= 1) {
+    if (enemyPkm0.weakness[team0Move0][0] >= 2 || enemyPkm0.weakness[team0Move1][0] >= 2 && activeTeam0.health >= 1) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(0)
             errorCode = 1501
@@ -1685,9 +1784,19 @@ function enemyLogic() {
         if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(0)
             errorCode = 1502
+        } else
+        if (!(inactiveEnemy[1] >= 4)) {
+            if (enemyInactivePkm1.weakness[team0Move0][0] <= .25 || enemyInactivePkm1.weakness[team0Move1][0] <= .25) {
+                addTurn(9000, switchEnemyPkm, [0, 1])
+                targetedStrongestAttack(1, 0)
+                errorCode = 150047
+            } else {
+                enemyFocus(0)
+                errorCode = 150026
+            }
         } else {
             enemyFocus(0)
-            errorCode = 1503
+            errorCode = 15000052
         }
     } else
     if (enemyPkm0.weakness[team1Move0][0] >= 2 || enemyPkm0.weakness[team1Move1][0] >= 2 && activeTeam1.health >= 1) {
@@ -1698,13 +1807,23 @@ function enemyLogic() {
         if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(1)
             errorCode = 1505
+        } else
+        if (!(inactiveEnemy[1] >= 4)) {
+            if (enemyInactivePkm1.weakness[team1Move0][0] <= .25 || enemyInactivePkm1.weakness[team1Move1][0] <= .25) {
+                addTurn(9000, switchEnemyPkm, [0, 1])
+                targetedStrongestAttack(1, 1)
+                errorCode = 1500472
+            } else {
+                enemyFocus(0)
+                errorCode = 1500262
+            }
         } else {
             enemyFocus(1)
             errorCode = 1506
         }
     } else
     {
-    strongestAttack(0);
+        strongestAttack(0);
         strongestAttack(1);
         errorCode = 1507
     }
@@ -1763,9 +1882,9 @@ function targetedStrongestAttack(FromActiveEnemy, target) {
         let Move0 = enemyPkm.movePool[0]
         let Move1 = enemyPkm.movePool[1]
         if (enemyAiDamageCalc(Move0, vgcTeam[activeTeam[target]].id, enemyPkm.id) > enemyAiDamageCalc(Move1, vgcTeam[activeTeam[target]].id, enemyPkm.id)) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, target, enemyPkm.id, 0])
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, target, enemyPkm.id, FromActiveEnemy])
         } else {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, target, enemyPkm.id, 0])
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, target, enemyPkm.id, FromActiveEnemy])
         }
     }
 }
@@ -1795,9 +1914,9 @@ function strongestAttack(FromActiveEnemy) {
             target = 1
         }
         if (enemyAiDamageCalc(Move0, vgcTeam[activeTeam[target]].id, enemyPkm.id) > enemyAiDamageCalc(Move1, vgcTeam[activeTeam[target]].id, enemyPkm.id)) {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, target, enemyPkm.id, 1])
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move0, target, enemyPkm.id, FromActiveEnemy])
         } else {
-            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, target, enemyPkm.id, 1])
+            addTurn(enemyPkm.speed, enemyDamageCalc, [Move1, target, enemyPkm.id, FromActiveEnemy])
         }
     }
 }
@@ -1864,6 +1983,19 @@ function strongestAttackCalc(FromActiveEnemy, target) {
             return enemyAiDamageCalc(Move0, vgcTeam[activeTeam[target]].id, enemyPkm.id)
         } else {
             return enemyAiDamageCalc(Move1, vgcTeam[activeTeam[target]].id, enemyPkm.id)
+        }
+    }
+}
+function strongestTeamAttackCalc(FromActiveTeam, target) {
+
+    let enemyPkm = vgcTeam[activeTeam[FromActiveTeam]]
+    if (enemyPkm.enemyHealth >= 1) {
+        let Move0 = enemyPkm.movePool[0]
+        let Move1 = enemyPkm.movePool[1]
+        if (enemyAiDamageCalc(Move0, vgcTeam[activeTeam[target]].id, enemyPkm.id) > enemyAiDamageCalc(Move1, vgcTeam[activeTeam[target]].id, enemyPkm.id)) {
+            return enemyAiDamageCalc(Move0, enemyVgcTeam[activeEnemy[target]].id, enemyPkm.id)
+        } else {
+            return enemyAiDamageCalc(Move1, enemyVgcTeam[activeEnemy[target]].id, enemyPkm.id)
         }
     }
 }
