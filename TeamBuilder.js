@@ -41,6 +41,7 @@ let menuButton = document.getElementById("menuButton");
 let gameBoyText = '';
 let pleaseKeepTrackOfSwitch = 3
 let pleaseKeepTrackOfEnemySwitch = 3
+let errorCode = ''
 const pkm = [
     {
     id: 0,
@@ -1525,56 +1526,70 @@ function enemyLogic() {
     if (enemyPkm0.speed >= activeTeam0.speed && strongestAttackCalc(0, 0) >= activeTeam0.health && enemyPkm1.speed >= activeTeam1.speed && strongestAttackCalc(1, 1) >= activeTeam1.health) {
         targetedStrongestAttack(0, 0)
         targetedStrongestAttack(1, 1)
+        errorCode = 120
     } else
     if (enemyPkm0.speed >= activeTeam1.speed && strongestAttackCalc(0, 1) >= activeTeam1.health && enemyPkm1.speed >= activeTeam0.speed && strongestAttackCalc(1, 0) >= activeTeam0.health) {
         targetedStrongestAttack(0, 1)
         targetedStrongestAttack(1, 0)
+        errorCode = 121
     } else
     if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm0.speed >= enemyPkm1.speed && strongestAttackCalc(0, 0) >= activeTeam0.health) {
         targetedStrongestAttack(0, 0)
         targetedStrongestAttack(1, 1)
+        errorCode = 122
     } else
     if (enemyPkm0.speed >= activeTeam1.speed && enemyPkm0.speed >= enemyPkm1.speed && strongestAttackCalc(0, 1) >= activeTeam1.health) {
         targetedStrongestAttack(0, 1)
         targetedStrongestAttack(1, 0)
+        errorCode = 123
     } else
     if (enemyPkm1.speed >= activeTeam0.speed && enemyPkm0.speed <= enemyPkm1.speed && strongestAttackCalc(1, 0) >= activeTeam0.health) {
           
         targetedStrongestAttack(0, 1)
         targetedStrongestAttack(1, 0)
+        errorCode = 124
     } else
     if (enemyPkm1.speed >= activeTeam1.speed && enemyPkm0.speed <= enemyPkm1.speed && strongestAttackCalc(1, 1) >= activeTeam1.health) {
         targetedStrongestAttack(0, 0)
         targetedStrongestAttack(1, 1)
+        errorCode = 125
     } else
 
     if (enemyPkm1.weakness[team0Move0][0] >= 4 || enemyPkm1.weakness[team0Move1][0] >= 4) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(0)
+            errorCode = 126
         } else
         if (enemyPkm0.speed >= activeTeam0.speed && strongestAttackCalc(0,0) >= activeTeam0.health) {
             targetedStrongestAttack(0, 0)
             targetedStrongestAttack(1, 1)
+            errorCode = 127
         } else
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(0)
+            errorCode = 1208
         } else {
             enemyFocus(0)
+            errorCode = 1209
         }
     } else
 
     if (enemyPkm1.weakness[team1Move0][0] >= 4 || enemyPkm1.weakness[team1Move1][0] >= 4) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(1)
+            errorCode = 12010
         } else
         if (enemyPkm0.speed >= activeTeam1.speed && strongestAttackCalc(0, 1) >= activeTeam1.health) {
             targetedStrongestAttack(0, 1)
             targetedStrongestAttack(1, 0)
+            errorCode = 130
         } else
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(1)
+            errorCode = 1301
         } else {
             enemyFocus(1)
+            errorCode = 1302
         }
     } else
 
@@ -1582,91 +1597,116 @@ function enemyLogic() {
     if (enemyPkm0.weakness[team0Move0][0] >= 4 || enemyPkm0.weakness[team0Move1][0] >= 4) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(0)
+            errorCode = 1303
         } else
         if (enemyPkm1.speed >= activeTeam0.speed && strongestAttackCalc(1, 0) >= activeTeam0.health) {
             targetedStrongestAttack(0, 1)
             targetedStrongestAttack(1, 0)
+            errorCode = 1304
         } else
         if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(0)
+            errorCode = 1305
         } else {
             enemyFocus(0)
+            errorCode = 1306
         }
     } else
     if (enemyPkm0.weakness[team1Move0][0] >= 4 || enemyPkm0.weakness[team1Move1][0] >= 4) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(1)
+            errorCode = 1307
         } else
         if (enemyPkm1.speed >= activeTeam1.speed && strongestAttackCalc(1, 1) >= activeTeam1.health) {
             targetedStrongestAttack(0, 0)
             targetedStrongestAttack(1, 1)
+            errorCode = 1308
         } else
         if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(1)
+            errorCode = 1309
         } else {
             enemyFocus(1)
+            errorCode = 140
         }
     } else
 
     if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
         enemyFocus(0)
+        errorCode = 1401
     } else
     if (enemyPkm0.speed >= activeTeam1.speed && enemyPkm1.speed >= activeTeam1.speed && bestCombinedAttacks(1) >= activeTeam1.health && activeTeam1.health >= 1) {
         enemyFocus(1)
+        errorCode = 1402
     } else
 
     if (enemyPkm1.weakness[team0Move0][0] >= 2 || enemyPkm1.weakness[team0Move1][0] >= 2) {
         if (enemyPkm1.weakness[team1Move0][0] >= 2 || enemyPkm1.weakness[team1Move1][0] >= 2) {
             if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
-                protectAttack(1,0)
+                protectAttack(1, 0)
+                errorCode = 1403
             } else {
                 enemyFocus(0)
+                errorCode = 1404
             }
         } else
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(0)
+            errorCode = 1405
         } else
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(0)
+            errorCode = 1406
         } else {
             enemyFocus(0)
+            errorCode = 1407
         }
     } else
-    if (enemyPkm1.weakness[team1Move0][0] >= 2 || enemyPkm1.weakness[team1Move1][0] >= 2) {
+        if (enemyPkm1.weakness[team1Move0][0] >= 2 || enemyPkm1.weakness[team1Move1][0] >= 2 && activeTeam1.health >= 1) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(1)
+            errorCode = 1408
         } else
         if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
             protect1attackFrom0(1)
+            errorCode = 1409
         } else {
             enemyFocus(1)
+            errorCode = 150
         }
     } else
 
 
-    if (enemyPkm0.weakness[team0Move0][0] >= 2 || enemyPkm0.weakness[team0Move1][0] >= 2) {
+        if (enemyPkm0.weakness[team0Move0][0] >= 2 || enemyPkm0.weakness[team0Move1][0] >= 2 && activeTeam0.health >= 1) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(0)
+            errorCode = 1501
         } else
         if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(0)
+            errorCode = 1502
         } else {
             enemyFocus(0)
+            errorCode = 1503
         }
     } else
-    if (enemyPkm0.weakness[team1Move0][0] >= 2 || enemyPkm0.weakness[team1Move1][0] >= 2) {
+    if (enemyPkm0.weakness[team1Move0][0] >= 2 || enemyPkm0.weakness[team1Move1][0] >= 2 && activeTeam1.health >= 1) {
         if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm1.speed >= activeTeam0.speed && bestCombinedAttacks(0) >= activeTeam0.health && activeTeam0.health >= 1) {
             enemyFocus(1)
+            errorCode = 1504
         } else
         if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
             protect0attackFrom1(1)
+            errorCode = 1505
         } else {
             enemyFocus(1)
+            errorCode = 1506
         }
     } else
     {
     strongestAttack(0);
-    strongestAttack(1);
+        strongestAttack(1);
+        errorCode = 1507
     }
 
 }
