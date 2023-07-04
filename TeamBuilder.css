@@ -248,8 +248,8 @@ margin: auto;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 25px;
-    height: 575px;
+    border-radius: 15px;
+    height: 525px;
     width: 350px;
     z-index: 9;
     color: white;
@@ -331,10 +331,12 @@ ul {
 .centerText {
     text-align: center;
 }
-.lineHeight {
+/*
+    .lineHeight {
    line-height: 30px;
    text-align: center;
 }
+*/
 
 .smallerTypingIcon {
     height: 25px;

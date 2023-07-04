@@ -210,7 +210,8 @@ const pkm = [
     speed: 5123,
     movePool: [3, 14],
     special: false,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/908.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/908.png",
+        gif: 'img/pokemon/908.gif',
     weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [2, 'fighting'], [2, 'poison'], [.5, 'ground'], [2, 'flying'], [0, 'psychic'], [4, 'bug'], [1, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
 }, {
     id: 11,
@@ -271,7 +272,8 @@ const pkm = [
     speed: 5084,
     movePool: [13, 16],
     special: true,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/1000.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/1000.png",
+        gif: 'img/pokemon/1000.gif',
     weakness: [[0, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [0, 'fighting'], [0, 'poison'], [2, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [.5, 'rock'], [2, 'ghost'], [2, 'dark'], [.5, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
 }, {
     id: 15,
@@ -392,7 +394,8 @@ const pkm = [
     speed: 5135,
     movePool: [5, 14],
     special: false,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/1002.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/1002.png",
+        gif: 'img/pokemon/1002.gif',
     weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [1, 'grass'], [1, 'electric'], [.5, 'ice'], [4, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [0, 'psychic'], [2, 'bug'], [2, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [2, 'steel'], [2, 'fairy']]
 }, {
     id: 23,
@@ -407,7 +410,8 @@ const pkm = [
     speed: 5111,
     movePool: [0, 0],
     special: false,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/925-f.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/925-f.png",
+        gif: 'img/pokemon/925.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [1, 'rock'], [0, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
 }, {
     id: 24,
@@ -438,7 +442,8 @@ const pkm = [
     speed: 5050,
     movePool: [4, 6],
     special: false,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/992.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/992.png",
+        gif: 'img/pokemon/992.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [.5, 'electric'], [1, 'ice'], [1, 'fighting'], [1, 'poison'], [2, 'ground'], [1, 'flying'], [2, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [2, 'fairy']]
 }, {
     id: 26,
@@ -469,7 +474,8 @@ const pkm = [
     speed: 5105,
     movePool: [10, 10],
     special: true,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/956.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/956.png",
+        gif: 'img/pokemon/956.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
 }, {
     id: 28,
@@ -627,6 +633,7 @@ const pkm = [
     movePool: [8, 14],
     special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/1003.png",
+        gif: 'img/pokemon/1003.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [2, 'fighting'], [.5, 'poison'],
     [1, 'ground'], [1, 'flying'], [0, 'psychic'], [2, 'bug'], [.5, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
 }
@@ -938,14 +945,14 @@ function pkmCard(id) {
                 <div class="colomn">
                     <div class="centerText">weakness</div>        
                     <div class="row lineHeight">                
-                        <div class="baseStats mr-10 row typeList" id="weaknessList">      
+                        <div class="baseStats row typeList" id="weaknessList">      
                         </div>
                     </div>
                 </div>   
                 <div class="colomn">
                     <div class="centerText">resist</div>        
                     <div class="row lineHeight">                
-                        <div class="baseStats mr-10 row typeList" id="resistList">
+                        <div class="baseStats row typeList" id="resistList">
                         </div>                       
                     </div>            
                 </div>
