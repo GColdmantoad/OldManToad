@@ -1570,23 +1570,22 @@ function enemyLogic() {
         targetedStrongestAttack(1, 0)
         errorCode = 121
     } else
-    if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm0.speed >= enemyPkm1.speed && strongestAttackCalc(0, 0) >= activeTeam0.health) {
+    if (enemyPkm0.speed >= activeTeam0.speed && enemyPkm0.speed >= enemyPkm1.speed && strongestAttackCalc(0, 0) >= activeTeam0.health && activeTeam0.health >= 1) {
         targetedStrongestAttack(0, 0)
         targetedStrongestAttack(1, 1)
         errorCode = 122
     } else
-    if (enemyPkm0.speed >= activeTeam1.speed && enemyPkm0.speed >= enemyPkm1.speed && strongestAttackCalc(0, 1) >= activeTeam1.health) {
+    if (enemyPkm0.speed >= activeTeam1.speed && enemyPkm0.speed >= enemyPkm1.speed && strongestAttackCalc(0, 1) >= activeTeam1.health && activeTeam1.health >= 1) {
         targetedStrongestAttack(0, 1)
         targetedStrongestAttack(1, 0)
         errorCode = 123
     } else
-    if (enemyPkm1.speed >= activeTeam0.speed && enemyPkm0.speed <= enemyPkm1.speed && strongestAttackCalc(1, 0) >= activeTeam0.health) {
-          
+    if (enemyPkm1.speed >= activeTeam0.speed && enemyPkm0.speed <= enemyPkm1.speed && strongestAttackCalc(1, 0) >= activeTeam0.health && activeTeam0.health >= 1) {  
         targetedStrongestAttack(0, 1)
         targetedStrongestAttack(1, 0)
         errorCode = 124
     } else
-    if (enemyPkm1.speed >= activeTeam1.speed && enemyPkm0.speed <= enemyPkm1.speed && strongestAttackCalc(1, 1) >= activeTeam1.health) {
+    if (enemyPkm1.speed >= activeTeam1.speed && enemyPkm0.speed <= enemyPkm1.speed && strongestAttackCalc(1, 1) >= activeTeam1.health && activeTeam1.health >= 1) {
         targetedStrongestAttack(0, 0)
         targetedStrongestAttack(1, 1)
         errorCode = 125
@@ -1602,7 +1601,7 @@ function enemyLogic() {
             targetedStrongestAttack(1, 1)
             errorCode = 127
         } else
-        if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1) {
             protect1attackFrom0(0)
             errorCode = 1208
         } else 
@@ -1631,7 +1630,7 @@ function enemyLogic() {
             targetedStrongestAttack(1, 0)
             errorCode = 130
         } else
-        if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1) {
             protect1attackFrom0(1)
             errorCode = 1301
         } else
@@ -1661,7 +1660,7 @@ function enemyLogic() {
                 targetedStrongestAttack(1, 0)
                 errorCode = 1304
             } else
-                if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
+                if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1) {
                     protect0attackFrom1(0)
                     errorCode = 1305
                 } else
@@ -1691,7 +1690,7 @@ function enemyLogic() {
             targetedStrongestAttack(1, 1)
             errorCode = 1308
         } else
-        if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
+            if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1) {
             protect0attackFrom1(1)
             errorCode = 1309
         } else
@@ -1721,8 +1720,8 @@ function enemyLogic() {
 
     if (enemyPkm1.weakness[team0Move0][0] >= 2 || enemyPkm1.weakness[team0Move1][0] >= 2 && activeTeam0.health >= 1) {
         if (enemyPkm1.weakness[team1Move0][0] >= 2 || enemyPkm1.weakness[team1Move1][0] >= 2) {
-            if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
-                protectAttack(1, 0)
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1) {
+                protect1attackFrom0(0)
                 errorCode = 1403
             } else {
                 enemyFocus(0)
@@ -1733,7 +1732,7 @@ function enemyLogic() {
             enemyFocus(0)
             errorCode = 1405
         } else
-        if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
+        if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >=1) {
             protect1attackFrom0(0)
             errorCode = 1406
         } else
@@ -1756,7 +1755,7 @@ function enemyLogic() {
             enemyFocus(1)
             errorCode = 1408
         } else
-        if (!enemyPkm1.wasEnemyProtectUsedLastTurn) {
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1) {
             protect1attackFrom0(1)
             errorCode = 1409
         } else
@@ -1781,7 +1780,7 @@ function enemyLogic() {
             enemyFocus(0)
             errorCode = 1501
         } else
-        if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
+            if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1) {
             protect0attackFrom1(0)
             errorCode = 1502
         } else
@@ -1804,7 +1803,7 @@ function enemyLogic() {
             enemyFocus(1)
             errorCode = 1504
         } else
-        if (!enemyPkm0.wasEnemyProtectUsedLastTurn) {
+            if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1) {
             protect0attackFrom1(1)
             errorCode = 1505
         } else
@@ -1831,22 +1830,44 @@ function enemyLogic() {
 }
 
 function protect0attackFrom1(threat) {
+    let other = ''
+    if (threat == 1) {
+        other = 0
+    } else {
+        other = 1
+    }
     if (enemyVgcTeam[activeEnemy[0]].enemyHealth >= 1) {
         addTurn(8, enemyProtect, activeEnemy[0]);
     }
-    targetedStrongestAttack(1, threat);
+    if (strongestAttackCalc(1, target) >= 1) {
+        targetedStrongestAttack(1, threat);
+    } else {
+        targetedStrongestAttack(1, other);
+    }
 }
 function protect1attackFrom0(threat) {
+    let other = ''
+    if (threat == 1) {
+        other = 0
+    } else {
+        other = 1
+    }
     if (enemyVgcTeam[activeEnemy[1]].enemyHealth >= 1) {
         addTurn(8, enemyProtect, activeEnemy[1]);
     }
-    targetedStrongestAttack(0, threat);
+    if (strongestAttackCalc(0, target) >= 1) {
+        targetedStrongestAttack(0, threat);
+    } else {
+        targetedStrongestAttack(0, other);
+    }
 }
 function protectAttack(theProtected, threat) {
     if (enemyVgcTeam[activeEnemy[theProtected]].enemyHealth >= 1) {
         addTurn(8, enemyProtect, activeEnemy[theProtected]);
     }
-    targetedStrongestAttack(0, threat);
+    if () {
+        targetedStrongestAttack(0, threat);
+    }
 }
 function enemyFocus(target) {
 
