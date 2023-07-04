@@ -253,6 +253,7 @@ margin: auto;
     width: 350px;
     z-index: 9;
     color: white;
+    padding-top: 4px;
 }
 .cardButton {
     position: absolute;
