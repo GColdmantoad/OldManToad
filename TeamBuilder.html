@@ -9,40 +9,45 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 </head>
-    <body> 
-        <div class="container btn" id="navMenu">
-            <div class="btn" id="menuButton">Menu</div>
-            <div id="navButtons" class="hidden">
-                <div class="btn" onclick="randomResetTeam()">Generate a random team!</div>
-                <div class="btn" id='targetWeakness' onclick="genWeakness()">what is your team weak against?</div>
-                <div class="btn" onclick="clearTeam()">Clear your team and start agian!</div>
-                <div class="btn" onclick='battleTeam()'>Battle?</div>
-            </div>
+<body>
+    <div class="container btn" id="navMenu">
+        <div class="btn" id="menuButton">Menu</div>
+        <div id="navButtons" class="hidden">
+            <div class="btn" onclick="randomResetTeam()">Generate a random team!</div>
+            <div class="btn" id='targetWeakness' onclick="genWeakness()">what is your team weak against?</div>
+            <div class="btn" onclick="clearTeam()">Clear your team and start agian!</div>
+            <div class="btn" onclick='battleTeam()'>Battle?</div>
         </div>
+    </div>
 
 
-        <div class="container" id="pkmTeam">
-            <div class="spacer"></div>
-            <div  class="placeholder vertical shadow" id="TeamMember0" onclick="removeTeamOne()">
-                <img class="image"src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
-            </div>
-            <div class="placeholder vertical shadow" id="TeamMember1" onclick="removeTeamTwo()">
-                <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
-            </div> 
-            <div class="placeholder vertical shadow" id="TeamMember2" onclick="removeTeamThree()">
-                <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
-            </div>
-            <div class="placeholder vertical shadow" id="TeamMember3" onclick="removeTeamFour()">
-                <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
-            </div>
-            <div class="placeholder vertical shadow" id="TeamMember4" onclick="removeTeamFive()">
-                <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
-            </div>
-            <div class="placeholder vertical shadow" id="TeamMember5" onclick="removeTeamSix()">
-                <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
-            </div> 
+    <div class="container" id="pkmTeam">
+        <div class="spacer"></div>
+        <div class="placeholder vertical shadow" id="TeamMember0" onclick="removeTeamOne()">
+            <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
         </div>
-        <div class="container" id="box"></div>
-        <script src="TeamBuilder.js"></script>
-    </body>
+        <div class="placeholder vertical shadow" id="TeamMember1" onclick="removeTeamTwo()">
+            <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
+        </div>
+        <div class="placeholder vertical shadow" id="TeamMember2" onclick="removeTeamThree()">
+            <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
+        </div>
+        <div class="placeholder vertical shadow" id="TeamMember3" onclick="removeTeamFour()">
+            <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
+        </div>
+        <div class="placeholder vertical shadow" id="TeamMember4" onclick="removeTeamFive()">
+            <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
+        </div>
+        <div class="placeholder vertical shadow" id="TeamMember5" onclick="removeTeamSix()">
+            <img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">
+        </div>
+    </div>
+    <div class="container" id="box"></div>
+
+    <div id="pkmCardViewer" class="">
+           </div>
+
+
+    <script src="TeamBuilder.js"></script>
+</body>
 </html>

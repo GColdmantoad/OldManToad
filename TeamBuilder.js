@@ -45,7 +45,7 @@ let errorCode = ''
 const pkm = [
     {
     id: 0,
-    name: "kilowattrel",
+    name: "Kilowattrel",
     type1: "electric",
     type2: "flying",
     img: "https://www.serebii.net/scarletviolet/pokemon/new/941.png",
@@ -56,7 +56,8 @@ const pkm = [
     specialDef: 60,
     speed: 5125,
     movePool: [4, 9],
-    special: true,
+        special: true,
+        gif: 'img/pokemon/Kilowattrel.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [.5, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
 }, {
     id: 1,
@@ -130,7 +131,8 @@ const pkm = [
     specialDef: 53,
     speed: 5087,
     movePool: [6, 8],
-    special: false,
+        special: false,
+        gif: 'img/pokemon/984.gif',
     img: "https://www.serebii.net/scarletviolet/pokemon/new/984.png",
     weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [2, 'flying'], [2, 'psychic'], [.5, 'bug'], [.25, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
 }, {
@@ -145,7 +147,8 @@ const pkm = [
     specialDef: 120,
     speed: 5100,
     movePool: [1, 14],
-    special: true,
+        special: true,
+        gif: 'img/pokemon/1004.gif',
     img: "https://www.serebii.net/scarletviolet/pokemon/new/1004.png",
     weakness: [[1, 'normal'], [.5, 'fire'], [2, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [2, 'fighting'], [1, 'poison'], [2, 'ground'], [1, 'flying'], [0, 'psychic'], [0, 'bug'], [2, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
 }, {
@@ -175,7 +178,8 @@ const pkm = [
     specialDef: 86,
     speed: 5087,
     movePool: [5, 15],
-    special: false,
+        special: false,
+        gif: 'img/pokemon/998.gif',
     img: "https://www.serebii.net/scarletviolet/pokemon/new/998.png",
     weakness: [[1, 'normal'], [1, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [1, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [2, 'dragon'], [2, 'steel'], [2, 'fairy']]
 }, {
@@ -220,7 +224,8 @@ const pkm = [
     specialDef: 70,
     speed: 5100,
     movePool: [1, 6],
-    special: false,
+        special: false,
+        gif: 'img/pokemon/128.gif',
     img: "https://www.serebii.net/scarletviolet/pokemon/new/128-b.png",
     weakness: [[1, 'normal'], [.5, 'fire'], [2, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [1, 'poison'], [2, 'ground'], [2, 'flying'], [2, 'psychic'], [.25, 'bug'], [1, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
 }, {
@@ -340,7 +345,8 @@ const pkm = [
     specialDef: 81,
     speed: 5086,
     movePool: [7, 12],
-    special: true,
+        special: true,
+        gif: 'img/pokemon/970.gif',
     img: "https://www.serebii.net/scarletviolet/pokemon/new/970.png",
     weakness: [[.5, 'normal'], [.5, 'fire'], [2, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [1, 'fighting'], [.25, 'poison'], [4, 'ground'], [.5, 'flying'], [2, 'psychic'], [.5, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [2, 'steel'], [.5, 'fairy']]
 }, {
@@ -415,7 +421,8 @@ const pkm = [
     specialDef: 100,
     speed: 5085,
     movePool: [1, 13],
-    special: false,
+        special: false,
+        gif: 'img/pokemon/937.gif',
     img: "https://www.serebii.net/scarletviolet/pokemon/new/937.png",
     weakness: [[0, 'normal'], [0, 'fire'], [2, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [0, 'fighting'], [.5, 'poison'], [2, 'ground'], [1, 'flying'], [1, 'psychic'], [.25, 'bug'], [2, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
 }, {
@@ -445,7 +452,8 @@ const pkm = [
     specialDef: 135,
     speed: 5135,
     movePool: [13, 17],
-    special: true,
+        special: true,
+        gif: 'img/pokemon/987.gif',
     img: "https://www.serebii.net/scarletviolet/pokemon/new/987.png",
     weakness: [[0, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [0, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [.25, 'bug'], [1, 'rock'], [2, 'ghost'], [1, 'dark'], [0, 'dragon'], [2, 'steel'], [1, 'fairy']]
 }, {
@@ -600,7 +608,8 @@ const pkm = [
     specialDef: 105,
     speed: 5094,
     movePool: [16, 17],
-    special: false,
+        special: false,
+        gif: 'img/pokemon/959.gif',
     img: "https://www.serebii.net/scarletviolet/pokemon/new/959.png",
     weakness: [[.5, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [0, 'poison'],
     [2, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [0, 'dragon'], [1, 'steel'], [.5, 'fairy']]
@@ -860,6 +869,7 @@ function generateRandomEnemyTeam() {
     }
 }
 function addTeam(arr) {
+    hideCard();
     let typing = ''
     if (arr.type1 == arr.type2) {
         typing = `${arr.type1}`
@@ -897,13 +907,213 @@ function addTeam(arr) {
 function loadPokemon() {
     for (let i = 0; i < pkm.length; i++) {
         document.querySelector('#box').innerHTML += `
-        <div class="pkmBox" onclick="addTeam(pkm[${i}])">
+        <div class="pkmBox" onclick="pkmCard(${i})">
             <img class='image option' src="${pkm[i].img}">
                 <div class="flex center">${pkm[i].name}</div>
         </div>`
     }
 }
+function hideCard() {
+    document.querySelector('#pkmCardViewer').classList.add('hidden')
+}
+function pkmCard(id) {
+    let image = ''
+    if (pkm[id].gif) {
+        image = pkm[id].gif
+    } else {
+        image = pkm[id].img
+    }
+    document.querySelector('#pkmCardViewer').innerHTML =``
+    let weaknessList = ''
+    let resistList = ''
+    let typing = ''
+    document.querySelector('#pkmCardViewer').innerHTML = `
+     <div class="row space-between" id="nameType"></div>
 
+        <div class="cardImage row center" id="cardImangeGoesHere"></div>
+        <div class="dataPill">
+            <div id="baseStats">
+            </div>
+            <div class="row space-around">
+                <div class="colomn">
+                    <div class="centerText">weakness</div>        
+                    <div class="row lineHeight">                
+                        <div class="baseStats mr-10 row typeList" id="weaknessList">      
+                        </div>
+                    </div>
+                </div>   
+                <div class="colomn">
+                    <div class="centerText">resist</div>        
+                    <div class="row lineHeight">                
+                        <div class="baseStats mr-10 row typeList" id="resistList">
+                        </div>                       
+                    </div>            
+                </div>
+            </div>
+        </div>
+        <div class="dataPill baseStats cardButton" style="right: 0;" onclick="hideCard()">close</div>
+        <div class="dataPill baseStats cardButton" style="left: 0;" onclick="addTeam(pkm[${id}])">add to team</div>
+
+    `
+    for (let i = 0; i < pkmMoves.length; i++) {
+        if (pkm[id].weakness[i][0] >= 2) {       
+            weaknessList += `                    
+            <div class="smallerTypingIcon flex">
+                <img class="image" src="img/${pkm[id].weakness[i][1]}.png" alt="">
+            </div>`
+        }       
+    }
+    document.querySelector('#weaknessList').innerHTML += weaknessList
+
+    for (let i = 0; i < pkmMoves.length; i++) {
+        if (pkm[id].weakness[i][0] <=.5) {
+            resistList += `                    
+            <div class="smallerTypingIcon flex">
+                <img class="image" src="img/${pkm[id].weakness[i][1]}.png" alt="">
+            </div>`
+        }
+    }
+    document.querySelector('#resistList').innerHTML += resistList
+    
+
+    document.querySelector('#baseStats').innerHTML = `
+        <div class=" row center">base stats</div>
+                <div class="row baseStats space-between">
+                    <div>
+                        <div>attack: ${pkm[id].physicalAtk}</div>
+                        <div>deffence: ${pkm[id].physicalDef}</div>
+                    </div>
+                    <div>
+                        <div>specail attack: ${pkm[id].specialAtk}</div>
+                        <div>special deffence: ${pkm[id].specialDef}</div>
+                    </div>
+                </div>
+
+                <div class="row baseStats center" id="baseSpeed">speed: ${pkm[id].speed - 5000}</div>
+    `
+    document.querySelector('#cardImangeGoesHere').innerHTML = `<img class="image" src="${image}">`
+    if (pkm[id].type1 == pkm[id].type2) {
+        typing = `<div class="typingIcon">
+                    <img class="image" src="img/${pkm[id].type1}.png" alt="">
+                </div>`
+    } else {
+        typing = `                <div class="typingIcon">
+                    <img class="image" src="img/${pkm[id].type1}.png" alt="">
+                </div>
+                <div class="typingIcon">
+                    <img class="image" src="img/${pkm[id].type2}.png" alt="">
+                </div>`
+    }
+    let background = `type1-${pkm[id].type1}-type2-${pkm[id].type2}`
+    document.querySelector('#pkmCardViewer').className = ''
+    document.querySelector('#pkmCardViewer').classList.add(background, 'pkmCard')
+    document.querySelector('#nameType').innerHTML = `
+                <div class="cardName title ml-10">${pkm[id].name}</div>
+            <div class="title mr-10 row">
+                <div class="hitPoints flex">${pkm[id].hitPoints}</div>
+                ${typing}
+            </div>
+    `
+}
+function pkmCardLive(id, friendOrFoe) {
+    let health = ''
+    if (friendOrFoe == 1) {
+        health = pkm[id].enemyHealth
+    } else {
+        health = pkm[id].health
+    }
+
+    document.querySelector('#pkmCardViewer').innerHTML = ``
+    let weaknessList = ''
+    let resistList = ''
+    let typing = ''
+    document.querySelector('#pkmCardViewer').innerHTML = `
+     <div class="row space-between" id="nameType"></div>
+
+        <div class="cardImage row center" id="cardImangeGoesHere"></div>
+        <div class="dataPill">
+            <div id="baseStats">
+            </div>
+            <div class="row space-around">
+                <div class="colomn">
+                    <div class="centerText">weakness</div>        
+                    <div class="row lineHeight">                
+                        <div class="baseStats mr-10 row typeList" id="weaknessList">      
+                        </div>
+                    </div>
+                </div>   
+                <div class="colomn">
+                    <div class="centerText">resist</div>        
+                    <div class="row lineHeight">                
+                        <div class="baseStats mr-10 row typeList" id="resistList">
+                        </div>                       
+                    </div>            
+                </div>
+            </div>
+        </div>
+        <div class="dataPill baseStats cardButton" style="right: 0;" onclick="hideCard()">close</div>
+
+    `
+    for (let i = 0; i < pkmMoves.length; i++) {
+        if (pkm[id].weakness[i][0] >= 2) {
+            weaknessList += `                    
+            <div class="smallerTypingIcon flex">
+                <img class="image" src="img/${pkm[id].weakness[i][1]}.png" alt="">
+            </div>`
+        }
+    }
+    document.querySelector('#weaknessList').innerHTML += weaknessList
+
+    for (let i = 0; i < pkmMoves.length; i++) {
+        if (pkm[id].weakness[i][0] <= .5) {
+            resistList += `                    
+            <div class="smallerTypingIcon flex">
+                <img class="image" src="img/${pkm[id].weakness[i][1]}.png" alt="">
+            </div>`
+        }
+    }
+    document.querySelector('#resistList').innerHTML += resistList
+
+
+    document.querySelector('#baseStats').innerHTML = `
+        <div class=" row center">base stats</div>
+                <div class="row baseStats space-between">
+                    <div>
+                        <div>attack: ${pkm[id].physicalAtk}</div>
+                        <div>deffence: ${pkm[id].physicalDef}</div>
+                    </div>
+                    <div>
+                        <div>specail attack: ${pkm[id].specialAtk}</div>
+                        <div>special deffence: ${pkm[id].specialDef}</div>
+                    </div>
+                </div>
+
+                <div class="row baseStats center" id="baseSpeed">speed: ${pkm[id].speed - 5000}</div>
+    `
+    document.querySelector('#cardImangeGoesHere').innerHTML = `<img class="image" src="${pkm[id].img}">`
+    if (pkm[id].type1 == pkm[id].type2) {
+        typing = `<div class="typingIcon">
+                    <img class="image" src="img/${pkm[id].type1}.png" alt="">
+                </div>`
+    } else {
+        typing = `                <div class="typingIcon">
+                    <img class="image" src="img/${pkm[id].type1}.png" alt="">
+                </div>
+                <div class="typingIcon">
+                    <img class="image" src="img/${pkm[id].type2}.png" alt="">
+                </div>`
+    }
+    let background = `type1-${pkm[id].type1}-type2-${pkm[id].type2}`
+    document.querySelector('#pkmCardViewer').className = ''
+    document.querySelector('#pkmCardViewer').classList.add(background, 'pkmCard')
+    document.querySelector('#nameType').innerHTML = `
+                <div class="cardName title ml-10">${pkm[id].name}</div>
+            <div class="title mr-10 row">
+                <div class="hitPoints flex">${health}</div>
+                ${typing}
+            </div>
+    `
+}
 // functions for getting the game started
 function battleTeam() {
     if (team.length > 5) {
@@ -960,6 +1170,7 @@ function gameTime() {
     document.querySelector('body').innerHTML += `
         <div class="btn" id='turnBtn' style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div>
         <div class="btn" id='infoBtn' style="position: fixed; bottom: 0; right: 0;" onclick="info()" >Info</div>
+            <div id="pkmCardViewer"></div>
     `;
     enemyVgc();
     document.getElementById('enemyTeamViewer').innerHTML = `
@@ -989,19 +1200,19 @@ function battleScreenUpdate() {
     <div class="partner" id="activePartner"></div>`;*/
     document.getElementById('activeEnemy').innerHTML =""
     if (!(activeEnemy[0]>=4)) {
-        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0" onclick ='enemyInformation(0)' src="${enemyVgcTeam[activeEnemy[0]].img}">`;
+        document.getElementById('activeEnemy').innerHTML = `<img class="right" id="enemy0" onclick ='pkmCardLive(${enemyVgcTeam[activeEnemy[0]].id}, 1)' src="${enemyVgcTeam[activeEnemy[0]].img}">`;
         healthCheck();
     }
     if (!(activeEnemy[1] >= 4)) {
-        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy1" onclick ='enemyInformation(1)' src="${enemyVgcTeam[activeEnemy[1]].img}">`
+        document.getElementById('activeEnemy').innerHTML += `<img class="right" id="enemy1" onclick ='pkmCardLive(${enemyVgcTeam[activeEnemy[1]].id}, 1)' src="${enemyVgcTeam[activeEnemy[1]].img}">`
         healthCheck();
     }
 
     if (activeTeam.length == 1) {
-        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" onclick ='teamInformation(0)' src="${vgcTeam[activeTeam[0]].img}">`
+        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" onclick ='pkmCardLive(${vgcTeam[activeTeam[0]].id}, 0)' src="${vgcTeam[activeTeam[0]].img}">`
     } else {
-        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" onclick ='teamInformation(0)' src="${vgcTeam[activeTeam[0]].img}">`
-        document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" onclick ='teamInformation(1)' src="${vgcTeam[activeTeam[1]].img}">`
+        document.getElementById('activePartner').innerHTML = `<img class="left" id="partner0" onclick ='pkmCardLive(${vgcTeam[activeTeam[0]].id}, 0)' src="${vgcTeam[activeTeam[0]].img}">`
+        document.getElementById('activePartner').innerHTML += `<img id="partner1" class="left" onclick ='pkmCardLive(${vgcTeam[activeTeam[1]].id}, 0)' src="${vgcTeam[activeTeam[1]].img}">`
     }
     healthCheck()
 }
@@ -1855,20 +2066,20 @@ function protect1attackFrom0(threat) {
     if (enemyVgcTeam[activeEnemy[1]].enemyHealth >= 1) {
         addTurn(8, enemyProtect, activeEnemy[1]);
     }
-    if (strongestAttackCalc(0, target) >= 1) {
+    if (strongestAttackCalc(0, threat) >= 1) {
         targetedStrongestAttack(0, threat);
     } else {
         targetedStrongestAttack(0, other);
     }
 }
-function protectAttack(theProtected, threat) {
+/*function protectAttack(theProtected, threat) {
     if (enemyVgcTeam[activeEnemy[theProtected]].enemyHealth >= 1) {
         addTurn(8, enemyProtect, activeEnemy[theProtected]);
     }
     if () {
         targetedStrongestAttack(0, threat);
     }
-}
+}*/
 function enemyFocus(target) {
 
     let activeTarget = vgcTeam[activeTeam[target]]

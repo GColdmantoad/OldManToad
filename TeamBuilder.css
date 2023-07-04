@@ -243,7 +243,108 @@ margin: auto;
     color: white;
     font-size: 1.5rem;
 }
+.pkmCard {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 25px;
+    height: 575px;
+    width: 350px;
+    z-index: 9;
+    color: white;
+}
+.cardButton {
+    position: absolute;
+    bottom: 5px;
+}
+.cardImage {
+    height: 180px;
+}
 
+.title {
+    font-size: 1.25rem;
+}
+
+li {
+    list-style: none;
+}
+
+.baseStats {
+    font-size: .80rem;
+}
+
+ul {
+    margin-left: 0;
+}
+
+.space-between {
+    flex: 1;
+    justify-content: space-between;
+}
+
+.space-around {
+    flex: 1;
+    justify-content: space-around;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.center {
+    justify-content: center;
+}
+
+.dataPill {
+    background-color: rgba(80,81,79,0.1298494397759104);
+    border-radius: 25px;
+    padding: 5px 10px;
+    margin: 2px 10px;
+}
+
+.typingIcon {
+    height: 30px;
+    width: 30px;
+    margin: 2px;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.colomn {
+    display: flex;
+    flex-direction: column;
+}
+
+.typeList {
+    width: 140px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.centerText {
+    text-align: center;
+}
+.lineHeight {
+   line-height: 30px;
+   text-align: center;
+}
+
+.smallerTypingIcon {
+    height: 25px;
+    width: 25px;
+    margin: 2px;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
 
 .type1-steel-type2-bug{
 background: linear-gradient(0deg, rgba(183,183,206,1) 45%, rgba(166,185,26,1) 65%);
