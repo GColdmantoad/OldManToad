@@ -762,9 +762,13 @@ const pkmMoves = [
 
 const specialPkmMoves = [
     {
+        id: 0,
         name: 'spore',
         damage: 0,
         accuracy: 100,
+        priority: 5,
+        type: 3,
+
     }, {
 
     }
