@@ -956,14 +956,14 @@ function pkmCard(id) {
                 <div class="colomn">
                     <div class="centerText">weakness</div>        
                     <div class="row lineHeight">                
-                        <div class="baseStats row typeList" id="weaknessList">      
+                        <div class="row typeList" id="weaknessList">      
                         </div>
                     </div>
                 </div>   
                 <div class="colomn">
                     <div class="centerText">resist</div>        
                     <div class="row lineHeight">                
-                        <div class="baseStats row typeList" id="resistList">
+                        <div class="row typeList" id="resistList">
                         </div>                       
                     </div>            
                 </div>
@@ -1027,7 +1027,7 @@ function pkmCard(id) {
     document.querySelector('#pkmCardViewer').classList.add(background, 'pkmCard')
     document.querySelector('#nameType').innerHTML = `
                 <div class="cardName title ml-10">${pkm[id].name}</div>
-            <div class="title mr-10 row hitPoints">
+            <div class="title mr-10 row">
                 <div class="hitPoints flex">${pkm[id].hitPoints}</div>
                 ${typing}
             </div>
@@ -1061,14 +1061,14 @@ function pkmCardLive(id, friendOrFoe) {
                 <div class="colomn">
                     <div class="centerText">weakness</div>        
                     <div class="row lineHeight">                
-                        <div class="baseStats mr-10 row typeList" id="weaknessList">      
+                        <div class="mr-10 row typeList" id="weaknessList">      
                         </div>
                     </div>
                 </div>   
                 <div class="colomn">
                     <div class="centerText">resist</div>        
                     <div class="row lineHeight">                
-                        <div class="baseStats mr-10 row typeList" id="resistList">
+                        <div class="mr-10 row typeList" id="resistList">
                         </div>                       
                     </div>            
                 </div>
@@ -1119,10 +1119,10 @@ function pkmCardLive(id, friendOrFoe) {
                     <img class="image" src="img/${pkm[id].type1}.png" alt="">
                 </div>`
     } else {
-        typing = `                <div class="typingIcon">
+        typing = `                <div class="typingIcon hitPoints">
                     <img class="image" src="img/${pkm[id].type1}.png" alt="">
                 </div>
-                <div class="typingIcon">
+                <div class="typingIcon hitPoints">
                     <img class="image" src="img/${pkm[id].type2}.png" alt="">
                 </div>`
     }
@@ -1130,7 +1130,7 @@ function pkmCardLive(id, friendOrFoe) {
     document.querySelector('#pkmCardViewer').className = ''
     document.querySelector('#pkmCardViewer').classList.add(background, 'pkmCard')
     document.querySelector('#nameType').innerHTML = `
-                <div class="cardName title ml-10 hitPoints">${pkm[id].name}</div>
+                <div class="cardName title ml-10">${pkm[id].name}</div>
             <div class="title mr-10 row">
                 <div class="flex">${health}</div>
                 ${typing}

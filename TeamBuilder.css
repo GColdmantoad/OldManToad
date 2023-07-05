@@ -331,6 +331,7 @@ ul {
     width: 140px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .centerText {
@@ -347,10 +348,6 @@ ul {
     height: 25px;
     width: 25px;
     margin: 2px;
-    position: relative;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 
 .type1-steel-type2-bug{
