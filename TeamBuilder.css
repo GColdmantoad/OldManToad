@@ -265,6 +265,7 @@ margin: auto;
 
 .title {
     font-size: 1.25rem;
+    position: relative;
 }
 
 li {
@@ -273,6 +274,7 @@ li {
 
 .baseStats {
     font-size: .80rem;
+    padding: 10px;
 }
 
 ul {
@@ -312,12 +314,14 @@ ul {
     height: 30px;
     width: 30px;
     margin: 2px;
+
+}
+.hitPoints {
     position: relative;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
-
 .colomn {
     display: flex;
     flex-direction: column;

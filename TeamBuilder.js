@@ -73,7 +73,7 @@ const pkm = [
     movePool: [4, 16],
     special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/462.png",
-        gif: 'img/pokemon/Magnezone.gif',
+        gif: 'img/pokemon/magnezone.gif',
     weakness: [[.5, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [.5, 'electric'], [.5, 'ice'], [2, 'fighting'], [0, 'poison'], [4, 'ground'], [.25, 'flying'], [.5, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.25, 'steel'], [.5, 'fairy']]
 }, {
     id: 2,
@@ -948,8 +948,8 @@ function pkmCard(id) {
     document.querySelector('#pkmCardViewer').innerHTML = `
      <div class="row space-between" id="nameType"></div>
 
-        <div class="cardImage row center" id="cardImangeGoesHere"></div>
-        <div class="dataPill">
+        <div class="cardImage row center dataPill" id="cardImangeGoesHere"></div>
+        <div class="">
             <div id="baseStats">
             </div>
             <div class="row space-around">
@@ -1011,14 +1011,14 @@ function pkmCard(id) {
     `
     document.querySelector('#cardImangeGoesHere').innerHTML = `<img class="image" src="${image}">`
     if (pkm[id].type1 == pkm[id].type2) {
-        typing = `<div class="typingIcon">
+        typing = `<div class="hitPoints typingIcon">
                     <img class="image" src="img/${pkm[id].type1}.png" alt="">
                 </div>`
     } else {
-        typing = `                <div class="typingIcon">
+        typing = `                <div class="hitPoints typingIcon">
                     <img class="image" src="img/${pkm[id].type1}.png" alt="">
                 </div>
-                <div class="typingIcon">
+                <div class=" hitPoints typingIcon">
                     <img class="image" src="img/${pkm[id].type2}.png" alt="">
                 </div>`
     }
@@ -1027,7 +1027,7 @@ function pkmCard(id) {
     document.querySelector('#pkmCardViewer').classList.add(background, 'pkmCard')
     document.querySelector('#nameType').innerHTML = `
                 <div class="cardName title ml-10">${pkm[id].name}</div>
-            <div class="title mr-10 row">
+            <div class="title mr-10 row hitPoints">
                 <div class="hitPoints flex">${pkm[id].hitPoints}</div>
                 ${typing}
             </div>
@@ -1130,9 +1130,9 @@ function pkmCardLive(id, friendOrFoe) {
     document.querySelector('#pkmCardViewer').className = ''
     document.querySelector('#pkmCardViewer').classList.add(background, 'pkmCard')
     document.querySelector('#nameType').innerHTML = `
-                <div class="cardName title ml-10">${pkm[id].name}</div>
+                <div class="cardName title ml-10 hitPoints">${pkm[id].name}</div>
             <div class="title mr-10 row">
-                <div class="hitPoints flex">${health}</div>
+                <div class="flex">${health}</div>
                 ${typing}
             </div>
     `
@@ -2073,7 +2073,7 @@ function protect0attackFrom1(threat) {
     if (enemyVgcTeam[activeEnemy[0]].enemyHealth >= 1) {
         addTurn(8, enemyProtect, activeEnemy[0]);
     }
-    if (strongestAttackCalc(1, target) >= 1) {
+    if (strongestAttackCalc(1, threat) >= 1) {
         targetedStrongestAttack(1, threat);
     } else {
         targetedStrongestAttack(1, other);
