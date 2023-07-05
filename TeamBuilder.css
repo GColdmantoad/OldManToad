@@ -262,12 +262,20 @@ margin: auto;
 .cardImage {
     height: 180px;
 }
-
-.title {
-    font-size: 1.25rem;
-    position: relative;
+#nameType{
+    height:20px;
+    margin:4px 0;
 }
-
+.title {
+    font-size: 22px;
+    position: relative;
+    line-height: 20px
+}
+.typingIcon {
+    height: 24px;
+    width: 24px;
+    margin: 0 2px;
+}
 li {
     list-style: none;
 }
@@ -310,12 +318,6 @@ ul {
     margin: 5px 15px;
 }
 
-.typingIcon {
-    height: 30px;
-    width: 30px;
-    margin: 2px;
-
-}
 .hitPoints {
     position: relative;
     top: 50%;

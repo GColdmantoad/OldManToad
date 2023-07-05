@@ -1026,9 +1026,9 @@ function pkmCard(id) {
     document.querySelector('#pkmCardViewer').className = ''
     document.querySelector('#pkmCardViewer').classList.add(background, 'pkmCard')
     document.querySelector('#nameType').innerHTML = `
-                <div class="cardName title ml-10">${pkm[id].name}</div>
+                <div class="title ml-10">${pkm[id].name}</div>
             <div class="title mr-10 row">
-                <div class="hitPoints flex">${pkm[id].hitPoints}</div>
+                <div class="hitPoints flex">HP: ${pkm[id].hitPoints}</div>
                 ${typing}
             </div>
     `
@@ -1130,9 +1130,9 @@ function pkmCardLive(id, friendOrFoe) {
     document.querySelector('#pkmCardViewer').className = ''
     document.querySelector('#pkmCardViewer').classList.add(background, 'pkmCard')
     document.querySelector('#nameType').innerHTML = `
-                <div class="cardName title ml-10">${pkm[id].name}</div>
+                <div class="title ml-10">${pkm[id].name}</div>
             <div class="title mr-10 row">
-                <div class="flex">${health}</div>
+                <div class="flex">HP: ${health}</div>
                 ${typing}
             </div>
     `
