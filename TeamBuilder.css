@@ -243,9 +243,33 @@ margin: auto;
     color: white;
     font-size: 1.5rem;
 }
+.optSelector {
+
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    background-color: #157299;
+    margin: 10px 20px;
+    box-shadow: 2px 2px 4px 4px #50514f;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.optText {
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    line-height: 10px;
+}
+
+.optImage {
+    width: 100px;
+    height: auto;
+}
 .pkmCard {
     position: fixed;
-    bottom: 10px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 15px;
@@ -260,7 +284,7 @@ margin: auto;
     bottom: 5px;
 }
 .cardImage {
-    height: 180px;
+    height: 220px;
 }
 #nameType{
     height:20px;
@@ -281,8 +305,9 @@ li {
 }
 
 .baseStats {
-    font-size: .80rem;
+    font-size: 14px;
     padding: 0 15px;
+    line-height: 14px
 }
 
 ul {
@@ -306,7 +331,12 @@ ul {
 .mr-10 {
     margin-right: 10px;
 }
-
+.mt-10{
+    margin-top: 10px
+}
+.mb-10{
+    margin-bottom: 10px;
+}
 .center {
     justify-content: center;
 }
@@ -338,6 +368,7 @@ ul {
 
 .centerText {
     text-align: center;
+    line-height: 24px
 }
 /*
     .lineHeight {

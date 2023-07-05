@@ -44,714 +44,715 @@ let pleaseKeepTrackOfEnemySwitch = 3
 let errorCode = ''
 const pkm = [
     {
-    id: 0,
-    name: "Kilowattrel",
-    type1: "electric",
-    type2: "flying",
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/941.png",
-    hitPoints: 70,
-    physicalAtk: 70,
-    physicalDef: 60,
-    specialAtk: 105,
-    specialDef: 60,
-    speed: 5125,
-    movePool: [4, 9],
+        id: 0,
+        name: "Kilowattrel",
+        type1: "electric",
+        type2: "flying",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/941.png",
+        hitPoints: 70,
+        physicalAtk: 70,
+        physicalDef: 60,
+        specialAtk: 105,
+        specialDef: 60,
+        speed: 5125,
+        movePool: [4, 9],
         special: true,
         gif: 'img/pokemon/Kilowattrel.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [.5, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
-}, {
-    id: 1,
-    name: "Magnezone",
-    type1: "electric",
-    type2: "steel",
-    hitPoints: 70,
-    physicalAtk: 70,
-    physicalDef: 115,
-    specialAtk: 130,
-    specialDef: 90,
-    speed: 5060,
-    movePool: [4, 16],
-    special: true,
+        weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [.5, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+    }, {
+        id: 1,
+        name: "Magnezone",
+        type1: "electric",
+        type2: "steel",
+        hitPoints: 70,
+        physicalAtk: 70,
+        physicalDef: 115,
+        specialAtk: 130,
+        specialDef: 90,
+        speed: 5060,
+        movePool: [4, 16],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/462.png",
         gif: 'img/pokemon/462.gif',
-    weakness: [[.5, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [.5, 'electric'], [.5, 'ice'], [2, 'fighting'], [0, 'poison'], [4, 'ground'], [.25, 'flying'], [.5, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.25, 'steel'], [.5, 'fairy']]
-}, {
-    id: 2,
-    name: "Azumaril",
-    type1: "water",
-    type2: "fairy",
-    hitPoints: 100,
-    physicalAtk: 100,
-    physicalDef: 80,
-    specialAtk: 60,
-    specialDef: 80,
-    speed: 5050,
-    movePool: [2, 17],
-    special: true,
+        weakness: [[.5, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [.5, 'electric'], [.5, 'ice'], [2, 'fighting'], [0, 'poison'], [4, 'ground'], [.25, 'flying'], [.5, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.25, 'steel'], [.5, 'fairy']]
+    }, {
+        id: 2,
+        name: "Azumaril",
+        type1: "water",
+        type2: "fairy",
+        hitPoints: 100,
+        physicalAtk: 100,
+        physicalDef: 80,
+        specialAtk: 60,
+        specialDef: 80,
+        speed: 5050,
+        movePool: [2, 17],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/184.png",
         gif: 'img/pokemon/184.gif',
-    weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [.5, 'fighting'], [2, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [.5, 'bug'], [1, 'rock'], [1, 'ghost'], [.5, 'dark'], [0, 'dragon'], [1, 'steel'], [1, 'fairy']]
-}, {
-    id: 3,
-    name: "Scizor",
-    type1: "steel",
-    type2: "bug",
-    hitPoints: 70,
-    physicalAtk: 130,
-    physicalDef: 100,
-    specialAtk: 55,
-    specialDef: 80,
-    speed: 5065,
-    movePool: [11, 16],
-    special: false,
+        weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [.5, 'fighting'], [2, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [.5, 'bug'], [1, 'rock'], [1, 'ghost'], [.5, 'dark'], [0, 'dragon'], [1, 'steel'], [1, 'fairy']]
+    }, {
+        id: 3,
+        name: "Scizor",
+        type1: "steel",
+        type2: "bug",
+        hitPoints: 70,
+        physicalAtk: 130,
+        physicalDef: 100,
+        specialAtk: 55,
+        specialDef: 80,
+        speed: 5065,
+        movePool: [11, 16],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/212.png",
         gif: 'img/pokemon/212.gif',
-    weakness: [[.5, 'normal'], [4, 'fire'], [1, 'water'], [.25, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [0, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [.5, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
-}, {
-    id: 4,
-    name: "Volcarona",
-    type1: "fire",
-    type2: "bug",
-    hitPoints: 85,
-    physicalAtk: 60,
-    physicalDef: 65,
-    specialAtk: 135,
-    specialDef: 105,
-    speed: 5100,
-    movePool: [1, 11],
-    special: true,
+        weakness: [[.5, 'normal'], [4, 'fire'], [1, 'water'], [.25, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [0, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [.5, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
+    }, {
+        id: 4,
+        name: "Volcarona",
+        type1: "fire",
+        type2: "bug",
+        hitPoints: 85,
+        physicalAtk: 60,
+        physicalDef: 65,
+        specialAtk: 135,
+        specialDef: 105,
+        speed: 5100,
+        movePool: [1, 11],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/637.png",
         gif: 'img/pokemon/637.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [.25, 'grass'], [1, 'electric'], [.5, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [2, 'flying'], [1, 'psychic'], [.5, 'bug'], [4, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
-}, {
-    id: 5,
-    name: "Great Tusk",
-    type1: "fighting",
-    type2: "ground",
-    hitPoints: 115,
-    physicalAtk: 131,
-    physicalDef: 131,
-    specialAtk: 53,
-    specialDef: 53,
-    speed: 5087,
-    movePool: [6, 8],
+        weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [.25, 'grass'], [1, 'electric'], [.5, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [2, 'flying'], [1, 'psychic'], [.5, 'bug'], [4, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
+    }, {
+        id: 5,
+        name: "Great Tusk",
+        type1: "fighting",
+        type2: "ground",
+        hitPoints: 115,
+        physicalAtk: 131,
+        physicalDef: 131,
+        specialAtk: 53,
+        specialDef: 53,
+        speed: 5087,
+        movePool: [6, 8],
         special: false,
         gif: 'img/pokemon/984.gif',
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/984.png",
-    weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [2, 'flying'], [2, 'psychic'], [.5, 'bug'], [.25, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
-}, {
-    id: 6,
-    name: "Chi-Yu",
-    type1: "fire",
-    type2: "dark",
-    hitPoints: 55,
-    physicalAtk: 80,
-    physicalDef: 80,
-    specialAtk: 140,
-    specialDef: 120,
-    speed: 5100,
-    movePool: [1, 14],
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/984.png",
+        weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [2, 'flying'], [2, 'psychic'], [.5, 'bug'], [.25, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
+    }, {
+        id: 6,
+        name: "Chi-Yu",
+        type1: "fire",
+        type2: "dark",
+        hitPoints: 55,
+        physicalAtk: 80,
+        physicalDef: 80,
+        specialAtk: 140,
+        specialDef: 120,
+        speed: 5100,
+        movePool: [1, 14],
         special: true,
         gif: 'img/pokemon/1004.gif',
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/1004.png",
-    weakness: [[1, 'normal'], [.5, 'fire'], [2, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [2, 'fighting'], [1, 'poison'], [2, 'ground'], [1, 'flying'], [0, 'psychic'], [0, 'bug'], [2, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
-}, {
-    id: 7,
-    name: "Garchomp",
-    type1: "dragon",
-    type2: "ground",
-    hitPoints: 108,
-    physicalAtk: 130,
-    physicalDef: 95,
-    specialAtk: 80,
-    specialDef: 85,
-    speed: 5102,
-    movePool: [8, 15],
-    special: false,
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/1004.png",
+        weakness: [[1, 'normal'], [.5, 'fire'], [2, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [2, 'fighting'], [1, 'poison'], [2, 'ground'], [1, 'flying'], [0, 'psychic'], [0, 'bug'], [2, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+    }, {
+        id: 7,
+        name: "Garchomp",
+        type1: "dragon",
+        type2: "ground",
+        hitPoints: 108,
+        physicalAtk: 130,
+        physicalDef: 95,
+        specialAtk: 80,
+        specialDef: 85,
+        speed: 5102,
+        movePool: [8, 15],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/445.png",
         gif: 'img/pokemon/445.gif',
-    weakness: [[1, 'normal'], [.5, 'fire'], [1, 'water'], [1, 'grass'], [0, 'electric'], [4, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [2, 'dragon'], [1, 'steel'], [2, 'fairy']]
-}, {
-    id: 8,
-    name: "Baxcalibur",
-    type1: "dragon",
-    type2: "ice",
-    hitPoints: 115,
-    physicalAtk: 145,
-    physicalDef: 92,
-    specialAtk: 75,
-    specialDef: 86,
-    speed: 5087,
-    movePool: [5, 15],
+        weakness: [[1, 'normal'], [.5, 'fire'], [1, 'water'], [1, 'grass'], [0, 'electric'], [4, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [2, 'dragon'], [1, 'steel'], [2, 'fairy']]
+    }, {
+        id: 8,
+        name: "Baxcalibur",
+        type1: "dragon",
+        type2: "ice",
+        hitPoints: 115,
+        physicalAtk: 145,
+        physicalDef: 92,
+        specialAtk: 75,
+        specialDef: 86,
+        speed: 5087,
+        movePool: [5, 15],
         special: false,
         gif: 'img/pokemon/998.gif',
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/998.png",
-    weakness: [[1, 'normal'], [1, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [1, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [2, 'dragon'], [2, 'steel'], [2, 'fairy']]
-}, {
-    id: 9,
-    name: "Slowbro",
-    type1: "water",
-    type2: "psychic",
-    hitPoints: 95,
-    physicalAtk: 75,
-    physicalDef: 110,
-    specialAtk: 100,
-    specialDef: 80,
-    speed: 5030,
-    movePool: [2, 10],
-    special: true,
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/998.png",
+        weakness: [[1, 'normal'], [1, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [1, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [2, 'dragon'], [2, 'steel'], [2, 'fairy']]
+    }, {
+        id: 9,
+        name: "Slowbro",
+        type1: "water",
+        type2: "psychic",
+        hitPoints: 95,
+        physicalAtk: 75,
+        physicalDef: 110,
+        specialAtk: 100,
+        specialDef: 80,
+        speed: 5030,
+        movePool: [2, 10],
+        special: true,
         img: "https://www.serebii.net/swordshield/pokemon/080.png",
         gif: 'img/pokemon/80.gif',
-    weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
-}, {
-    id: 10,
-    name: "Meowscarada",
-    type1: "grass",
-    type2: "dark",
-    hitPoints: 76,
-    physicalAtk: 110,
-    physicalDef: 70,
-    specialAtk: 81,
-    specialDef: 70,
-    speed: 5123,
-    movePool: [3, 14],
-    special: false,
+        weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+    }, {
+        id: 10,
+        name: "Meowscarada",
+        type1: "grass",
+        type2: "dark",
+        hitPoints: 76,
+        physicalAtk: 110,
+        physicalDef: 70,
+        specialAtk: 81,
+        specialDef: 70,
+        speed: 5123,
+        movePool: [3, 14],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/908.png",
         gif: 'img/pokemon/908.gif',
-    weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [2, 'fighting'], [2, 'poison'], [.5, 'ground'], [2, 'flying'], [0, 'psychic'], [4, 'bug'], [1, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
-}, {
-    id: 11,
-    name: "Tauros",
-    type1: "fire",
-    type2: "fighting",
-    hitPoints: 75,
-    physicalAtk: 110,
-    physicalDef: 135,
-    specialAtk: 30,
-    specialDef: 70,
-    speed: 5100,
-    movePool: [1, 6],
+        weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [2, 'fighting'], [2, 'poison'], [.5, 'ground'], [2, 'flying'], [0, 'psychic'], [4, 'bug'], [1, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
+    }, {
+        id: 11,
+        name: "Tauros",
+        type1: "fire",
+        type2: "fighting",
+        hitPoints: 75,
+        physicalAtk: 110,
+        physicalDef: 135,
+        specialAtk: 30,
+        specialDef: 70,
+        speed: 5100,
+        movePool: [1, 6],
         special: false,
         gif: 'img/pokemon/128.gif',
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/128-b.png",
-    weakness: [[1, 'normal'], [.5, 'fire'], [2, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [1, 'poison'], [2, 'ground'], [2, 'flying'], [2, 'psychic'], [.25, 'bug'], [1, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
-}, {
-    id: 12,
-    name: "Gengar",
-    type1: "ghost",
-    type2: "poison",
-    hitPoints: 60,
-    physicalAtk: 65,
-    physicalDef: 60,
-    specialAtk: 130,
-    specialDef: 75,
-    speed: 5110,
-    movePool: [7, 13],
-    special: true,
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/128-b.png",
+        weakness: [[1, 'normal'], [.5, 'fire'], [2, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [1, 'poison'], [2, 'ground'], [2, 'flying'], [2, 'psychic'], [.25, 'bug'], [1, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+    }, {
+        id: 12,
+        name: "Gengar",
+        type1: "ghost",
+        type2: "poison",
+        hitPoints: 60,
+        physicalAtk: 65,
+        physicalDef: 60,
+        specialAtk: 130,
+        specialDef: 75,
+        speed: 5110,
+        movePool: [7, 13],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/094.png",
         gif: 'img/pokemon/94.gif',
-    weakness: [[0, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [1, 'ice'], [0, 'fighting'], [.25, 'poison'], [2, 'ground'], [1, 'flying'], [2, 'psychic'], [.25, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [.5, 'fairy']]
-}, {
-    id: 13,
-    name: "Hydreigon",
-    type1: "dragon",
-    type2: "dark",
-    hitPoints: 92,
-    physicalAtk: 105,
-    physicalDef: 90,
-    specialAtk: 125,
-    specialDef: 90,
-    speed: 5098,
-    movePool: [14, 15],
-    special: true,
+        weakness: [[0, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [1, 'ice'], [0, 'fighting'], [.25, 'poison'], [2, 'ground'], [1, 'flying'], [2, 'psychic'], [.25, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [.5, 'fairy']]
+    }, {
+        id: 13,
+        name: "Hydreigon",
+        type1: "dragon",
+        type2: "dark",
+        hitPoints: 92,
+        physicalAtk: 105,
+        physicalDef: 90,
+        specialAtk: 125,
+        specialDef: 90,
+        speed: 5098,
+        movePool: [14, 15],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/635.png",
         gif: 'img/pokemon/635.gif',
     weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [2, 'fighting'], [1, 'poison'], [0, 'ground'], [1, 'flying'], [0, 'psychic'], [2, 'bug'], [1, 'rock'], [.5, 'ghost'], [.5, 'dark'], [2, 'dragon'], [1, 'steel'], [4, 'fairy']]
-}, {
-    id: 14,
-    name: "Gholdengo",
-    type1: "ghost",
-    type2: "steel",
-    hitPoints: 87,
-    physicalAtk: 60,
-    physicalDef: 95,
-    specialAtk: 133,
-    specialDef: 91,
-    speed: 5084,
-    movePool: [13, 16],
-    special: true,
+    }, {
+        id: 14,
+        name: "Gholdengo",
+        type1: "ghost",
+        type2: "steel",
+        hitPoints: 87,
+        physicalAtk: 60,
+        physicalDef: 95,
+        specialAtk: 133,
+        specialDef: 91,
+        speed: 5084,
+        movePool: [13, 16],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/1000.png",
         gif: 'img/pokemon/1000.gif',
-    weakness: [[0, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [0, 'fighting'], [0, 'poison'], [2, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [.5, 'rock'], [2, 'ghost'], [2, 'dark'], [.5, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
-}, {
-    id: 15,
-    name: "Slowking",
-    type1: "water",
-    type2: "psychic",
-    hitPoints: 95,
-    physicalAtk: 75,
-    physicalDef: 80,
-    specialAtk: 100,
-    specialDef: 110,
-    speed: 5030,
-    movePool: [2, 10],
-    special: true,
+        weakness: [[0, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [0, 'fighting'], [0, 'poison'], [2, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [.5, 'rock'], [2, 'ghost'], [2, 'dark'], [.5, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
+    }, {
+        id: 15,
+        name: "Slowking",
+        type1: "water",
+        type2: "psychic",
+        hitPoints: 95,
+        physicalAtk: 75,
+        physicalDef: 80,
+        specialAtk: 100,
+        specialDef: 110,
+        speed: 5030,
+        movePool: [2, 10],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/199.png",
         gif: 'img/pokemon/199.gif',
-    weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
-}, {
-    id: 16,
-    name: "Dragonite",
-    type1: "dragon",
-    type2: "flying",
-    hitPoints: 91,
-    physicalAtk: 134,
-    physicalDef: 95,
-    specialAtk: 100,
-    specialDef: 100,
-    speed: 5080,
-    movePool: [9, 15],
-    special: false,
+        weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+    }, {
+        id: 16,
+        name: "Dragonite",
+        type1: "dragon",
+        type2: "flying",
+        hitPoints: 91,
+        physicalAtk: 134,
+        physicalDef: 95,
+        specialAtk: 100,
+        specialDef: 100,
+        speed: 5080,
+        movePool: [9, 15],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/149.png",
         gif: 'img/pokemon/149.gif',
-    weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [.25, 'grass'], [1, 'electric'], [4, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [1, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [2, 'dragon'], [1, 'steel'], [2, 'fairy']]
-}, {
-    id: 17,
-    name: "Donphan",
-    type1: "ground",
-    type2: "ground",
-    hitPoints: 90,
-    physicalAtk: 120,
-    physicalDef: 120,
-    specialAtk: 60,
-    specialDef: 60,
-    speed: 5050,
-    movePool: [8, 8],
-    special: false,
+        weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [.25, 'grass'], [1, 'electric'], [4, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [1, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [2, 'dragon'], [1, 'steel'], [2, 'fairy']]
+    }, {
+        id: 17,
+        name: "Donphan",
+        type1: "ground",
+        type2: "ground",
+        hitPoints: 90,
+        physicalAtk: 120,
+        physicalDef: 120,
+        specialAtk: 60,
+        specialDef: 60,
+        speed: 5050,
+        movePool: [8, 8],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/232.png",
         gif: 'img/pokemon/232.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
-}, {
-    id: 18,
-    name: "Dragapult",
-    type1: "dragon",
-    type2: "ghost",
-    hitPoints: 88,
-    physicalAtk: 120,
-    physicalDef: 100,
-    specialAtk: 100,
-    specialDef: 75,
-    speed: 5142,
-    movePool: [13, 15],
-    special: false,
+        weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
+    }, {
+        id: 18,
+        name: "Dragapult",
+        type1: "dragon",
+        type2: "ghost",
+        hitPoints: 88,
+        physicalAtk: 120,
+        physicalDef: 100,
+        specialAtk: 100,
+        specialDef: 75,
+        speed: 5142,
+        movePool: [13, 15],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/887.png",
         gif: 'img/pokemon/887.gif',
-    weakness: [[0, 'normal'], [.5, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [0, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [.5, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [2, 'dragon'], [1, 'steel'], [2, 'fairy']]
-}, {
-    id: 19,
-    name: "Glimmora",
-    type1: "rock",
-    type2: "poison",
-    hitPoints: 83,
-    physicalAtk: 55,
-    physicalDef: 90,
-    specialAtk: 130,
-    specialDef: 81,
-    speed: 5086,
-    movePool: [7, 12],
+        weakness: [[0, 'normal'], [.5, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [0, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [.5, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [2, 'dragon'], [1, 'steel'], [2, 'fairy']]
+    }, {
+        id: 19,
+        name: "Glimmora",
+        type1: "rock",
+        type2: "poison",
+        hitPoints: 83,
+        physicalAtk: 55,
+        physicalDef: 90,
+        specialAtk: 130,
+        specialDef: 81,
+        speed: 5086,
+        movePool: [7, 12],
         special: true,
         gif: 'img/pokemon/970.gif',
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/970.png",
-    weakness: [[.5, 'normal'], [.5, 'fire'], [2, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [1, 'fighting'], [.25, 'poison'], [4, 'ground'], [.5, 'flying'], [2, 'psychic'], [.5, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [2, 'steel'], [.5, 'fairy']]
-}, {
-    id: 20,
-    name: "Gastrodon",
-    type1: "water",
-    type2: "ground",
-    hitPoints: 111,
-    physicalAtk: 83,
-    physicalDef: 68,
-    specialAtk: 92,
-    specialDef: 82,
-    speed: 5039,
-    movePool: [2, 8],
-    special: true,
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/970.png",
+        weakness: [[.5, 'normal'], [.5, 'fire'], [2, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [1, 'fighting'], [.25, 'poison'], [4, 'ground'], [.5, 'flying'], [2, 'psychic'], [.5, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [2, 'steel'], [.5, 'fairy']]
+    }, {
+        id: 20,
+        name: "Gastrodon",
+        type1: "water",
+        type2: "ground",
+        hitPoints: 111,
+        physicalAtk: 83,
+        physicalDef: 68,
+        specialAtk: 92,
+        specialDef: 82,
+        speed: 5039,
+        movePool: [2, 8],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/423.png",
         gif: 'img/pokemon/423.gif',
-    weakness: [[1, 'normal'], [.5, 'fire'], [0, 'water'], [4, 'grass'], [0, 'electric'], [1, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
-}, {
-    id: 21,
-    name: "Breloom",
-    type1: "grass",
-    type2: "fighting",
-    hitPoints: 60,
-    physicalAtk: 130,
-    physicalDef: 80,
-    specialAtk: 60,
-    specialDef: 60,
-    speed: 5070,
-    movePool: [3, 6],
-    special: false,
+        weakness: [[1, 'normal'], [.5, 'fire'], [0, 'water'], [4, 'grass'], [0, 'electric'], [1, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+    }, {
+        id: 21,
+        name: "Breloom",
+        type1: "grass",
+        type2: "fighting",
+        hitPoints: 60,
+        physicalAtk: 130,
+        physicalDef: 80,
+        specialAtk: 60,
+        specialDef: 60,
+        speed: 5070,
+        movePool: [3, 6],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/286.png",
         gif: 'img/pokemon/286.gif',
-    weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [1, 'fighting'], [2, 'poison'], [.5, 'ground'], [4, 'flying'], [2, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
-}, {
-    id: 22,
-    name: "Chein-Pao",
-    type1: "ice",
-    type2: "dark",
-    hitPoints: 80,
-    physicalAtk: 135,
-    physicalDef: 80,
-    specialAtk: 90,
-    specialDef: 65,
-    speed: 5135,
-    movePool: [5, 14],
-    special: false,
+        weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [1, 'fighting'], [2, 'poison'], [.5, 'ground'], [4, 'flying'], [2, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
+    }, {
+        id: 22,
+        name: "Chein-Pao",
+        type1: "ice",
+        type2: "dark",
+        hitPoints: 80,
+        physicalAtk: 135,
+        physicalDef: 80,
+        specialAtk: 90,
+        specialDef: 65,
+        speed: 5135,
+        movePool: [5, 14],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/1002.png",
         gif: 'img/pokemon/1002.gif',
-    weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [1, 'grass'], [1, 'electric'], [.5, 'ice'], [4, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [0, 'psychic'], [2, 'bug'], [2, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [2, 'steel'], [2, 'fairy']]
-}, {
-    id: 23,
-    name: "Maushold",
-    type1: "normal",
-    type2: "normal",
-    hitPoints: 74,
-    physicalAtk: 75,
-    physicalDef: 70,
-    specialAtk: 65,
-    specialDef: 75,
-    speed: 5111,
-    movePool: [0, 0],
-    special: false,
+        weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [1, 'grass'], [1, 'electric'], [.5, 'ice'], [4, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [0, 'psychic'], [2, 'bug'], [2, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [2, 'steel'], [2, 'fairy']]
+    }, {
+        id: 23,
+        name: "Maushold",
+        type1: "normal",
+        type2: "normal",
+        hitPoints: 74,
+        physicalAtk: 75,
+        physicalDef: 70,
+        specialAtk: 65,
+        specialDef: 75,
+        speed: 5111,
+        movePool: [0, 0],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/925-f.png",
         gif: 'img/pokemon/925.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [1, 'rock'], [0, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
-}, {
-    id: 24,
-    name: "Ceruledge",
-    type1: "ghost",
-    type2: "fire",
-    hitPoints: 75,
-    physicalAtk: 125,
-    physicalDef: 80,
-    specialAtk: 60,
-    specialDef: 100,
-    speed: 5085,
-    movePool: [1, 13],
+        weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [1, 'rock'], [0, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
+    }, {
+        id: 24,
+        name: "Ceruledge",
+        type1: "ghost",
+        type2: "fire",
+        hitPoints: 75,
+        physicalAtk: 125,
+        physicalDef: 80,
+        specialAtk: 60,
+        specialDef: 100,
+        speed: 5085,
+        movePool: [1, 13],
         special: false,
         gif: 'img/pokemon/937.gif',
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/937.png",
-    weakness: [[0, 'normal'], [0, 'fire'], [2, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [0, 'fighting'], [.5, 'poison'], [2, 'ground'], [1, 'flying'], [1, 'psychic'], [.25, 'bug'], [2, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
-}, {
-    id: 25,
-    name: "Iron Hands",
-    type1: "electric",
-    type2: "fighting",
-    hitPoints: 154,
-    physicalAtk: 140,
-    physicalDef: 108,
-    specialAtk: 50,
-    specialDef: 68,
-    speed: 5050,
-    movePool: [4, 6],
-    special: false,
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/937.png",
+        weakness: [[0, 'normal'], [0, 'fire'], [2, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [0, 'fighting'], [.5, 'poison'], [2, 'ground'], [1, 'flying'], [1, 'psychic'], [.25, 'bug'], [2, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
+    }, {
+        id: 25,
+        name: "Iron Hands",
+        type1: "electric",
+        type2: "fighting",
+        hitPoints: 154,
+        physicalAtk: 140,
+        physicalDef: 108,
+        specialAtk: 50,
+        specialDef: 68,
+        speed: 5050,
+        movePool: [4, 6],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/992.png",
         gif: 'img/pokemon/992.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [.5, 'electric'], [1, 'ice'], [1, 'fighting'], [1, 'poison'], [2, 'ground'], [1, 'flying'], [2, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [2, 'fairy']]
-}, {
-    id: 26,
-    name: "Flutter Mane",
-    type1: "ghost",
-    type2: "fairy",
-    hitPoints: 55,
-    physicalAtk: 55,
-    physicalDef: 55,
-    specialAtk: 135,
-    specialDef: 135,
-    speed: 5135,
-    movePool: [13, 17],
+        weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [.5, 'electric'], [1, 'ice'], [1, 'fighting'], [1, 'poison'], [2, 'ground'], [1, 'flying'], [2, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [2, 'fairy']]
+    }, {
+        id: 26,
+        name: "Flutter Mane",
+        type1: "ghost",
+        type2: "fairy",
+        hitPoints: 55,
+        physicalAtk: 55,
+        physicalDef: 55,
+        specialAtk: 135,
+        specialDef: 135,
+        speed: 5135,
+        movePool: [13, 17],
         special: true,
         gif: 'img/pokemon/987.gif',
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/987.png",
-    weakness: [[0, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [0, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [.25, 'bug'], [1, 'rock'], [2, 'ghost'], [1, 'dark'], [0, 'dragon'], [2, 'steel'], [1, 'fairy']]
-}, {
-    id: 27,
-    name: "Espathra",
-    type1: "psychic",
-    type2: "psychic",
-    hitPoints: 95,
-    physicalAtk: 60,
-    physicalDef: 60,
-    specialAtk: 101,
-    specialDef: 60,
-    speed: 5105,
-    movePool: [10, 10],
-    special: true,
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/987.png",
+        weakness: [[0, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [0, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [.25, 'bug'], [1, 'rock'], [2, 'ghost'], [1, 'dark'], [0, 'dragon'], [2, 'steel'], [1, 'fairy']]
+    }, {
+        id: 27,
+        name: "Espathra",
+        type1: "psychic",
+        type2: "psychic",
+        hitPoints: 95,
+        physicalAtk: 60,
+        physicalDef: 60,
+        specialAtk: 101,
+        specialDef: 60,
+        speed: 5105,
+        movePool: [10, 10],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/956.png",
         gif: 'img/pokemon/956.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
-}, {
-    id: 28,
-    name: "Glastrier",
-    type1: "ice",
-    type2: "ice",
-    hitPoints: 100,
-    physicalAtk: 145,
-    physicalDef: 130,
-    specialAtk: 65,
-    specialDef: 110,
-    speed: 5030,
-    movePool: [5, 5],
-    special: false,
+        weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
+    }, {
+        id: 28,
+        name: "Glastrier",
+        type1: "ice",
+        type2: "ice",
+        hitPoints: 100,
+        physicalAtk: 145,
+        physicalDef: 130,
+        specialAtk: 65,
+        specialDef: 110,
+        speed: 5030,
+        movePool: [5, 5],
+        special: false,
         img: "https://www.serebii.net/swordshield/pokemon/896.png",
         gif: 'img/pokemon/896.gif',
-    weakness: [[1, 'normal'], [2, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [.5, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [2, 'steel'], [1, 'fairy']]
-}, {
-    id: 29,
-    name: "Rillaboom",
-    type1: "grass",
-    type2: "grass",
-    hitPoints: 100,
-    physicalAtk: 125,
-    physicalDef: 90,
-    specialAtk: 60,
-    specialDef: 70,
-    speed: 5085,
-    movePool: [3, 3],
-    special: false,
+        weakness: [[1, 'normal'], [2, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [.5, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [2, 'steel'], [1, 'fairy']]
+    }, {
+        id: 29,
+        name: "Rillaboom",
+        type1: "grass",
+        type2: "grass",
+        hitPoints: 100,
+        physicalAtk: 125,
+        physicalDef: 90,
+        specialAtk: 60,
+        specialDef: 70,
+        speed: 5085,
+        movePool: [3, 3],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/812.png",
         gif: 'img/pokemon/812.gif',
-    weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [1, 'fighting'], [2, 'poison'], [.5, 'ground'], [2, 'flying'], [1, 'psychic'], [2, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
-}, {
-    id: 30,
-    name: "Cresselia",
-    type1: "psychic",
-    type2: "psychic",
-    hitPoints: 120,
-    physicalAtk: 25,
-    physicalDef: 110,
-    specialAtk: 75,
-    specialDef: 120,
-    speed: 5085,
-    movePool: [10, 10],
-    special: true,
+        weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [1, 'fighting'], [2, 'poison'], [.5, 'ground'], [2, 'flying'], [1, 'psychic'], [2, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
+    }, {
+        id: 30,
+        name: "Cresselia",
+        type1: "psychic",
+        type2: "psychic",
+        hitPoints: 120,
+        physicalAtk: 25,
+        physicalDef: 110,
+        specialAtk: 75,
+        specialDef: 120,
+        speed: 5085,
+        movePool: [10, 10],
+        special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/488.png",
         gif: 'img/pokemon/488.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
-}, {
-    id: 31,
-    name: "Regieleki",
-    type1: "electric",
-    type2: "electric",
-    hitPoints: 80,
-    physicalAtk: 100,
-    physicalDef: 50,
-    specialAtk: 130,
-    specialDef: 50,
-    speed: 5200,
-    movePool: [4, 4],
-    special: true,
+        weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
+    }, {
+        id: 31,
+        name: "Regieleki",
+        type1: "electric",
+        type2: "electric",
+        hitPoints: 80,
+        physicalAtk: 100,
+        physicalDef: 50,
+        specialAtk: 130,
+        specialDef: 50,
+        speed: 5200,
+        movePool: [4, 4],
+        special: true,
         img: "https://www.serebii.net/swordshield/pokemon/894.png",
         gif: 'img/pokemon/894.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [.5, 'electric'], [1, 'ice'], [1, 'fighting'], [1, 'poison'],
-    [2, 'ground'], [.5, 'flying'], [1, 'psychic'], [1, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
-}, {
-    id: 32,
-    name: "Amoonguss",
-    type1: "grass",
-    type2: "poison",
-    hitPoints: 114,
-    physicalAtk: 85,
-    physicalDef: 70,
-    specialAtk: 86,
-    specialDef: 80,
-    speed: 5030,
-    movePool: [3, 7],
-    special: true,
+        weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [.5, 'electric'], [1, 'ice'], [1, 'fighting'], [1, 'poison'],
+        [2, 'ground'], [.5, 'flying'], [1, 'psychic'], [1, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+    }, {
+        id: 32,
+        name: "Amoonguss",
+        type1: "grass",
+        type2: "poison",
+        hitPoints: 114,
+        physicalAtk: 85,
+        physicalDef: 70,
+        specialAtk: 86,
+        specialDef: 80,
+        speed: 5030,
+        movePool: [3, 7],
+        special: true,
         img: "https://www.serebii.net/swordshield/pokemon/591.png",
-        gif: 'img/pokemon/591.gif',
-    weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.25, 'grass'], [.5, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'],
-    [1, 'ground'], [2, 'flying'], [2, 'psychic'], [1, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [.5, 'fairy']]
-}, {
-    id: 33,
-    name: "Rapid Urshifu",
-    type1: "water",
-    type2: "fighting",
-    hitPoints: 100,
-    physicalAtk: 130,
-    physicalDef: 100,
-    specialAtk: 86,
-    specialDef: 60,
-    speed: 5097,
-    movePool: [2, 6],
-    special: false,
+        gif: 'img/pokemon/amoonguss.gif',
+        weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.25, 'grass'], [.5, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'],
+        [1, 'ground'], [2, 'flying'], [2, 'psychic'], [1, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [.5, 'fairy']]
+    }, {
+        id: 33,
+        name: "Rapid Urshifu",
+        type1: "water",
+        type2: "fighting",
+        hitPoints: 100,
+        physicalAtk: 130,
+        physicalDef: 100,
+        specialAtk: 86,
+        specialDef: 60,
+        speed: 5097,
+        movePool: [2, 6],
+        special: false,
         img: "https://www.serebii.net/swordshield/pokemon/892-r.png",
         gif: 'img/pokemon/892-r.gif',
-    weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [1, 'fighting'], [1, 'poison'],
-    [1, 'ground'], [2, 'flying'], [2, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [2, 'fairy']]
-}, {
-    id: 34,
-    name: "Zapdos",
-    type1: "electric",
-    type2: "flying",
-    hitPoints: 90,
-    physicalAtk: 90,
-    physicalDef: 90,
-    specialAtk: 125,
-    specialDef: 90,
-    speed: 5100,
-    movePool: [4, 9],
-    special: true,
+        weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [1, 'fighting'], [1, 'poison'],
+        [1, 'ground'], [2, 'flying'], [2, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [2, 'fairy']]
+    }, {
+        id: 34,
+        name: "Zapdos",
+        type1: "electric",
+        type2: "flying",
+        hitPoints: 90,
+        physicalAtk: 90,
+        physicalDef: 90,
+        specialAtk: 125,
+        specialDef: 90,
+        speed: 5100,
+        movePool: [4, 9],
+        special: true,
         img: "https://www.serebii.net/Shiny/SV/new/145.png",
         gif: 'img/pokemon/145.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'],
-    [0, 'ground'], [.5, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
-}, {
-    id: 35,
-    name: "Heatran",
-    type1: "fire",
-    type2: "steel",
-    hitPoints: 91,
-    physicalAtk: 90,
-    physicalDef: 106,
-    specialAtk: 130,
-    specialDef: 106,
-    speed: 5077,
-    movePool: [1, 16],
-    special: true,
+        weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'],
+        [0, 'ground'], [.5, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
+    }, {
+        id: 35,
+        name: "Heatran",
+        type1: "fire",
+        type2: "steel",
+        hitPoints: 91,
+        physicalAtk: 90,
+        physicalDef: 106,
+        specialAtk: 130,
+        specialDef: 106,
+        speed: 5077,
+        movePool: [1, 16],
+        special: true,
         img: "https://www.serebii.net/Shiny/SV/new/485.png",
         gif: 'img/pokemon/485.gif',
-    weakness: [[.5, 'normal'], [0, 'fire'], [2, 'water'], [.25, 'grass'], [1, 'electric'], [.25, 'ice'], [2, 'fighting'], [0, 'poison'],
-    [4, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.25, 'steel'], [.25, 'fairy']]
-}, {
-    id: 36,
-    name: "Tinkaton",
-    type1: "steel",
-    type2: "fairy",
-    hitPoints: 85,
-    physicalAtk: 75,
-    physicalDef: 77,
-    specialAtk: 70,
-    specialDef: 105,
-    speed: 5094,
-    movePool: [16, 17],
+        weakness: [[.5, 'normal'], [0, 'fire'], [2, 'water'], [.25, 'grass'], [1, 'electric'], [.25, 'ice'], [2, 'fighting'], [0, 'poison'],
+        [4, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.25, 'steel'], [.25, 'fairy']]
+    }, {
+        id: 36,
+        name: "Tinkaton",
+        type1: "steel",
+        type2: "fairy",
+        hitPoints: 85,
+        physicalAtk: 75,
+        physicalDef: 77,
+        specialAtk: 70,
+        specialDef: 105,
+        speed: 5094,
+        movePool: [16, 17],
         special: false,
         gif: 'img/pokemon/959.gif',
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/959.png",
-    weakness: [[.5, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [0, 'poison'],
-    [2, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [0, 'dragon'], [1, 'steel'], [.5, 'fairy']]
-}, {
-    id: 37,
-        name: "Ting-Lu",
-    type1: "ground",
-    type2: "dark",
-    hitPoints: 155,
-    physicalAtk: 110,
-    physicalDef: 125,
-    specialAtk: 55,
-    specialDef: 95,
-    speed: 5045,
-    movePool: [8, 14],
-    special: false,
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/959.png",
+        weakness: [[.5, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [0, 'poison'],
+        [2, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [0, 'dragon'], [1, 'steel'], [.5, 'fairy']]
+    }, {
+        id: 37,
+            name: "Ting-Lu",
+        type1: "ground",
+        type2: "dark",
+        hitPoints: 155,
+        physicalAtk: 110,
+        physicalDef: 125,
+        specialAtk: 55,
+        specialDef: 95,
+        speed: 5045,
+        movePool: [8, 14],
+        special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/1003.png",
         gif: 'img/pokemon/1003.gif',
-    weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [2, 'fighting'], [.5, 'poison'],
-    [1, 'ground'], [1, 'flying'], [0, 'psychic'], [2, 'bug'], [.5, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
-}
+        weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [2, 'fighting'], [.5, 'poison'],
+        [1, 'ground'], [1, 'flying'], [0, 'psychic'], [2, 'bug'], [.5, 'rock'], [.5, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
+    }
 
 ]
-const pkmMoves = [{
-    id: 0,
-    type: "normal",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 1,
-    type: "fire",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 2,
-    type: "water",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 3,
-    type: "grass",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 4,
-    type: "electric",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 5,
-    type: "ice",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 6,
-    type: "fighting",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 7,
-    type: "poison",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 8,
-    type: "ground",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 9,
-    type: "flying",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 10,
-    type: "psychic",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 11,
-    type: "bug",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 12,
-    type: "rock",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 13,
-    type: "ghost",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 14,
-    type: "dark",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 15,
-    type: "dragon",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 16,
-    type: "steel",
-    power: 90,
-    accuracy: 100,
-}, {
-    id: 17,
-    type: "fairy",
-    power: 90,
-    accuracy: 100,
-}];
+const pkmMoves = [
+    {
+        id: 0,
+        type: "normal",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 1,
+        type: "fire",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 2,
+        type: "water",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 3,
+        type: "grass",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 4,
+        type: "electric",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 5,
+        type: "ice",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 6,
+        type: "fighting",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 7,
+        type: "poison",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 8,
+        type: "ground",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 9,
+        type: "flying",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 10,
+        type: "psychic",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 11,
+        type: "bug",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 12,
+        type: "rock",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 13,
+        type: "ghost",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 14,
+        type: "dark",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 15,
+        type: "dragon",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 16,
+        type: "steel",
+        power: 90,
+        accuracy: 100,
+    }, {
+        id: 17,
+        type: "fairy",
+        power: 90,
+        accuracy: 100,
+    }];
 menuButton.addEventListener("click", () => {
     if (navMenu.className == 'hidden') {
         navMenu.classList.remove("hidden");
@@ -960,10 +961,10 @@ function pkmCard(id) {
      <div class="row space-between" id="nameType"></div>
 
         <div class="cardImage row center dataPill" id="cardImangeGoesHere"></div>
-        <div class="">
+        <div class="mt-10">
             <div id="baseStats">
             </div>
-            <div class="row space-around">
+            <div class="row space-around mt-10">
                 <div class="colomn">
                     <div class="centerText">weakness</div>        
                     <div class="row lineHeight">                
@@ -1018,7 +1019,7 @@ function pkmCard(id) {
                     </div>
                 </div>
 
-                <div class="row baseStats center" id="baseSpeed">speed: ${pkm[id].speed - 5000}</div>
+                <div class="row baseStats center mt-10" id="baseSpeed">speed: ${pkm[id].speed - 5000}</div>
     `
     document.querySelector('#cardImangeGoesHere').innerHTML = `<img class="image" src="${image}">`
     if (pkm[id].type1 == pkm[id].type2) {
@@ -1066,9 +1067,9 @@ function pkmCardLive(id, friendOrFoe) {
 
         <div class="cardImage row center dataPill" id="cardImangeGoesHere"></div>
         <div class="">
-            <div id="baseStats">
+            <div class='mt-10' id="baseStats">
             </div>
-            <div class="row space-around">
+            <div class="row space-around mt-10">
                 <div class="colomn">
                     <div class="centerText">weakness</div>        
                     <div class="row lineHeight">                
@@ -1122,7 +1123,7 @@ function pkmCardLive(id, friendOrFoe) {
                     </div>
                 </div>
 
-                <div class="row baseStats center" id="baseSpeed">speed: ${pkm[id].speed - 5000}</div>
+                <div class="row baseStats center mt-10" id="baseSpeed">speed: ${pkm[id].speed - 5000}</div>
     `
     document.querySelector('#cardImangeGoesHere').innerHTML = `<img class="image" src="${image}">`
     if (pkm[id].type1 == pkm[id].type2) {
@@ -1448,12 +1449,24 @@ function targetSelector(type, pkmId) {
     if (pokemonName == vgcTeam[activeTeam[1]].id) { current = 1 }
     document.getElementById('teamViewer').innerHTML = `
     <h3>Who will ${pkm[pokemonName].name} attack with ${pkmMoves[typing].type}</h3>
-    <div class="moveOptions"></div>`
+    `
     if (enemyVgcTeam[activeEnemy[1]].enemyHealth >= 1) {
-        document.querySelector('.moveOptions').innerHTML += `<img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 1, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[1]].img}' >`
+        document.querySelector('.moveOptions').innerHTML += `
+        <div class="optSelector">
+            <div class="optText mt-10">HP: ${enemyVgcTeam[activeEnemy[1]].enemyHealth}</div>
+            <img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 1, ${pokemonName}, ${current}], ${current}) " class="optImage"  src='${enemyVgcTeam[activeEnemy[1]].img}' >
+            <div class="optText mb-10">${enemyVgcTeam[activeEnemy[1]].weakness[typing][0]} x damage</div>
+        </div>
+        `
     }
     if (enemyVgcTeam[activeEnemy[0]].enemyHealth >= 1) {
-        document.querySelector('.moveOptions').innerHTML += `<img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${current}) " class="pkmOpt"  src='${enemyVgcTeam[activeEnemy[0]].img}' >`
+        document.querySelector('.moveOptions').innerHTML += `
+        <div class="optSelector">
+            <div class="optText mt-10">HP: ${enemyVgcTeam[activeEnemy[0]].enemyHealth}</div>
+            <img onclick="addTurn(${pkm[pokemonName].speed}, damageCalc, [${typing}, 0, ${pokemonName}, ${current}], ${current}) " class="optImage"  src='${enemyVgcTeam[activeEnemy[0]].img}' >
+         <div class="optText mb-10">${enemyVgcTeam[activeEnemy[0]].weakness[typing][0]} x damage</div>
+        </div>
+        `
     }
     document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0; left: 0;" onclick='turn2(${current})'>back</div> `;
 
@@ -1486,15 +1499,18 @@ function damageCalc(parameter) {
         damage = damage / 50;
         damage += 2;
         if (defender.isEnemyProtected) {
-            damage = 0;
+            damage = -1;        
         } else {
             damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5);
         }
         defender.enemyHealth -= damage;
-        if (damage != 0) {
+        if(damage == -1){
+            gameBoyText += `${attacker.name}'s attack missed!<br>`
+            defender.enemyHealth += damage;
+        } if (damage != 0) {
             gameBoyText += `${attacker.name} does ${damage} ${move.type} damage to the enemy ${defender.name}.<br>`
         } else {
-            gameBoyText += `${attacker.name}'s attack missed!<br>`
+            gameBoyText += `the enemy ${defender.name} is immune to ${move.type}!<br>`
         }
         if (defender.enemyHealth <= 0) {
             gameBoyText += `the enemy ${defender.name} fainted.<br>`
@@ -1529,15 +1545,18 @@ function enemyDamageCalc(parameter) {
         damage = damage / 50;
         damage += 2;
         if (defender.isProtected) {
-            damage = 0;
+            damage = -1;
         } else {
             damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5);
         }
         defender.health -= damage;
-        if (damage != 0) {
-            gameBoyText += `the enemy ${attacker.name} does ${damage} ${move.type} damage to ${defender.name}.<br>`
-        } else {
+        if (damage == -1) {
             gameBoyText += `the enemy ${attacker.name}'s attack missed!<br>`
+            defender.enemyHealth += damage;
+        } else if (damage != 0) {
+            gameBoyText += `the enemy ${attacker.name} does ${damage} ${move.type} damage to ${defender.name}.<br>`
+        } else  {
+            gameBoyText += `${defender.name} is immune to ${move.type}!<br>`
         }
         if (defender.health < 0) {
             gameBoyText += `${defender.name} fainted.<br>`
@@ -1989,7 +2008,7 @@ function enemyLogic() {
                 errorCode = 15004726
             } else {
                 enemyFocus(0)
-                errorCode = 15002628
+                errorCode = 1500262877
             }
         } else {
             enemyFocus(0)
@@ -2107,14 +2126,7 @@ function protect1attackFrom0(threat) {
         targetedStrongestAttack(0, other);
     }
 }
-/*function protectAttack(theProtected, threat) {
-    if (enemyVgcTeam[activeEnemy[theProtected]].enemyHealth >= 1) {
-        addTurn(8, enemyProtect, activeEnemy[theProtected]);
-    }
-    if () {
-        targetedStrongestAttack(0, threat);
-    }
-}*/
+
 function enemyFocus(target) {
 
     let activeTarget = vgcTeam[activeTeam[target]]
