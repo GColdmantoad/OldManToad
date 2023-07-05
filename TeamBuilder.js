@@ -567,7 +567,7 @@ const pkm = [
         specialAtk: 86,
         specialDef: 80,
         speed: 5030,
-        movePool: [3, 7],
+        movePool: [3, 7, 18],
         special: true,
         img: "https://www.serebii.net/swordshield/pokemon/591.png",
         gif: 'img/pokemon/amoonguss.gif',
@@ -643,7 +643,7 @@ const pkm = [
         [2, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [0, 'dragon'], [1, 'steel'], [.5, 'fairy']]
     }, {
         id: 37,
-            name: "Ting-Lu",
+        name: "Ting-Lu",
         type1: "ground",
         type2: "dark",
         hitPoints: 155,
@@ -752,7 +752,23 @@ const pkmMoves = [
         type: "fairy",
         power: 90,
         accuracy: 100,
-    }];
+    }, {
+        id: 18,
+        type: 'spore',
+        power: 0,
+        accuracy: 100,
+    }
+];
+
+const specialPkmMoves = [
+    {
+        name: 'spore',
+        damage: 0,
+        accuracy: 100,
+    }, {
+
+    }
+]
 menuButton.addEventListener("click", () => {
     if (navMenu.className == 'hidden') {
         navMenu.classList.remove("hidden");
@@ -985,7 +1001,7 @@ function pkmCard(id) {
         <div class="dataPill baseStats cardButton" style="left: 0;" onclick="addTeam(pkm[${id}])">add to team</div>
 
     `
-    for (let i = 0; i < pkmMoves.length; i++) {
+    for (let i = 0; i < 17; i++) {
         if (pkm[id].weakness[i][0] >= 2) {       
             weaknessList += `                    
             <div class="smallerTypingIcon flex">
@@ -995,7 +1011,7 @@ function pkmCard(id) {
     }
     document.querySelector('#weaknessList').innerHTML += weaknessList
 
-    for (let i = 0; i < pkmMoves.length; i++) {
+    for (let i = 0; i < 17; i++) {
         if (pkm[id].weakness[i][0] <=.5) {
             resistList += `                    
             <div class="smallerTypingIcon flex">
@@ -1089,7 +1105,7 @@ function pkmCardLive(id, friendOrFoe) {
 
 
     `
-    for (let i = 0; i < pkmMoves.length; i++) {
+    for (let i = 0; i < 17; i++) {
         if (pkm[id].weakness[i][0] >= 2) {
             weaknessList += `                    
             <div class="smallerTypingIcon flex">
@@ -1099,7 +1115,7 @@ function pkmCardLive(id, friendOrFoe) {
     }
     document.querySelector('#weaknessList').innerHTML += weaknessList
 
-    for (let i = 0; i < pkmMoves.length; i++) {
+    for (let i = 0; i < 17; i++) {
         if (pkm[id].weakness[i][0] <= .5) {
             resistList += `                    
             <div class="smallerTypingIcon flex">
@@ -1481,6 +1497,10 @@ function damageCalc(parameter) {
     let attacker = pkm[atkId];
     let attackStat = 0;
     let defenseStat = 0;
+    let critical = 1
+    if (getRandomInt(24) == 4) {
+        critical = 2
+    }
     if (defender.enemyHealth <= 0 && activeEnemyId == 0) {
         defender = enemyVgcTeam[activeEnemy[1]]
     }
@@ -1501,14 +1521,18 @@ function damageCalc(parameter) {
         if (defender.isEnemyProtected) {
             damage = -1;        
         } else {
-            damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5);
+            damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5 * critical);
         }
         defender.enemyHealth -= damage;
         if(damage == -1){
             gameBoyText += `${attacker.name}'s attack missed!<br>`
             defender.enemyHealth += damage;
-        } if (damage != 0) {
+        } else
+        if (damage != 0) {
             gameBoyText += `${attacker.name} does ${damage} ${move.type} damage to the enemy ${defender.name}.<br>`
+            if (critical == 2) {
+                gameBoyText += `it's a critical hit!'<br>`
+            }
         } else {
             gameBoyText += `the enemy ${defender.name} is immune to ${move.type}!<br>`
         }
@@ -1527,6 +1551,10 @@ function enemyDamageCalc(parameter) {
     let attacker = pkm[atkId];
     let attackStat = 0;
     let defenseStat = 0;
+    let critical = 1
+    if (getRandomInt(24) == 4) {
+        critical = 2
+    }
     if (defender.health <= 0 && activeId == 0) {
         defender = vgcTeam[activeTeam[1]]
     }
@@ -1547,14 +1575,18 @@ function enemyDamageCalc(parameter) {
         if (defender.isProtected) {
             damage = -1;
         } else {
-            damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5);
+            damage = Math.floor(damage * defender.weakness[move.id][0] * 1.5 * critical);
         }
         defender.health -= damage;
         if (damage == -1) {
             gameBoyText += `the enemy ${attacker.name}'s attack missed!<br>`
             defender.enemyHealth += damage;
-        } else if (damage != 0) {
+        } else
+        if (damage != 0) {
             gameBoyText += `the enemy ${attacker.name} does ${damage} ${move.type} damage to ${defender.name}.<br>`
+            if (critical == 2) {
+                gameBoyText += `it's a critical hit!'<br>`
+            }
         } else  {
             gameBoyText += `${defender.name} is immune to ${move.type}!<br>`
         }
@@ -1580,7 +1612,7 @@ function protect(arr) {
     } else if (arr == activeTeam[1]) {
         if (vgcTeam[arr].wasProtectUsedLastTurn == false) {
             const list = document.getElementById('partner1').classList;
-            list.add('shake');
+            list.add('wobble');
             vgcTeam[arr].isProtected = true
             gameBoyText += `${vgcTeam[arr].name} dodged all incoming attacks.<br>`
         } else {
@@ -1601,7 +1633,7 @@ function enemyProtect(arr) {
     } else if (arr == activeEnemy[1]) {
         if (enemyVgcTeam[arr].wasEnemyProtectUsedLastTurn == false) {
             const list = document.getElementById('enemy1').classList;
-            list.add('flip');
+            list.add('swing');
             enemyVgcTeam[arr].isEnemyProtected = true
             gameBoyText += `${enemyVgcTeam[arr].name} dodged all incoming attacks.<br>`
         } else {
@@ -1781,7 +1813,7 @@ function endTurn(turn) {
 }
 function removeAnimation() {
     document.querySelectorAll('*').forEach((element) => {
-        element.classList.remove('bounce','shake','flip');
+        element.classList.remove('bounce','shake','flip', 'swing', 'wobble');
     });
 }
 function clearProtect() {

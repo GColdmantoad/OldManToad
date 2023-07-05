@@ -1074,3 +1074,15 @@ background: linear-gradient(0deg, rgba(99,144,240,1) 45%, rgba(214,133,173,1) 65
         transform: translateX(100%) rotate(120deg);
     }
 }
+.rotate3d{
+    animation: rotate3dAnimation 3s linear infinite;
+}
+@keyframes rotate3dAnimation {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
