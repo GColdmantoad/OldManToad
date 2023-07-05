@@ -567,7 +567,7 @@ const pkm = [
         specialAtk: 86,
         specialDef: 80,
         speed: 5030,
-        movePool: [3, 7, 18],
+        movePool: [3, 7],
         special: true,
         img: "https://www.serebii.net/swordshield/pokemon/591.png",
         gif: 'img/pokemon/amoonguss.gif',
@@ -1001,7 +1001,7 @@ function pkmCard(id) {
         <div class="dataPill baseStats cardButton" style="left: 0;" onclick="addTeam(pkm[${id}])">add to team</div>
 
     `
-    for (let i = 0; i < 17; i++) {
+    for (let i = 0; i < 18; i++) {
         if (pkm[id].weakness[i][0] >= 2) {       
             weaknessList += `                    
             <div class="smallerTypingIcon flex">
@@ -1011,7 +1011,7 @@ function pkmCard(id) {
     }
     document.querySelector('#weaknessList').innerHTML += weaknessList
 
-    for (let i = 0; i < 17; i++) {
+    for (let i = 0; i < 18; i++) {
         if (pkm[id].weakness[i][0] <=.5) {
             resistList += `                    
             <div class="smallerTypingIcon flex">
@@ -1105,7 +1105,7 @@ function pkmCardLive(id, friendOrFoe) {
 
 
     `
-    for (let i = 0; i < 17; i++) {
+    for (let i = 0; i < 18; i++) {
         if (pkm[id].weakness[i][0] >= 2) {
             weaknessList += `                    
             <div class="smallerTypingIcon flex">
@@ -1115,7 +1115,7 @@ function pkmCardLive(id, friendOrFoe) {
     }
     document.querySelector('#weaknessList').innerHTML += weaknessList
 
-    for (let i = 0; i < 17; i++) {
+    for (let i = 0; i < 18; i++) {
         if (pkm[id].weakness[i][0] <= .5) {
             resistList += `                    
             <div class="smallerTypingIcon flex">
