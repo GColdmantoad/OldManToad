@@ -274,7 +274,7 @@ li {
 
 .baseStats {
     font-size: .80rem;
-    padding: 10px;
+    padding: 0 15px;
 }
 
 ul {
@@ -307,7 +307,7 @@ ul {
     background-color: rgba(80,81,79,0.1298494397759104);
     border-radius: 25px;
     padding: 5px 10px;
-    margin: 2px 10px;
+    margin: 5px 15px;
 }
 
 .typingIcon {

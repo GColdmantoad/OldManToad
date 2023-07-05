@@ -820,16 +820,16 @@ function clearTeam() {
     teamWeakness = [];
     teamWeaknessArr = [];
     targetWeakness.innerHTML = `what is your team weak against?`;
-    teamOne.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    teamTwo.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    teamThree.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    teamFour.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    teamFive.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
-    teamSix.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
+    teamOne.innerHTML = `<img class="image" src="img/pokeball.png">`;
+    teamTwo.innerHTML = `<img class="image" src="img/pokeball.png">`;
+    teamThree.innerHTML = `<img class="image" src="img/pokeball.png">`;
+    teamFour.innerHTML = `<img class="image" src="img/pokeball.png">`;
+    teamFive.innerHTML = `<img class="image" src="img/pokeball.png">`;
+    teamSix.innerHTML = `<img class="image" src="img/pokeball.png">`;
 }
 function removeTeamOne() {
     TeamMember0 = false;
-    teamOne.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
+    teamOne.innerHTML = `<img class="image" src="img/pokeball.png">`;
     team.splice(0, 1);
     team.unshift(0);
     teamWeakness = [];
@@ -838,7 +838,7 @@ function removeTeamOne() {
 }
 function removeTeamTwo() {
     TeamMember1 = false;
-    teamTwo.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
+    teamTwo.innerHTML = `<img class="image" src="img/pokeball.png">`;
     team.splice(1, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
@@ -846,7 +846,7 @@ function removeTeamTwo() {
 }
 function removeTeamThree() {
     TeamMember2 = false;
-    teamThree.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
+    teamThree.innerHTML = `<img class="image" src="img/pokeball.png">`;
     team.splice(2, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
@@ -854,7 +854,7 @@ function removeTeamThree() {
 }
 function removeTeamFour() {
     TeamMember3 = false;
-    teamFour.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
+    teamFour.innerHTML = `<img class="image" src="img/pokeball.png">`;
     team.splice(3, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
@@ -862,7 +862,7 @@ function removeTeamFour() {
 }
 function removeTeamFive() {
     TeamMember4 = false;
-    teamFive.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
+    teamFive.innerHTML = `<img class="image" src="img/pokeball.png">`;
     team.splice(4, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
@@ -870,7 +870,7 @@ function removeTeamFive() {
 }
 function removeTeamSix() {
     TeamMember5 = false;
-    teamSix.innerHTML = `<img class="image" src="https://cdn.onlinewebfonts.com/svg/img_573410.png">`;
+    teamSix.innerHTML = `<img class="image" src="img/pokeball.png">`;
     team.splice(5, 1, 0);
     teamWeakness = [];
     teamWeaknessArr = [];
@@ -969,7 +969,7 @@ function pkmCard(id) {
                 </div>
             </div>
         </div>
-        <div class="dataPill baseStats cardButton" style="right: 0;" onclick="hideCard()">close</div>
+ 
         <div class="dataPill baseStats cardButton" style="left: 0;" onclick="addTeam(pkm[${id}])">add to team</div>
 
     `
@@ -1053,8 +1053,8 @@ function pkmCardLive(id, friendOrFoe) {
     document.querySelector('#pkmCardViewer').innerHTML = `
      <div class="row space-between" id="nameType"></div>
 
-        <div class="cardImage row center" id="cardImangeGoesHere"></div>
-        <div class="dataPill">
+        <div class="cardImage row center dataPill" id="cardImangeGoesHere"></div>
+        <div class="">
             <div id="baseStats">
             </div>
             <div class="row space-around">
@@ -1074,7 +1074,7 @@ function pkmCardLive(id, friendOrFoe) {
                 </div>
             </div>
         </div>
-        <div class="dataPill baseStats cardButton" style="right: 0;" onclick="hideCard()">close</div>
+
 
     `
     for (let i = 0; i < pkmMoves.length; i++) {
@@ -1137,6 +1137,7 @@ function pkmCardLive(id, friendOrFoe) {
             </div>
     `
 }
+
 // functions for getting the game started
 function battleTeam() {
     if (team.length > 5) {
@@ -1193,7 +1194,7 @@ function gameTime() {
     document.querySelector('body').innerHTML += `
         <div class="btn" id='turnBtn' style="position: fixed; bottom: 0;" onclick="turn2(0)">restart turn</div>
         <div class="btn" id='infoBtn' style="position: fixed; bottom: 0; right: 0;" onclick="info()" >Info</div>
-            <div id="pkmCardViewer"></div>
+            <div id="pkmCardViewer" onclick="hideCard()"></div>
     `;
     enemyVgc();
     document.getElementById('enemyTeamViewer').innerHTML = `
@@ -1835,7 +1836,7 @@ function enemyLogic() {
             targetedStrongestAttack(1, 1)
             errorCode = 127
         } else
-            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1) {
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1 && activeTeam0.health >= 1) {
             protect1attackFrom0(0)
             errorCode = 1208
         } else 
@@ -1864,7 +1865,7 @@ function enemyLogic() {
             targetedStrongestAttack(1, 0)
             errorCode = 130
         } else
-            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1) {
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1 && activeTeam1.health >= 1) {
             protect1attackFrom0(1)
             errorCode = 1301
         } else
@@ -1894,7 +1895,7 @@ function enemyLogic() {
                 targetedStrongestAttack(1, 0)
                 errorCode = 1304
             } else
-                if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1) {
+                if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1 && activeTeam0.health >= 1) {
                     protect0attackFrom1(0)
                     errorCode = 1305
                 } else
@@ -1924,7 +1925,7 @@ function enemyLogic() {
             targetedStrongestAttack(1, 1)
             errorCode = 1308
         } else
-            if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1) {
+            if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1 && activeTeam1.health >= 1) {
             protect0attackFrom1(1)
             errorCode = 1309
         } else
@@ -1954,7 +1955,7 @@ function enemyLogic() {
 
     if (enemyPkm1.weakness[team0Move0][0] >= 2 || enemyPkm1.weakness[team0Move1][0] >= 2 && activeTeam0.health >= 1) {
         if (enemyPkm1.weakness[team1Move0][0] >= 2 || enemyPkm1.weakness[team1Move1][0] >= 2) {
-            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1) {
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1 && activeTeam0.health >= 1 && activeTeam1.health >= 1) {
                 protect1attackFrom0(0)
                 errorCode = 1403
             } else {
@@ -1966,7 +1967,7 @@ function enemyLogic() {
             enemyFocus(0)
             errorCode = 1405
         } else
-        if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >=1) {
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1 && activeTeam0.health >= 1) {
             protect1attackFrom0(0)
             errorCode = 1406
         } else
@@ -1989,7 +1990,7 @@ function enemyLogic() {
             enemyFocus(1)
             errorCode = 1408
         } else
-            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1) {
+            if (!enemyPkm1.wasEnemyProtectUsedLastTurn && enemyPkm0.enemyHealth >= 1  && activeTeam1.health >= 1) {
             protect1attackFrom0(1)
             errorCode = 1409
         } else
@@ -2014,7 +2015,7 @@ function enemyLogic() {
             enemyFocus(0)
             errorCode = 1501
         } else
-            if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1) {
+            if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1 && activeTeam0.health >= 1) {
             protect0attackFrom1(0)
             errorCode = 1502
         } else
@@ -2037,7 +2038,7 @@ function enemyLogic() {
             enemyFocus(1)
             errorCode = 1504
         } else
-            if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1) {
+            if (!enemyPkm0.wasEnemyProtectUsedLastTurn && enemyPkm1.enemyHealth >= 1 && activeTeam1.health >= 1) {
             protect0attackFrom1(1)
             errorCode = 1505
         } else
