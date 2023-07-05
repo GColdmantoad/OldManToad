@@ -73,7 +73,7 @@ const pkm = [
     movePool: [4, 16],
     special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/462.png",
-        gif: 'img/pokemon/magnezone.gif',
+        gif: 'img/pokemon/462.gif',
     weakness: [[.5, 'normal'], [2, 'fire'], [1, 'water'], [.5, 'grass'], [.5, 'electric'], [.5, 'ice'], [2, 'fighting'], [0, 'poison'], [4, 'ground'], [.25, 'flying'], [.5, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.25, 'steel'], [.5, 'fairy']]
 }, {
     id: 2,
@@ -88,7 +88,8 @@ const pkm = [
     speed: 5050,
     movePool: [2, 17],
     special: true,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/184.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/184.png",
+        gif: 'img/pokemon/184.gif',
     weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [.5, 'fighting'], [2, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [.5, 'bug'], [1, 'rock'], [1, 'ghost'], [.5, 'dark'], [0, 'dragon'], [1, 'steel'], [1, 'fairy']]
 }, {
     id: 3,
@@ -103,7 +104,8 @@ const pkm = [
     speed: 5065,
     movePool: [11, 16],
     special: false,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/212.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/212.png",
+        gif: 'img/pokemon/212.gif',
     weakness: [[.5, 'normal'], [4, 'fire'], [1, 'water'], [.25, 'grass'], [1, 'electric'], [.5, 'ice'], [1, 'fighting'], [0, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [.5, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
 }, {
     id: 4,
@@ -119,7 +121,7 @@ const pkm = [
     movePool: [1, 11],
     special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/637.png",
-        gif: 'img/pokemon/volcarona.gif',
+        gif: 'img/pokemon/637.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [.25, 'grass'], [1, 'electric'], [.5, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [2, 'flying'], [1, 'psychic'], [.5, 'bug'], [4, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [.5, 'fairy']]
 }, {
     id: 5,
@@ -167,7 +169,7 @@ const pkm = [
     movePool: [8, 15],
     special: false,
         img: "https://www.serebii.net/scarletviolet/pokemon/445.png",
-        gif: 'img/pokemon/garchomp.gif',
+        gif: 'img/pokemon/445.gif',
     weakness: [[1, 'normal'], [.5, 'fire'], [1, 'water'], [1, 'grass'], [0, 'electric'], [4, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [2, 'dragon'], [1, 'steel'], [2, 'fairy']]
 }, {
     id: 8,
@@ -198,7 +200,8 @@ const pkm = [
     speed: 5030,
     movePool: [2, 10],
     special: true,
-    img: "https://www.serebii.net/swordshield/pokemon/080.png",
+        img: "https://www.serebii.net/swordshield/pokemon/080.png",
+        gif: 'img/pokemon/80.gif',
     weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
 }, {
     id: 10,
@@ -262,7 +265,7 @@ const pkm = [
     movePool: [14, 15],
     special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/635.png",
-        gif: 'img/pokemon/hydreigon.gif',
+        gif: 'img/pokemon/635.gif',
     weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [2, 'fighting'], [1, 'poison'], [0, 'ground'], [1, 'flying'], [0, 'psychic'], [2, 'bug'], [1, 'rock'], [.5, 'ghost'], [.5, 'dark'], [2, 'dragon'], [1, 'steel'], [4, 'fairy']]
 }, {
     id: 14,
@@ -293,7 +296,8 @@ const pkm = [
     speed: 5030,
     movePool: [2, 10],
     special: true,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/199.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/199.png",
+        gif: 'img/pokemon/199.gif',
     weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [.5, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
 }, {
     id: 16,
@@ -308,7 +312,8 @@ const pkm = [
     speed: 5080,
     movePool: [9, 15],
     special: false,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/149.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/149.png",
+        gif: 'img/pokemon/149.gif',
     weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [.25, 'grass'], [1, 'electric'], [4, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [1, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [2, 'dragon'], [1, 'steel'], [2, 'fairy']]
 }, {
     id: 17,
@@ -323,7 +328,8 @@ const pkm = [
     speed: 5050,
     movePool: [8, 8],
     special: false,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/232.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/232.png",
+        gif: 'img/pokemon/232.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [2, 'water'], [2, 'grass'], [0, 'electric'], [2, 'ice'], [1, 'fighting'], [.5, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
 }, {
     id: 18,
@@ -386,7 +392,8 @@ const pkm = [
     speed: 5070,
     movePool: [3, 6],
     special: false,
-    img: "https://www.serebii.net/scarletviolet/pokemon/new/286.png",
+        img: "https://www.serebii.net/scarletviolet/pokemon/new/286.png",
+        gif: 'img/pokemon/286.gif',
     weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.5, 'grass'], [.5, 'electric'], [2, 'ice'], [1, 'fighting'], [2, 'poison'], [.5, 'ground'], [4, 'flying'], [2, 'psychic'], [1, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [1, 'steel'], [2, 'fairy']]
 }, {
     id: 22,
@@ -497,7 +504,8 @@ const pkm = [
     speed: 5030,
     movePool: [5, 5],
     special: false,
-    img: "https://www.serebii.net/swordshield/pokemon/896.png",
+        img: "https://www.serebii.net/swordshield/pokemon/896.png",
+        gif: 'img/pokemon/896.gif',
     weakness: [[1, 'normal'], [2, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [.5, 'ice'], [2, 'fighting'], [1, 'poison'], [1, 'ground'], [1, 'flying'], [1, 'psychic'], [1, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [2, 'steel'], [1, 'fairy']]
 }, {
     id: 29,
@@ -529,7 +537,7 @@ const pkm = [
     movePool: [10, 10],
     special: true,
         img: "https://www.serebii.net/scarletviolet/pokemon/new/488.png",
-        gif: 'img/pokemon/cresselia.gif',
+        gif: 'img/pokemon/488.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [1, 'electric'], [1, 'ice'], [.5, 'fighting'], [1, 'poison'], [0, 'ground'], [1, 'flying'], [.5, 'psychic'], [2, 'bug'], [1, 'rock'], [2, 'ghost'], [2, 'dark'], [1, 'dragon'], [1, 'steel'], [1, 'fairy']]
 }, {
     id: 31,
@@ -544,7 +552,8 @@ const pkm = [
     speed: 5200,
     movePool: [4, 4],
     special: true,
-    img: "https://www.serebii.net/swordshield/pokemon/894.png",
+        img: "https://www.serebii.net/swordshield/pokemon/894.png",
+        gif: 'img/pokemon/894.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [1, 'grass'], [.5, 'electric'], [1, 'ice'], [1, 'fighting'], [1, 'poison'],
     [2, 'ground'], [.5, 'flying'], [1, 'psychic'], [1, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
 }, {
@@ -561,7 +570,7 @@ const pkm = [
     movePool: [3, 7],
     special: true,
         img: "https://www.serebii.net/swordshield/pokemon/591.png",
-        gif: 'img/pokemon/amoonguss.gif',
+        gif: 'img/pokemon/591.gif',
     weakness: [[1, 'normal'], [2, 'fire'], [.5, 'water'], [.25, 'grass'], [.5, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'],
     [1, 'ground'], [2, 'flying'], [2, 'psychic'], [1, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [1, 'steel'], [.5, 'fairy']]
 }, {
@@ -577,7 +586,8 @@ const pkm = [
     speed: 5097,
     movePool: [2, 6],
     special: false,
-    img: "https://www.serebii.net/swordshield/pokemon/892-r.png",
+        img: "https://www.serebii.net/swordshield/pokemon/892-r.png",
+        gif: 'img/pokemon/892-r.gif',
     weakness: [[1, 'normal'], [.5, 'fire'], [.5, 'water'], [2, 'grass'], [2, 'electric'], [.5, 'ice'], [1, 'fighting'], [1, 'poison'],
     [1, 'ground'], [2, 'flying'], [2, 'psychic'], [.5, 'bug'], [.5, 'rock'], [1, 'ghost'], [.5, 'dark'], [1, 'dragon'], [.5, 'steel'], [2, 'fairy']]
 }, {
@@ -593,7 +603,8 @@ const pkm = [
     speed: 5100,
     movePool: [4, 9],
     special: true,
-    img: "https://www.serebii.net/Shiny/SV/new/145.png",
+        img: "https://www.serebii.net/Shiny/SV/new/145.png",
+        gif: 'img/pokemon/145.gif',
     weakness: [[1, 'normal'], [1, 'fire'], [1, 'water'], [.5, 'grass'], [1, 'electric'], [2, 'ice'], [.5, 'fighting'], [1, 'poison'],
     [0, 'ground'], [.5, 'flying'], [1, 'psychic'], [.5, 'bug'], [2, 'rock'], [1, 'ghost'], [1, 'dark'], [1, 'dragon'], [.5, 'steel'], [1, 'fairy']]
 }, {
@@ -610,7 +621,7 @@ const pkm = [
     movePool: [1, 16],
     special: true,
         img: "https://www.serebii.net/Shiny/SV/new/485.png",
-        gif: 'img/pokemon/heatran.gif',
+        gif: 'img/pokemon/485.gif',
     weakness: [[.5, 'normal'], [0, 'fire'], [2, 'water'], [.25, 'grass'], [1, 'electric'], [.25, 'ice'], [2, 'fighting'], [0, 'poison'],
     [4, 'ground'], [.5, 'flying'], [.5, 'psychic'], [.25, 'bug'], [1, 'rock'], [1, 'ghost'], [1, 'dark'], [.5, 'dragon'], [.25, 'steel'], [.25, 'fairy']]
 }, {
