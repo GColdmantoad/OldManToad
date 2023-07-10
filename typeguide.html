@@ -1,37 +1,197 @@
+     0,  normal,
 
-    id: 0, type: "normal",
+     1,   fire,
 
-    id: 1,  type: "fire",
+     2,   water,
 
-    id: 2,  type: "water",
+     3,    grass,
 
-    id: 3,   type: "grass",
+     4,   electric,
 
-    id: 4,  type: "electric",
+     5,  ice,
 
-    id: 5, type: "ice",
+     6,   fighting,
 
-    id: 6,  type: "fighting",
+     7,    poison,
 
-    id: 7,   type: "poison",
+     8,     ground,
 
-    id: 8,    type: "ground",
+     9,     flying,
 
-    id: 9,    type: "flying",
+     10,    psychic,
 
-  id: 10,   type: "psychic",
+     11,     bug,
 
-    id: 11,    type: "bug",
+     12,    rock,
 
-    id: 12,   type: "rock",
+     13,     ghost,
 
-    id: 13,    type: "ghost",
+     14,    dark,
 
-    id: 14,   type: "dark",
+     15,    dragon,
 
-    id: 15,   type: "dragon",
+     16,     steel,
 
-    id: 16,    type: "steel",
+     17,     fairy,
 
-    id: 17,    type: "fairy",
+       if (defender.liveHealth <= 0 && activeEnemyId == 0) {
+            defender = enemyVgcTeam[activeEnemy[1]]
+        }
+        if (defender.liveHealth <= 0 && activeEnemyId == 1) {
+            defender = enemyVgcTeam[activeEnemy[0]]
+        }
+        if (defender.liveHealth <= 0 && activeId == 0) {
+            defender = vgcTeam[activeTeam[1]]
+        }
+        if (defender.liveHealth <= 0 && activeId == 1) {
+            defender = vgcTeam[activeTeam[0]]
+        }
 
+        hitPoints: 100,
+        physicalAtk: 130,
+        physicalDef: 100,
+        specialAtk: 86,
+        specialDef: 60,
+        speed: 5097,
+
+    }, {
+        id: 17,
+        name: "fairy",
+        power: 90,
+        accuracy: 100,
+        type: 17,
+        priority: 5,
+    }, {
+        id: 18,
+        name: 'spore',
+        damage: 0,
+        accuracy: 100,
+        priority: 5,
+        type: 3,
+    }, {
+        id: 19,
+        name: 'bullet punch',
+        damage: 60,
+        accuracy: 100,
+        priority: 6,
+        type: 16,
+        vgcTeam[i].liveHealth = vgcTeam[i].baseHP + 75
+        vgcTeam[i].liveAtk = vgcTeam[i].baseAtk + 20
+        vgcTeam[i].liveDef = vgcTeam[i].baseDef + 20
+        vgcTeam[i].liveSpAtk = vgcTeam[i].baseSpAtk + 20
+        vgcTeam[i].liveSpDef = vgcTeam[i].baseSpDef + 20
+        vgcTeam[i].liveSpeed = vgcTeam[i].baseSpeed + 20
+        enemyVgcTeam[i].liveEnemyHealth = enemyVgcTeam[i].baseHP + 75
+        enemyVgcTeam[i].liveEnemyAtk = enemyVgcTeam[i].baseAtk + 20
+        enemyVgcTeam[i].liveEnemyDef = enemyVgcTeam[i].baseDef + 20
+        enemyVgcTeam[i].liveEnemySpAtk = enemyVgcTeam[i].baseSpAtk + 20
+        enemyVgcTeam[i].liveEnemySpDef = enemyVgcTeam[i].baseSpDef + 20
+        enemyVgcTeam[i].liveEnemySpeed = enemyVgcTeam[i].baseSpeed + 20
+    }, {
+        id: 19,
+        name: 'bullet punch',
+        power: 60,
+        accuracy: 100,
+        priority: 6,
+        type: 16,
+    }, {
+        id: 20,
+        name: 'aqua jet',
+        power: 40,
+        accuracy: 100,
+        priority: 6,
+        type: 2,
+    }, {
+        id: 21,
+        name: 'surging strikes',
+        power: 150,
+        accuracy: 100,
+        priority: 5,
+        type: 2,
+    }
+        id: 22,
+        name: 'flower trick',
+        power: 70,
+        accuracy: 100,
+        priority: 5,
+        type: 3,
+
+        id: 26,
+        name: 'swords dance',
+        power: 0,
+        accuracy: 100,
+        priority: 50000,
+        type: 15,
+        alwaysCrits: false,
+        function: 'dragonDance',
+        target: 0
+    }, {
+        id: 27,
+        name: 'nasty plot',
+        power: 0,
+        accuracy: 100,
+        priority: 50000,
+        type: 15,
+        alwaysCrits: false,
+        function: 'nastyPlot',
+        target: 0
+    }, {
+        id: 28,
+        name: 'quiver dance',
+        power: 0,
+        accuracy: 100,
+        priority: 50000,
+        type: 11,
+        alwaysCrits: false,
+        function: 'quiverDance',
+        target: 0
+    }, {
+        id: 29,
+        name: 'bulk up',
+        power: 0,
+        accuracy: 100,
+        priority: 50000,
+        type: 6,
+        alwaysCrits: false,
+        function: 'bulkUp',
+        target: 0
+    }, {
+        id: 30,
+        name: 'calm mind',
+        power: 0,
+        accuracy: 100,
+        priority: 50000,
+        type: 10,
+        alwaysCrits: false,
+        function: 'calmMind',
+        target: 0
+    }
+
+if (critical == 2) {
+            damage = 22 * attackStat * atkBoost / 2 * move.power * stab / defenseStat * 2 / defDebuf;
+            damage = damage / 50;
+            damage += 2;
+            damage = Math.floor(damage * defender.weakness[move.type][0] * critical);
+        } else {
+            damage = 22 * attackStat * atkBoost / atkDebuf * move.power * stab / defenseStat * defBoost / defDebuf;
+            damage = damage / 50;
+            damage += 2;
+            damage = Math.floor(damage * defender.weakness[move.type][0]);
+        }
+
+    if (attacker.liveHealth >= 1) {
+        if (attacker.liveAtk > attacker.liveSpAtk) {
+            attackStat = attacker.liveAtk;
+            defenseStat = defender.liveDef;
+            atkBoost = attacker.boostAtk[0]
+            atkDebuf = attacker.boostAtk[1]
+            defBoost = defender.boostDef[0]
+            defDebuf = defender.boostDef[1]
+        } else {
+            attackStat = attacker.liveSpAtk;
+            defenseStat = defender.liveSpDef;
+            atkBoost = attacker.boostSpAtk[0]
+            atkDebuf = attacker.boostSpAtk[1]
+            defBoost = defender.boostSpDef[0]
+            defDebuf = defender.boostSpDef[1]
+        };

@@ -755,7 +755,7 @@ background: linear-gradient(0deg, rgba(99,144,240,1) 45%, rgba(214,133,173,1) 65
 }
 
 .swing {
-    transform-origin: top center;
+    transform-origin: bottom center;
     animation: swing 2s ease infinite;
 }
 
