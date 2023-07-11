@@ -2545,7 +2545,7 @@ function enemyLogic() {
                                                                             targetedStrongestAttack(0, 1)
                                                                             errorCode = 15004726
                                                                         } else {
-                                                                            enemyFocus(0)
+                                                                            enemyFocus(1)
                                                                             errorCode = 15002628
                                                                         }
                                                                     } else {
@@ -2593,7 +2593,7 @@ function enemyLogic() {
                                                                                     targetedStrongestAttack(1, 1)
                                                                                     errorCode = 1500472
                                                                                 } else {
-                                                                                    enemyFocus(0)
+                                                                                    enemyFocus(1)
                                                                                     errorCode = 1500262
                                                                                 }
                                                                             } else {
