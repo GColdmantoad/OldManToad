@@ -1337,8 +1337,9 @@ function pkmCard(id) {
                 </div>
             </div>
         </div>
- 
-        <div class="dataPill baseStats cardButton" style="left: 0;" onclick="addTeam(pkm[${id}])">add to team</div>
+
+        <div class="cardPillButton baseStats cardButton" style="right: 0;" onclick="hideCard()">close</div>
+        <div class="cardPillButton baseStats cardButton" style="left: 0;" onclick="addTeam(pkm[${id}])">add to team</div>
 
     `
     for (let i = 0; i < 18; i++) {
@@ -1443,7 +1444,8 @@ function pkmCardLive(location, friendOrFoe) {
             </div>
         </div>
     </div>
-
+     <div class="cardPillButton baseStats cardButton" style="right: 0;" onclick="hideCard()">close</div>
+        
 
 `
     for (let i = 0; i < 18; i++) {
@@ -2272,9 +2274,15 @@ function runTurnOrder() {
     turnStorage = turnStorage.sort();
     turnStorage = turnStorage.reverse();
     for (let i = 0; i < turnStorage.length; i++) {
-        turnStorage[i][1](turnStorage[i][2])
+        setTimeout(() => {
+            turnStorage[i][1](turnStorage[i][2])
+            document.getElementById('teamViewer').innerHTML = `<p style="color: white">${gameBoyText}</p> `;
+            healthCheck();
+            document.getElementById('teamViewer').innerHTML = `<p style="color: white">${gameBoyText}</p> `;
+            document.getElementById('teamViewer').innerHTML += `<div class='btn' style="position: fixed; bottom: 0; left: 0;" onclick='winCon()'>Next Turn</div> `;
+        }, i*1000);
     }
-    healthCheck();
+
 }
 function endTurn(turn) {
     if (turn == 0) {
