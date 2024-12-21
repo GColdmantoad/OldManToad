@@ -1,7 +1,31 @@
 * {
-    font-family: 'Bungee', cursive;
+    font-family: "Roboto", "Trebuchet MS", Helvetica, sans-serif, serif;
     box-sizing: border-box;
 }
+.bungee {
+    font-family: "Bungee", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.nosifer {
+    font-family: "Nosifer", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.dserif {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.dserif_italic {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+
 body {
     background-color: #F9EDCC;
 }
@@ -10,20 +34,21 @@ ul li {
 }
 li:hover {
     color: #EA2B1F;
-    border: 5px solid #EA2B1F;
+    border: 2px solid #EA2B1F;
 }
 .horizontalMenu {
     justify-content: space-between;
-    text-align:center; 
-    font-size: 2em; 
+    text-align: center;
+    font-size: 1.5em;
     display: flex;
-    margin:auto;
+    margin: auto;
+    padding-bottom: 10px;
 }
 .navMenuItem {
     display: inline-block;
-    border: 5px solid black;
-    padding: 15px;
-    min-width: 215px;
+    border: 2px solid black;
+    padding: 10px;
+    min-width: 85px;
 }
 
 .shadow {
@@ -49,5 +74,25 @@ li:hover {
     z-index: 3;
 }
 .opt {
+    padding: 8px 16px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 8px 0px, rgba(0, 0, 0, 0.08) 0px 0px 1px 0px;
+    position: relative;
+    margin: 5px;
+}
+.btn {
+    background-color: #EA2B1F;
+    border: none;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    max-height: fit-content;
+    margin-top: 2px;
+}
+.textBtn {
+    border: none;
+    color: #EA2B1F;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 12px;
 }
